@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D-Druck Morsbach | Individuell & lokal im Oberbergischen Kreis</title>
+<meta name="description" content="Dein Experte für 3D-Druck im Oberbergischen Kreis. Prototypen, Ersatzteile und CAD-Konstruktion in Morsbach. Schnell, präzise und persönlich. Jetzt anfragen!">
+<meta name="keywords" content="3D Druck, Morsbach, Oberberg, Prototypenbau, Ersatzteile, CAD Konstruktion, FDM Druck">
+<meta property="og:title" content="3D Oberberg | 3D-Druck Services">
+<meta property="og:description" content="Individuelle 3D-Drucklösungen für Prototypen und Ersatzteile direkt aus Morsbach.">
+<meta property="og:image" content="3D%20Oberberg_Logo_kl.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="3D%20Oberberg_Logo_kl.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FBF8F2;
+  --bg2:#F3EFE6;
+  --surface:#FFFFFF;
+  --ink:#1E1B14;
+  --ink2:#6B6455;
+  --ink3:#AFA89A;
+  --orange:#8B5CF6;
+  --orange-soft:rgba(139,92,246,0.12);
+  --green:#22D3EE;
+  --green-soft:rgba(34,211,238,0.12);
+  --border:rgba(30,27,20,0.09);
+  --r:20px;--rl:32px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);
+  z-index:200;width:calc(100% - 40px);max-width:1100px;
+  padding:0 28px;height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,0.88);
+  backdrop-filter:blur(20px);
+  border-radius:100px;
+  border:1px solid var(--border);
+  box-shadow:0 4px 24px rgba(30,27,20,0.06);
+}
+.nav-logo{
+  font-family:'Fraunces',sans-serif;font-weight:900;font-size:1.1rem;
+  color:var(--ink);text-decoration:none;
+  display:flex;align-items:center;gap:10px;
+}
+.logo-blob{
+  width:32px;height:32px;border-radius:50% 50% 50% 30%/50% 50% 30% 50%;
+  background:var(--orange);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.75rem;color:#fff;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;
+  animation:blobMorph 4s ease-in-out infinite;
+}
+@keyframes blobMorph{
+  0%,100%{border-radius:50% 50% 50% 30%/50% 50% 30% 50%}
+  33%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}
+  66%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%}
+}
+.nav-links{display:flex;gap:24px}
+.nav-links a{font-size:0.85rem;color:var(--ink2);text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-btn{
+  padding:9px 22px;
+  background:var(--ink);color:#fff;
+  border-radius:100px;font-size:0.85rem;font-weight:600;
+  text-decoration:none;transition:background .2s,transform .2s;
+}
+.nav-btn:hover{background:var(--orange);transform:translateY(-1px)}
+
+/* HERO */
+.hero{
+  padding:130px 5% 80px;
+  position:relative;overflow:hidden;
+}
+.hero-blob1{
+  position:absolute;width:500px;height:500px;
+  border-radius:60% 40% 30% 70%/60% 30% 70% 40%;
+  background:linear-gradient(135deg,rgba(139,92,246,0.12),rgba(139,92,246,0.03));
+  top:-100px;right:-100px;
+  animation:slowMorph 8s ease-in-out infinite;
+  pointer-events:none;
+}
+.hero-blob2{
+  position:absolute;width:300px;height:300px;
+  border-radius:40% 60% 70% 30%/40% 50% 60% 50%;
+  background:linear-gradient(135deg,rgba(34,211,238,0.12),rgba(34,211,238,0.03));
+  bottom:0;left:15%;
+  animation:slowMorph 10s 2s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes slowMorph{
+  0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%;transform:rotate(0deg)}
+  50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%;transform:rotate(5deg)}
+}
+
+.hero-inner{max-width:1200px;margin:0 auto;position:relative}
+.hero-top{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:center;margin-bottom:60px;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.8rem;font-weight:600;color:var(--green);
+  background:var(--green-soft);
+  padding:6px 14px;border-radius:100px;
+  margin-bottom:24px;
+}
+.hero-badge::before{content:'📍';font-size:0.85rem}
+h1.warm{
+  font-family:'Fraunces',sans-serif;font-weight:900;
+  font-size:clamp(3rem,5vw,4.2rem);
+  line-height:1.08;letter-spacing:-0.02em;
+  margin-bottom:20px;
+}
+h1.warm em{font-style:italic;color:var(--orange)}
+.hero-p{font-size:1.05rem;color:var(--ink2);max-width:440px;margin-bottom:36px;line-height:1.8;font-weight:300}
+.hero-actions-warm{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.btn-warm-main{
+  padding:14px 32px;
+  background:var(--orange);color:#fff;
+  border-radius:100px;font-weight:600;font-size:0.95rem;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  box-shadow:0 6px 24px rgba(139,92,246,0.28);
+  transition:transform .25s,box-shadow .25s;
+}
+.btn-warm-main:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(139,92,246,0.38)}
+.btn-warm-ghost{
+  padding:14px 28px;
+  border:1.5px solid var(--border);color:var(--ink);
+  border-radius:100px;font-weight:500;font-size:0.95rem;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:border-color .2s,background .2s;
+}
+.btn-warm-ghost:hover{border-color:var(--orange);background:var(--orange-soft)}
+
+.trust-warm{display:flex;gap:24px;flex-wrap:wrap}
+.tw{display:flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--ink2)}
+.tw-dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+
+/* HERO CARD STACK */
+.hero-cards{position:relative;height:400px}
+.hcard{
+  position:absolute;background:var(--surface);
+  border-radius:var(--r);
+  border:1px solid var(--border);
+  box-shadow:0 8px 32px rgba(30,27,20,0.08);
+  padding:28px;
+  transition:transform .4s ease;
+}
+.hcard-main{
+  width:280px;top:0;left:30%;
+  animation:hcardFloat 5s ease-in-out infinite;
+}
+@keyframes hcardFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(-1deg)}}
+.hcard-b{
+  width:220px;bottom:0;left:0;
+  animation:hcardFloat2 6s 1s ease-in-out infinite;
+}
+@keyframes hcardFloat2{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+.hcard-c{
+  width:200px;top:40px;right:0;
+  animation:hcardFloat3 7s 2s ease-in-out infinite;
+}
+@keyframes hcardFloat3{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(-2deg)}}
+
+.hcard-icon{font-size:1.5rem;margin-bottom:12px;display:block}
+.hcard-title{font-family:'Fraunces',sans-serif;font-size:1rem;font-weight:700;margin-bottom:6px}
+.hcard-sub{font-size:0.8rem;color:var(--ink2);line-height:1.5}
+.hcard-price{
+  margin-top:12px;font-family:'Fraunces',sans-serif;
+  font-size:1.4rem;font-weight:700;color:var(--orange);
+}
+
+/* SOCIAL PROOF */
+.social-strip{
+  background:var(--bg2);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:32px 5%;
+  display:flex;justify-content:center;gap:60px;flex-wrap:wrap;
+}
+.ss-item{display:flex;align-items:center;gap:12px}
+.ss-icon{
+  width:40px;height:40px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;background:var(--surface);
+  border:1px solid var(--border);
+}
+.ss-text span{display:block;font-size:0.7rem;color:var(--ink3);letter-spacing:0.04em;text-transform:uppercase}
+.ss-text strong{font-size:0.9rem;font-weight:600;color:var(--ink)}
+
+/* SERVICES WARM */
+.services-w{padding:80px 5%}
+.services-w-inner{max-width:1200px;margin:0 auto}
+.sec-eyebrow{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+h2.warm-h2{
+  font-family:'Fraunces',sans-serif;font-weight:900;
+  font-size:clamp(2rem,3.5vw,3rem);
+  line-height:1.1;letter-spacing:-0.02em;margin-bottom:12px;
+}
+h2.warm-h2 em{font-style:italic;color:var(--orange)}
+.sec-sub-w{font-size:1rem;color:var(--ink2);margin-bottom:52px;line-height:1.75;font-weight:300}
+.services-w-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:20px;
+}
+.sw-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--rl);
+  padding:36px;
+  display:flex;gap:20px;
+  transition:transform .3s,box-shadow .3s;
+  opacity:0;transform:translateY(16px);
+}
+.sw-card.visible{opacity:1;transform:translateY(0);transition:opacity .5s ease,transform .5s ease,box-shadow .3s}
+.sw-card:hover{transform:translateY(-4px) !important;box-shadow:0 12px 40px rgba(30,27,20,0.08)}
+.sw-icon-w{
+  width:48px;height:48px;flex-shrink:0;border-radius:14px;
+  background:var(--orange-soft);
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+}
+.sw-card h3{font-family:'Fraunces',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.sw-card p{font-size:0.875rem;color:var(--ink2);line-height:1.7;font-weight:300}
+.sw-tag{
+  display:inline-block;margin-top:12px;padding:4px 12px;
+  background:var(--orange-soft);color:var(--orange);
+  border-radius:100px;font-size:0.75rem;font-weight:600;
+}
+
+/* MATERIALS WARM */
+.mat-w{
+  padding:80px 5%;background:var(--ink);scroll-margin-top:80px;
+  position:relative;overflow:hidden;
+}
+.mat-w::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 60% at 80% 50%,rgba(139,92,246,0.12),transparent);
+  pointer-events:none;
+}
+.mat-w-inner{max-width:1200px;margin:0 auto;position:relative}
+.mat-w-inner .sec-eyebrow{color:var(--orange)}
+.mat-w-inner h2.warm-h2{color:#fff}
+.mat-w-inner .sec-sub-w{color:rgba(255,255,255,0.55)}
+.mat-grid-w{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mw-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:var(--r);padding:32px;
+  transition:background .3s,border-color .3s;
+}
+.mw-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2)}
+.mw-name{
+  font-family:'Fraunces',sans-serif;
+  font-size:2.5rem;font-weight:900;color:#fff;
+  line-height:1;margin-bottom:8px;
+}
+.mw-pla .mw-name{color:#5BC8E8}
+.mw-petg .mw-name{color:var(--orange)}
+.mw-abs .mw-name{color:#A78BFA}
+.mw-tagline{font-size:0.8rem;font-weight:600;margin-bottom:20px;color:rgba(255,255,255,0.5)}
+.mw-features{list-style:none;display:flex;flex-direction:column;gap:8px}
+.mw-features li{font-size:0.85rem;color:rgba(255,255,255,0.6);display:flex;align-items:center;gap:8px}
+.mw-features li::before{content:'→';color:var(--orange);font-size:0.7rem;flex-shrink:0}
+
+/* PORTFOLIO GALLERY */
+.portfolio-w{padding:80px 5%;background:var(--bg2)}
+.portfolio-grid{
+  display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+  gap:24px;margin-top:40px;
+}
+.portfolio-item{
+  background:var(--surface);border-radius:var(--r);overflow:hidden;
+  border:1px solid var(--border);transition:transform .3s;
+}
+.portfolio-item:hover{transform:translateY(-8px)}
+.portfolio-img{width:100%;height:240px;object-fit:cover;background:var(--bg)}
+.portfolio-info{padding:20px}
+.portfolio-info h4{font-family:'Fraunces',sans-serif;margin-bottom:4px}
+.portfolio-info p{font-size:0.85rem;color:var(--ink2)}
+
+/* PROCESS WARM */
+.process-w{padding:80px 5%}
+.process-w-inner{max-width:1200px;margin:0 auto}
+.steps-w{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:52px}
+.step-w{
+  position:relative;padding:36px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--rl);
+  transition:transform .3s,box-shadow .3s;
+}
+.step-w:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(30,27,20,0.08)}
+.step-w-num{
+  font-family:'Fraunces',sans-serif;
+  font-size:3.5rem;font-weight:900;color:var(--bg2);
+  line-height:1;margin-bottom:12px;
+}
+.step-w-icon{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--orange-soft);border:2px solid var(--orange);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;margin-bottom:16px;
+}
+.step-w h3{font-family:'Fraunces',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.step-w p{font-size:0.875rem;color:var(--ink2);line-height:1.7;font-weight:300}
+.step-w-note{font-size:0.78rem;font-weight:600;color:var(--orange);margin-top:10px}
+
+/* CTA WARM */
+.cta-w{
+  padding:100px 5%;
+  background:linear-gradient(135deg,var(--green) 0%,#0F2534 100%);
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+.cta-w::before{
+  content:'';position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  background:rgba(139,92,246,0.14);
+  top:-200px;right:-200px;pointer-events:none;
+}
+.cta-w::after{
+  content:'';position:absolute;
+  width:400px;height:400px;border-radius:50%;
+  background:rgba(139,92,246,0.08);
+  bottom:-100px;left:-100px;pointer-events:none;
+}
+.cta-w-inner{position:relative;max-width:640px;margin:0 auto}
+.cta-w-inner h2{
+  font-family:'Fraunces',sans-serif;font-weight:900;
+  font-size:clamp(2.5rem,5vw,3.8rem);
+  line-height:1.05;color:#fff;margin-bottom:16px;letter-spacing:-0.02em;
+}
+.cta-w-inner h2 em{font-style:italic;color:var(--orange)}
+.cta-w-inner p{font-size:1.05rem;color:rgba(255,255,255,0.7);margin-bottom:40px;line-height:1.75;font-weight:300}
+.cta-w-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-cta-white{
+  padding:14px 32px;background:#fff;color:var(--green);
+  border-radius:100px;font-weight:600;font-size:0.95rem;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.15);
+}
+.btn-cta-white:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.2)}
+.btn-cta-outline{
+  padding:14px 28px;border:1.5px solid rgba(255,255,255,0.4);
+  color:#fff;border-radius:100px;font-weight:500;font-size:0.95rem;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:border-color .2s,background .2s;
+}
+.btn-cta-outline:hover{border-color:#fff;background:rgba(255,255,255,0.1)}
+
+/* CTA FORM */
+.cta-form{margin-top:40px;display:flex;flex-direction:column;gap:16px;text-align:left}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cta-form input,.cta-form textarea{
+  width:100%;padding:14px 20px;border-radius:12px;
+  border:1px solid rgba(255,255,255,0.2);
+  background:rgba(255,255,255,0.05);color:#fff;
+  font-family:inherit;font-size:0.95rem;transition:border-color .2s;
+}
+.cta-form input:focus,.cta-form textarea:focus{outline:none;border-color:var(--orange)}
+.cta-form textarea{min-height:100px;resize:vertical}
+.file-upload{
+  background:rgba(255,255,255,0.05);border:2px dashed rgba(255,255,255,0.2);
+  padding:24px;border-radius:12px;text-align:center;cursor:pointer;
+  transition:border-color .2s, background .2s;display:block;
+}
+.file-upload:hover{border-color:var(--orange);background:rgba(255,255,255,0.08)}
+.file-upload input{display:none}
+.file-upload span{display:block;font-size:0.9rem;color:rgba(255,255,255,0.8);margin-bottom:4px}
+#file-name{font-size:0.75rem;color:var(--orange);font-weight:600;margin-top:8px}
+.cta-form .btn-cta-white{width:100%;justify-content:center;border:none;cursor:pointer;font-family:inherit}
+.cta-alt{margin-top:24px;font-size:0.85rem;color:rgba(255,255,255,0.5)}
+.cta-alt a{color:#fff;text-decoration:none;font-weight:600}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{padding:48px 5% 32px;border-top:1px solid var(--border)}
+.footer-w{max-width:1200px;margin:0 auto}
+.footer-grid-w{
+  display:grid;grid-template-columns:2fr 1fr 1fr;
+  gap:60px;margin-bottom:40px;
+}
+.fw-brand{font-family:'Fraunces',sans-serif;font-size:1.1rem;font-weight:900;margin-bottom:10px}
+.fw-desc{font-size:0.875rem;color:var(--ink2);line-height:1.7;max-width:260px;font-weight:300}
+.fw-addr{font-size:0.8rem;color:var(--ink3);margin-top:10px}
+.fw-head{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+.fw-links{list-style:none}
+.fw-links li{margin-bottom:9px}
+.fw-links a{font-size:0.875rem;color:var(--ink2);text-decoration:none;font-weight:300;transition:color .2s}
+.fw-links a:hover{color:var(--orange)}
+.footer-bottom-w{
+  border-top:1px solid var(--border);padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  font-size:0.8rem;color:var(--ink3);
+}
+.footer-bottom-w a{color:var(--ink3);text-decoration:none;transition:color .2s}
+.footer-bottom-w a:hover{color:var(--ink2)}
+
+/* WA */
+.wa{
+  position:fixed;bottom:28px;right:28px;z-index:300;
+  width:52px;height:52px;border-radius:50%;background:#25D366;
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+  box-shadow:0 4px 20px rgba(37,211,102,0.4);text-decoration:none;
+  transition:transform .2s;
+}
+.wa:hover{transform:scale(1.1)}
+
+/* ANIMATIONS */
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge{animation:fadeSlideUp .5s .05s ease both}
+h1.warm{animation:fadeSlideUp .6s .15s ease both}
+.hero-p{animation:fadeSlideUp .6s .3s ease both}
+.hero-actions-warm{animation:fadeSlideUp .6s .45s ease both}
+.trust-warm{animation:fadeSlideUp .6s .6s ease both}
+.hero-cards{animation:fadeSlideUp .8s .4s ease both}
+
+@media(max-width:900px){
+  .hero-top{grid-template-columns:1fr}
+  .hero-cards{display:none}
+  .services-w-grid,.mat-grid-w,.steps-w,.footer-grid-w{grid-template-columns:1fr}
+  .nav-links{gap:12px}
+  .nav-links a{font-size:0.75rem}
+  nav{width:calc(100% - 32px)}
+}
+
+.hero-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.video-overlay{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to top, rgba(5,8,22,0.78), rgba(5,8,22,0.08)),
+    radial-gradient(circle at center, transparent 20%, rgba(5,8,22,0.3));
+}
+
+.future-printer{
+  position:relative;
+  width:100%;
+  max-width:560px;
+  height:560px;
+  border-radius:40px;
+  overflow:hidden;
+  background:#050816;
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 0 80px rgba(34,211,238,0.15),
+    0 30px 80px rgba(0,0,0,0.45);
+}
+
+.floating-ui{
+  position:absolute;
+  z-index:10;
+  padding:14px 18px;
+  border-radius:18px;
+  background:rgba(0,0,0,0.45);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(18px);
+}
+
+.floating-ui small{
+  display:block;
+  color:rgba(255,255,255,0.5);
+  margin-bottom:4px;
+  letter-spacing:.08em;
+}
+
+.floating-ui strong{
+  color:#67e8f9;
+  font-size:.95rem;
+}
+
+.ui-top{
+  top:20px;
+  left:20px;
+}
+
+.ui-bottom{
+  bottom:20px;
+  right:20px;
+}
+
+@media(max-width:900px){
+  .future-printer{
+    max-width:100%;
+    height:400px;
+  }
+}
+
+/* REALISTIC 3D PRINTER */
+.future-printer{
+  position:relative;
+  width:100%;
+  max-width:560px;
+  height:560px;
+  margin:auto;
+  border-radius:40px;
+  overflow:hidden;
+  background:radial-gradient(circle at top,#132238,#050816 70%);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 0 90px rgba(34,211,238,0.12);
+}
+.future-printer::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size:36px 36px;
+}
+
+.printer-frame{
+  position:absolute;
+  inset:60px;
+  border:6px solid #1e293b;
+  border-top-width:10px;
+  border-radius:24px;
+  box-shadow:
+    inset 0 0 0 2px rgba(34,211,238,0.15),
+    0 0 25px rgba(34,211,238,0.08);
+}
+
+/* rails */
+.printer-frame::before,
+.printer-frame::after{
+  content:'';
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:8px;
+  background:linear-gradient(to bottom,#334155,#0f172a);
+}
+.printer-frame::before{left:70px;}
+.printer-frame::after{right:70px;}
+
+/* top axis */
+.printer-axis{
+  position:absolute;
+  top:80px;
+  left:90px;
+  right:90px;
+  height:8px;
+  border-radius:20px;
+  background:linear-gradient(to right,#475569,#0f172a);
+}
+
+/* moving printhead */
+.print-head{
+  position:absolute;
+  top:62px;
+  left:120px;
+  animation:printerMoveX 4s ease-in-out infinite;
+}
+
+.print-head-box{
+  width:90px;
+  height:60px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#38bdf8,#2563eb);
+  box-shadow:
+    0 0 35px rgba(56,189,248,0.45),
+    inset 0 -8px 12px rgba(0,0,0,0.25);
+  position:relative;
+}
+
+.print-head-box::before{
+  content:'';
+  position:absolute;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#0f172a;
+  top:12px;
+  left:12px;
+}
+
+.nozzle{
+  position:absolute;
+  width:10px;
+  height:32px;
+  background:linear-gradient(to bottom,#d1d5db,#64748b);
+  left:50%;
+  transform:translateX(-50%);
+  bottom:-24px;
+  border-radius:0 0 8px 8px;
+}
+
+.print-beam{
+  position:absolute;
+  width:90px;
+  height:120px;
+  background:linear-gradient(to bottom,rgba(34,211,238,0.55),transparent);
+  filter:blur(10px);
+  left:50%;
+  transform:translateX(-50%);
+  top:55px;
+  animation:beamPulse 1.5s ease-in-out infinite;
+}
+
+/* object */
+.print-object{
+  position:absolute;
+  bottom:78px;
+  left:50%;
+  transform:translateX(-50%);
+  width:120px;
+  border-radius:28px 28px 12px 12px;
+  background:linear-gradient(to top,#22d3ee,#a5f3fc);
+  animation:printGrow 4s ease-in-out infinite;
+  box-shadow:0 0 40px rgba(34,211,238,0.4);
+}
+
+/* bed */
+.print-bed{
+  position:absolute;
+  bottom:45px;
+  left:70px;
+  right:70px;
+  height:18px;
+  border-radius:20px;
+  background:linear-gradient(to right,#0f172a,#334155,#0f172a);
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.08),
+    0 0 20px rgba(34,211,238,0.15);
+}
+
+.print-bed::before{
+  content:'';
+  position:absolute;
+  inset:4px;
+  border-radius:20px;
+  background:linear-gradient(to right,#22d3ee,#2563eb);
+  opacity:.35;
+}
+
+.floating-ui{
+  position:absolute;
+  padding:14px 18px;
+  border-radius:18px;
+  background:rgba(2,6,23,0.72);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  z-index:20;
+}
+
+.floating-ui small{
+  color:rgba(255,255,255,0.45);
+  display:block;
+  margin-bottom:5px;
+  letter-spacing:.08em;
+}
+
+.floating-ui strong{
+  color:#67e8f9;
+  font-size:.95rem;
+}
+
+.ui-top{top:22px;left:22px;}
+.ui-bottom{bottom:22px;right:22px;}
+
+@keyframes printerMoveX{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(140px)}
+  50%{transform:translateX(220px)}
+  75%{transform:translateX(70px)}
+}
+
+@keyframes printGrow{
+  0%{height:20px}
+  50%{height:190px}
+  100%{height:20px}
+}
+
+@keyframes beamPulse{
+  0%,100%{opacity:.45}
+  50%{opacity:1}
+}
+
+@media(max-width:900px){
+  .future-printer{
+    height:400px;
+    max-width:100%;
+  }
+
+  .printer-frame{
+    inset:30px;
+  }
+
+  .printer-axis{
+    left:55px;
+    right:55px;
+    top:60px;
+  }
+
+  .print-head{
+    top:45px;
+    left:70px;
+  }
+
+  .print-head-box{
+    width:70px;
+    height:46px;
+  }
+
+  .print-object{
+    width:85px;
+    bottom:60px;
+  }
+
+  .print-bed{
+    left:40px;
+    right:40px;
+    bottom:30px;
+  }
+
+  @keyframes printerMoveX{
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(70px)}
+    50%{transform:translateX(120px)}
+    75%{transform:translateX(40px)}
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="3D%20Oberberg_Logo_kl.png" alt="3D Oberberg Logo" style="height:40px;width:auto">
+  </a>
+  <div class="nav-links">
+    <a href="leistungen.html">Leistungen</a>
+    <a href="#process-w">Ablauf</a>
+    <a href="#cta-w">Kontakt</a>
+  </div>
+  <a href="#cta-w" class="nav-btn">Anfragen →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob1"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div>
+        <div class="hero-badge">Morsbach · Oberbergischer Kreis</div>
+        <h1 class="warm">Dein 3D-Druck.<br>Lokal. Persönlich.<br><em>Fertig.</em></h1>
+        <p class="hero-p">Individuelle 3D-Drucklösungen direkt aus Morsbach. Vom Ersatzteil bis zum Prototyp – ich unterstütze dich persönlich und antworte garantiert innerhalb von 24 Stunden.</p>
+        <div class="hero-actions-warm">
+          <a href="#cta-w" class="btn-warm-main">Projekt anfragen →</a>
+          <a href="https://wa.me/491717015924" class="btn-warm-ghost">💬 WhatsApp</a>
+        </div>
+        <div class="trust-warm">
+          <div class="tw"><span class="tw-dot"></span> Kostenlos & unverbindlich</div>
+          <div class="tw"><span class="tw-dot"></span> Antwort in 24h</div>
+          <div class="tw"><span class="tw-dot"></span> Faire Preise ab 1,50 €</div>
+        </div>
+      </div>
+      
+
+<div class="future-printer">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="video_2026-01-26_04-28-39.mp4" type="video/mp4">
+  </video>
+
+  <div class="video-overlay"></div>
+
+  <div class="floating-ui ui-top">
+    <small>PRINT STATUS</small>
+    <strong>LIVE PRINTING</strong>
+  </div>
+
+  <div class="floating-ui ui-bottom">
+    <small>MATERIAL</small>
+    <strong>PA6-CF</strong>
+  </div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-w" id="services-w">
+  <div class="services-w-inner">
+    <p class="sec-eyebrow">Leistungen</p>
+    <h2 class="warm-h2">Präzision in jeder<br><em>Dimension.</em></h2>
+    <p class="sec-sub-w">Vom ersten Entwurf bis zum fertigen Bauteil – maßgeschneiderte Lösungen für private und gewerbliche Projekte.</p>
+    
+    <div class="services-w-grid">
+      <div class="sw-card">
+        <div class="sw-icon-w">🛠️</div>
+        <div>
+          <h3>Prototypenbau</h3>
+          <p>Schnelle Iteration deiner Ideen. Funktionalität und Design prüfen, bevor es in die Serienfertigung geht.</p>
+          <span class="sw-tag">Rapid Prototyping</span>
+        </div>
+      </div>
+      <div class="sw-card">
+        <div class="sw-icon-w">📐</div>
+        <div>
+          <h3>CAD-Konstruktion</h3>
+          <p>Keine 3D-Datei? Ich erstelle professionelle Modelle nach deinen Skizzen oder physischen Vorlagen.</p>
+          <span class="sw-tag">Konstruktion</span>
+        </div>
+      </div>
+      <div class="sw-card">
+        <div class="sw-icon-w">♻️</div>
+        <div>
+          <h3>Ersatzteil-Service</h3>
+          <p>Nicht mehr lieferbare Kunststoffteile einfach nachdrucken und Geräte nachhaltig reparieren.</p>
+          <span class="sw-tag">Nachhaltigkeit</span>
+        </div>
+      </div>
+      <div class="sw-card">
+        <div class="sw-icon-w">🎁</div>
+        <div>
+          <h3>Serien & Giveaways</h3>
+          <p>Individualisierte Werbeartikel oder Kleinserien für dein Business in höchster Qualität.</p>
+          <span class="sw-tag">Kleinserien</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIALS -->
+<section class="mat-w" id="mat-w">
+  <div class="mat-w-inner">
+    <p class="sec-eyebrow">Materialien</p>
+    <h2 class="warm-h2" style="color:#fff">Das <em>richtige Material</em><br>für dein Projekt.</h2>
+    <p class="sec-sub-w">Ich berate dich kostenlos – welches Material am besten passt.</p>
+    <div class="mat-grid-w">
+      <div class="mw-card mw-pla">
+        <div class="mw-name">PLA</div>
+        <div class="mw-tagline">Biologisch abbaubar · Viele Farben</div>
+        <ul class="mw-features">
+          <li>Werbeartikel & Giveaways</li>
+          <li>Dekoartikel & Geschenke</li>
+          <li>Prototypen & Tests</li>
+          <li>Einfache Ersatzteile</li>
+        </ul>
+      </div>
+      <div class="mw-card mw-petg">
+        <div class="mw-name">PETG</div>
+        <div class="mw-tagline">Robust · Feuchtigkeitsbeständig</div>
+        <ul class="mw-features">
+          <li>Funktionsteile & Ersatzteile</li>
+          <li>Außeneinsatz geeignet</li>
+          <li>Technische Bauteile</li>
+          <li>Langlebige Objekte</li>
+        </ul>
+      </div>
+      <div class="mw-card mw-abs">
+        <div class="mw-name">ABS</div>
+        <div class="mw-tagline">Hitzebeständig · Schlagfest</div>
+        <ul class="mw-features">
+          <li>Wärmebelastete Teile</li>
+          <li>Technische Gehäuse</li>
+          <li>Industrielle Anwendungen</li>
+          <li>Langlebig & robust</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio-w" id="portfolio">
+  <div class="services-w-inner">
+    <p class="sec-eyebrow">Portfolio</p>
+    <h2 class="warm-h2">Echte Ergebnisse aus<br>dem <em>3D-Drucker.</em></h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="PXL_20251229_095257954.MP_-576x1024.jpg" alt="Personalisiertes Gehäuse mit Logo" class="portfolio-img">
+        <div class="portfolio-info">
+          <h4>Branding & Gehäuse</h4>
+          <p>Individualisierte Bauteile mit hochwertiger Logo-Prägung.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="funktionsteil-768x575.webp" alt="Technisches Funktionsteil" class="portfolio-img">
+        <div class="portfolio-info">
+          <h4>Funktionsteile</h4>
+          <p>Präzise technische Komponenten für mechanische Anwendungen.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="baer_schluesselanhaenger-768x575.webp" alt="3D-gedruckter Bär Schlüsselanhänger" class="portfolio-img">
+        <div class="portfolio-info">
+          <h4>Deko & Geschenke</h4>
+          <p>Filigrane Figuren und personalisierte Accessoires.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="giveaway-576x1024.jpg" alt="Werbeartikel Serienfertigung" class="portfolio-img">
+        <div class="portfolio-info">
+          <h4>Serienfertigung</h4>
+          <p>Giveaways und Werbeartikel in konsistenter Qualität.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="prototyp-768x575.webp" alt="Design Prototyping" class="portfolio-img">
+        <div class="portfolio-info">
+          <h4>Prototyping</h4>
+          <p>Schnelle Visualisierung und Prüfung von Design-Konzepten.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="PXL_20251027_143704354.MP_-576x1024.jpg" alt="Personalisierter Schlüssel-Aufsatz" class="portfolio-img">
+        <div class="portfolio-info">
+          <h4>Alltagshelfer</h4>
+          <p>Maßgeschneiderte Lösungen für kleine Probleme des Alltags.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-w" id="process-w">
+  <div class="process-w-inner">
+    <p class="sec-eyebrow">So läuft es ab</p>
+    <h2 class="warm-h2">In 3 Schritten zum<br><em>fertigen Druck.</em></h2>
+    <div class="steps-w">
+      <div class="step-w">
+        <div class="step-w-num">01</div>
+        <div class="step-w-icon">📬</div>
+        <h3>Anfrage stellen</h3>
+        <p>Datei (STL, OBJ, 3MF) hochladen oder Idee per WhatsApp, E-Mail oder Formular beschreiben. Noch keine Datei? Kein Problem!</p>
+        <p class="step-w-note">Kostenlos & unkompliziert</p>
+      </div>
+      <div class="step-w">
+        <div class="step-w-num">02</div>
+        <div class="step-w-icon">💬</div>
+        <h3>Angebot erhalten</h3>
+        <p>Ich prüfe dein Projekt persönlich und melde mich innerhalb von 24h mit einem kostenlosen, unverbindlichen Angebot.</p>
+        <p class="step-w-note">Unverbindlich · 24h Reaktionszeit</p>
+      </div>
+      <div class="step-w">
+        <div class="step-w-num">03</div>
+        <div class="step-w-icon">📦</div>
+        <h3>Druck & Lieferung</h3>
+        <p>Nach deiner Freigabe starte ich den Druck. Abholung in Morsbach oder Versand deutschlandweit – wie es dir am besten passt.</p>
+        <p class="step-w-note">Abholung · Versand DE-weit</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-w" id="cta-w">
+  <div class="cta-w-inner">
+    <h2>Bereit für<br>dein <em>Projekt?</em></h2>
+    <p>Kostenlos & unverbindlich anfragen – ich melde mich persönlich innerhalb von 24 Stunden bei dir.</p>
+    
+    <form action="contact.php" method="POST" enctype="multipart/form-data" class="cta-form">
+      <!-- Honeypot Spamschutz: Für Menschen unsichtbar -->
+      <input type="text" name="_hp_field" style="display:none !important" tabindex="-1" autocomplete="off">
+
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Dein Name" required>
+        <input type="email" name="email" placeholder="E-Mail Adresse" required>
+      </div>
+      <textarea name="message" placeholder="Beschreibe kurz dein Projekt (Materialwunsch, Menge, Verwendungszweck...)" required></textarea>
+      
+      <label class="file-upload">
+        <input type="file" id="file-input" name="file" accept=".stl,.obj,.3mf">
+        <span>📁 Datei auswählen (STL, OBJ, 3MF)</span>
+        <small style="color:rgba(255,255,255,0.4)">Max. 10MB empfohlen</small>
+        <div id="file-name"></div>
+      </label>
+
+      <button type="submit" class="btn-cta-white">Anfrage senden →</button>
+    </form>
+    
+    <div class="cta-alt">
+      Oder direkt per <a href="https://wa.me/491717015924">WhatsApp kontaktieren</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-w">
+    <div class="footer-grid-w">
+      <div>
+        <div class="fw-brand">
+          <img src="3D%20Oberberg_Logo_kl.png" alt="3D Oberberg Logo" style="height:32px;width:auto">
+        </div>
+        <p class="fw-desc">Individueller 3D-Druck im Oberbergischen Kreis. Lokal, schnell und persönlich.</p>
+        <p class="fw-addr">📍 Bitze 2 · 51597 Morsbach</p>
+      </div>
+      <div>
+        <div class="fw-head">Navigation</div>
+        <ul class="fw-links">
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="#mat-w">Materialien</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#cta-w">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fw-head">Rechtliches</div>
+        <ul class="fw-links">
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="agb.html">AGB</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom-w">
+      <span>© 2026 3D Oberberg · Urs Arets</span>
+      <div style="display:flex;gap:20px">
+        <a href="https://wa.me/491717015924">WhatsApp</a>
+        <a href="mailto:info@3doberberg.de">E-Mail</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/491717015924" class="wa">💬</a>
+
+<script>
+// SCROLL REVEALS
+function revealOnScroll(selector, delay=80){
+  const els = document.querySelectorAll(selector);
+  const ob = new IntersectionObserver(entries=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){
+        setTimeout(()=>e.target.classList.add('visible'), i*delay);
+        ob.unobserve(e.target);
+      }
+    });
+  },{threshold:.15});
+  els.forEach(el=>ob.observe(el));
+}
+revealOnScroll('.sw-card');
+
+// NAV PILL SHADOW ON SCROLL
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', ()=>{
+  nav.style.boxShadow = scrollY > 20
+    ? '0 8px 32px rgba(30,27,20,0.1)'
+    : '0 4px 24px rgba(30,27,20,0.06)';
+});
+
+// FILE UPLOAD FILENAME DISPLAY
+const fileInput = document.getElementById('file-input');
+const fileNameDisplay = document.getElementById('file-name');
+if(fileInput) {
+  fileInput.addEventListener('change', (e) => {
+    const name = e.target.files[0]?.name || '';
+    fileNameDisplay.textContent = name ? 'Ausgewählt: ' + name : '';
+  });
+}
+
+// URL Status Message
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('status')) {
+  const status = urlParams.get('status');
+  const form = document.querySelector('.cta-form');
+  const msg = document.createElement('p');
+  msg.style.cssText = 'margin-top:20px; font-weight:600; text-align:center;';
+  if (status === 'success') {
+    msg.style.color = '#22D3EE';
+    msg.textContent = 'Vielen Dank! Deine Nachricht wurde gesendet.';
+  } else {
+    msg.style.color = '#ff4b2b';
+    msg.textContent = 'Fehler beim Senden. Bitte versuche es erneut oder nutze WhatsApp.';
+  }
+  form.appendChild(msg);
+}
+</script>
+</body>
+</html>
