@@ -1,0 +1,38 @@
+[
+  {
+    "id": "baer-schluesselanhaenger",
+    "name": "Bär-Schlüsselanhänger",
+    "price": 8.50,
+    "image": "baer_schluesselanhaenger-768x575.webp",
+    "description": "Filigraner 3D-gedruckter Schlüsselanhänger in Bärenform. Individuell in vielen Farben erhältlich.",
+    "material": "PLA",
+    "active": true
+  },
+  {
+    "id": "funktionsteil-halterung",
+    "name": "Individuelle Halterung",
+    "price": 14.90,
+    "image": "funktionsteil-768x575.webp",
+    "description": "Passgenaue technische Halterung nach Maß – ideal als Ersatzteil oder für eigene Konstruktionen.",
+    "material": "PETG",
+    "active": true
+  },
+  {
+    "id": "giveaway-set",
+    "name": "Werbeartikel-Set (5 Stück)",
+    "price": 24.00,
+    "image": "giveaway-576x1024.jpg",
+    "description": "Fünf individualisierte Werbeartikel mit Logo-Prägung – ideal für Messen oder als Kundengeschenk.",
+    "material": "PLA",
+    "active": true
+  },
+  {
+    "id": "prototyp-basic",
+    "name": "Prototyp-Druck (Basic)",
+    "price": 19.90,
+    "image": "prototyp-768x575.webp",
+    "description": "Schneller Prototypendruck deines Entwurfs zur Design- und Funktionsprüfung, in einer Standardgröße.",
+    "material": "PLA",
+    "active": true
+  }
+]
