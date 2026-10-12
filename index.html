@@ -987,13 +987,14 @@ if (urlParams.has('status')) {
   const msg = document.createElement('p');
   msg.setAttribute('role', 'status');
   msg.style.cssText = 'margin-top:20px; font-weight:600; text-align:center;';
-  if (status === 'success') {
-    msg.style.color = '#A5F3FC';
-    msg.textContent = 'Vielen Dank! Deine Nachricht wurde gesendet. Wir melden uns bei dir.';
-  } else {
-    msg.style.color = '#FCA5A5';
-    msg.textContent = 'Das Senden hat nicht geklappt. Bitte prüfe deine Angaben (Dateityp und Größe: max. 5 Dateien, 10 MB pro Datei, 15 MB gesamt) oder schreib uns per WhatsApp oder E-Mail.';
-  }
+  const messages = {
+    success: 'Vielen Dank! Deine Nachricht wurde gesendet. Wir melden uns bei dir.',
+    size: 'Die Dateien sind zu groß (max. 10 MB pro Datei, 15 MB insgesamt). Bitte verkleinere sie oder schick sie uns per E-Mail oder WhatsApp.',
+    file: 'Mit einer Datei stimmt etwas nicht. Erlaubt sind bis zu 5 Dateien (JPG, PNG, WEBP, HEIC, PDF, STL, 3MF, OBJ, STEP, ZIP). Bitte prüfe deine Auswahl.',
+    error: 'Das Senden hat nicht geklappt. Bitte prüfe Name, E-Mail und Beschreibung oder schreib uns per WhatsApp oder E-Mail.'
+  };
+  msg.style.color = status === 'success' ? '#A5F3FC' : '#FCA5A5';
+  msg.textContent = messages[status] || messages.error;
   form.appendChild(msg);
 }
 </script>

@@ -1,32 +1,51 @@
 # Apache Konfiguration
+DirectoryIndex index.html index.php
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
-    # www.3doberberg.de auf 3doberberg.de umleiten (passend zum Canonical)
+
+    # www.3doberberg.de -> https://3doberberg.de/ (dauerhaft, auch bei http)
     RewriteCond %{HTTP_HOST} ^www\.3doberberg\.de$ [NC]
-    RewriteCond %{HTTPS} on
     RewriteRule ^(.*)$ https://3doberberg.de/$1 [R=301,L]
-    RewriteCond %{HTTP_HOST} ^www\.3doberberg\.de$ [NC]
-    RewriteRule ^(.*)$ http://3doberberg.de/$1 [R=301,L]
+
+    # http://3doberberg.de -> https://3doberberg.de/ (nur Hauptdomain, nicht test.3doberberg.de)
+    RewriteCond %{HTTP_HOST} ^3doberberg\.de$ [NC]
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+    RewriteRule ^(.*)$ https://3doberberg.de/$1 [R=301,L]
+
+    # /index.html -> / (eine einzige URL fuer die Startseite; Query-String, z. B. ?status=, bleibt erhalten)
+    RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
+    RewriteRule ^index\.html$ / [R=301,L,QSA]
 </IfModule>
 
-DirectoryIndex index.html index.php
-
+# Upload-Grenzen (greifen nur, wenn PHP als Apache-Modul laeuft; sonst gilt .user.ini bzw. das Hosting-Panel)
+<IfModule mod_php.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 20M
+</IfModule>
 <IfModule mod_php7.c>
     php_value upload_max_filesize 10M
     php_value post_max_size 20M
-    php_value max_execution_time 300
-    php_value memory_limit 128M
+</IfModule>
+<IfModule mod_php8.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 20M
 </IfModule>
 
 <IfModule mod_headers.c>
-    Header set Cache-Control "no-cache, no-store, must-revalidate"
-    Header set Pragma "no-cache"
-    Header set Expires 0
-</IfModule>
+    # Testsystem nicht indexieren lassen
+    SetEnvIfNoCase Host ^test\. NOINDEX_HOST
+    Header set X-Robots-Tag "noindex, nofollow" env=NOINDEX_HOST
 
-<IfModule mod_mime.c>
-    AddType application/json .json
+    # Seiten immer auf Aktualitaet pruefen, Bilder und Video eine Woche cachen
+    <FilesMatch "\.(html|php)$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+    <FilesMatch "\.(jpg|jpeg|png|webp|mp4)$">
+        Header set Cache-Control "public, max-age=604800"
+    </FilesMatch>
 </IfModule>
 
 <IfModule mod_deflate.c>
