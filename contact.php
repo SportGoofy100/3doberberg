@@ -27,9 +27,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Maximale Dateigroesse (10MB)
-    $max_file_size = 10 * 1024 * 1024; 
-    $allowed_extensions = ['stl', 'obj', '3mf', 'zip', 'step'];
+    // Anhaenge: max. 5 Dateien, je 10 MB, zusammen max. 15 MB (3D-Dateien, Fotos, Skizzen)
+    $max_file_size  = 10 * 1024 * 1024;
+    $max_total_size = 15 * 1024 * 1024;
+    $max_files      = 5;
+    $allowed_extensions = ['stl', 'obj', '3mf', 'step', 'stp', 'zip', 'jpg', 'jpeg', 'png', 'webp', 'heic', 'pdf'];
+    $image_extensions   = ['jpg', 'jpeg', 'png', 'webp'];
+
+    // $_FILES['files'] in eine Liste einzelner Dateien umwandeln (leere Auswahlfelder ignorieren)
+    $uploads = [];
+    if (isset($_FILES['files']) && is_array($_FILES['files']['name'])) {
+        foreach ($_FILES['files']['name'] as $i => $upload_name) {
+            if ($_FILES['files']['error'][$i] == UPLOAD_ERR_NO_FILE) {
+                continue;
+            }
+            $uploads[] = [
+                'name'  => $upload_name,
+                'tmp'   => $_FILES['files']['tmp_name'][$i],
+                'size'  => $_FILES['files']['size'][$i],
+                'error' => $_FILES['files']['error'][$i],
+            ];
+        }
+    }
+
+    // Dateicheck: Fehler, Anzahl, Groesse, Dateityp (bei Bildern zusaetzlich der tatsaechliche Inhalt)
+    $total_size = 0;
+    if (count($uploads) > $max_files) {
+        header("Location: index.html?status=error#cta-w");
+        exit;
+    }
+    foreach ($uploads as $i => $upload) {
+        $ext = strtolower(pathinfo($upload['name'], PATHINFO_EXTENSION));
+        $total_size += $upload['size'];
+        $valid = $upload['error'] == UPLOAD_ERR_OK
+            && $upload['size'] <= $max_file_size
+            && in_array($ext, $allowed_extensions);
+        if ($valid && in_array($ext, $image_extensions)) {
+            $valid = @getimagesize($upload['tmp']) !== false;
+        }
+        if (!$valid || $total_size > $max_total_size) {
+            header("Location: index.html?status=error#cta-w");
+            exit;
+        }
+        $uploads[$i]['ext'] = $ext;
+    }
 
     $to = "info@3doberberg.de";
     $subject = "Neue Projektanfrage von $name (via Website)";
@@ -48,29 +89,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "Content-Transfer-Encoding: 7bit" . $eol . $eol . 
             "Name: $name" . $eol . "E-Mail: $email" . $eol . "Projektart: $project_type" . $eol . $eol . "Nachricht:" . $eol . $message . $eol . $eol;
 
-    // File Handling
-    if (isset($_FILES['file']) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {
-        $file_name = $_FILES['file']['name'];
-        $file_tmp  = $_FILES['file']['tmp_name'];
-        $file_type = $_FILES['file']['type'];
-        
-        $ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-        
-        // Dateicheck
-        if ($_FILES['file']['size'] > $max_file_size || !in_array($ext, $allowed_extensions)) {
-            header("Location: index.html?status=error#cta-w");
-            exit;
-        }
-
-        $file_content = file_get_contents($file_tmp);
-        $data = chunk_split(base64_encode($file_content));
+    // Anhaenge einbinden
+    foreach ($uploads as $upload) {
+        // Dateiname fuer den Mail-Header bereinigen
+        $file_name = preg_replace('/[^A-Za-z0-9._-]/', '_', basename($upload['name']));
+        $data = chunk_split(base64_encode(file_get_contents($upload['tmp'])));
 
         $body .= "--{$mime_boundary}" . $eol .
-                 "Content-Type: {$file_type}; name=\"{$file_name}\"" . $eol .
+                 "Content-Type: application/octet-stream; name=\"{$file_name}\"" . $eol .
                  "Content-Disposition: attachment; filename=\"{$file_name}\"" . $eol .
                  "Content-Transfer-Encoding: base64" . $eol . $eol . $data . $eol . $eol;
     }
-    
+
     $body .= "--{$mime_boundary}--" . $eol;
 
     // Der zusätzliche Parameter "-f" hilft bei netcup, die Mail-Zustellung zu garantieren

@@ -2,6 +2,12 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
+    # www.3doberberg.de auf 3doberberg.de umleiten (passend zum Canonical)
+    RewriteCond %{HTTP_HOST} ^www\.3doberberg\.de$ [NC]
+    RewriteCond %{HTTPS} on
+    RewriteRule ^(.*)$ https://3doberberg.de/$1 [R=301,L]
+    RewriteCond %{HTTP_HOST} ^www\.3doberberg\.de$ [NC]
+    RewriteRule ^(.*)$ http://3doberberg.de/$1 [R=301,L]
     RewriteRule ^admin$ admin/index.php [L]
     RewriteRule ^admin/$ admin/index.php [L]
     DirectoryIndex shop.html index.html index.php
@@ -11,7 +17,7 @@
 
 <IfModule mod_php7.c>
     php_value upload_max_filesize 10M
-    php_value post_max_size 12M
+    php_value post_max_size 20M
     php_value max_execution_time 300
     php_value memory_limit 128M
 </IfModule>
