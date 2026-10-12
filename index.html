@@ -457,6 +457,11 @@ section[id]{scroll-margin-top:90px}
 .trust-card h3{font-family:'Fraunces',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:8px}
 .trust-card p{font-size:0.875rem;color:var(--ink2);line-height:1.7}
 
+.review-w{padding:80px 5%;text-align:center}
+.review-inner{max-width:640px;margin:0 auto}
+.review-inner p{font-size:1rem;color:var(--ink2);line-height:1.75;margin-bottom:12px}
+.review-inner .btn-warm-main{margin-top:20px}
+
 /* Abschluss / Formular */
 .cta-w{background:linear-gradient(135deg,#0E7490 0%,#0F2534 100%)}
 .cta-w-inner p{color:rgba(255,255,255,0.85)}
@@ -504,7 +509,7 @@ section[id]{scroll-margin-top:90px}
   .hero-media{height:260px;gap:10px}
   .usecase-grid,.trust-grid,.steps-w,.services-w-grid,.portfolio-grid{grid-template-columns:1fr}
   .services-w-grid .sw-card:last-child{grid-column:auto}
-  .usecase-w,.services-w,.biz-w,.trust-w,.portfolio-w,.process-w,.mat-w{padding-top:56px;padding-bottom:56px}
+  .usecase-w,.services-w,.biz-w,.trust-w,.portfolio-w,.process-w,.mat-w,.review-w{padding-top:56px;padding-bottom:56px}
   .sw-card{padding:24px !important}
   .cta-w{padding:64px 5%}
   .wa{bottom:16px;right:16px}
@@ -821,7 +826,15 @@ section[id]{scroll-margin-top:90px}
   </div>
 </section>
 
-<!-- H: BEWERTUNGEN – bewusst ausgelassen, bis der echte Google-Bewertungslink vorliegt -->
+<!-- H: BEWERTUNGEN -->
+<section class="review-w" id="bewertungen">
+  <div class="review-inner">
+    <h2 class="warm-h2">Deine Erfahrung <em>zählt</em></h2>
+    <p>Du hast bereits ein Projekt mit 3D Oberberg umgesetzt? Dann freuen wir uns über deine ehrliche Rückmeldung.</p>
+    <p>Deine Bewertung hilft anderen dabei, einen passenden Ansprechpartner für ihr 3D-Druckprojekt zu finden.</p>
+    <a href="https://g.page/r/CV0-DLalzjX5EBM/review" class="btn-warm-main" target="_blank" rel="noopener">3D Oberberg bei Google bewerten →</a>
+  </div>
+</section>
 
 <!-- I: ABSCHLUSS + ANFRAGEFORMULAR -->
 <section class="cta-w" id="cta-w">
@@ -851,9 +864,9 @@ section[id]{scroll-margin-top:90px}
       <textarea name="message" placeholder="Beschreibe kurz dein Projekt (Verwendungszweck, Menge, Materialwunsch ...)" aria-label="Projektbeschreibung" required></textarea>
 
       <label class="file-upload">
-        <input type="file" id="file-input" name="file" accept=".stl,.obj,.3mf,.step,.zip">
-        <span>📁 Optional: 3D-Datei auswählen (STL, 3MF, OBJ, STEP, ZIP)</span>
-        <small>Max. 10 MB · Fotos und Skizzen kannst du uns nach deiner Anfrage per E-Mail oder WhatsApp schicken</small>
+        <input type="file" id="file-input" name="files[]" multiple accept=".stl,.obj,.3mf,.step,.stp,.zip,.jpg,.jpeg,.png,.webp,.heic,.pdf,image/*">
+        <span>📁 Optional: Fotos, Skizzen oder 3D-Dateien anhängen</span>
+        <small>Bis zu 5 Dateien · JPG, PNG, WEBP, HEIC, PDF, STL, 3MF, OBJ, STEP, ZIP · max. 10 MB pro Datei, insgesamt max. 15 MB</small>
         <div id="file-name"></div>
       </label>
 
@@ -946,15 +959,22 @@ document.querySelectorAll('[data-projekt]').forEach(a => {
 const fileInput = document.getElementById('file-input');
 const fileNameDisplay = document.getElementById('file-name');
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
+const MAX_TOTAL_SIZE = 15 * 1024 * 1024;
+const MAX_FILES = 5;
 if(fileInput) {
-  fileInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if(file && file.size > MAX_FILE_SIZE){
-      fileNameDisplay.textContent = 'Die Datei ist größer als 10 MB und kann so nicht gesendet werden.';
+  fileInput.addEventListener('change', () => {
+    const files = [...fileInput.files];
+    const total = files.reduce((sum, f) => sum + f.size, 0);
+    let error = '';
+    if(files.length > MAX_FILES) error = 'Bitte wähle höchstens 5 Dateien aus.';
+    else if(files.some(f => f.size > MAX_FILE_SIZE)) error = 'Eine Datei ist größer als 10 MB.';
+    else if(total > MAX_TOTAL_SIZE) error = 'Die Dateien sind zusammen größer als 15 MB.';
+    if(error){
+      fileNameDisplay.textContent = error + ' Bitte wähle andere Dateien aus.';
       fileInput.value = '';
       return;
     }
-    fileNameDisplay.textContent = file ? 'Ausgewählt: ' + file.name : '';
+    fileNameDisplay.textContent = files.length ? 'Ausgewählt: ' + files.map(f => f.name).join(', ') : '';
   });
 }
 
@@ -972,7 +992,7 @@ if (urlParams.has('status')) {
     msg.textContent = 'Vielen Dank! Deine Nachricht wurde gesendet. Wir melden uns bei dir.';
   } else {
     msg.style.color = '#FCA5A5';
-    msg.textContent = 'Das Senden hat nicht geklappt. Bitte prüfe deine Angaben (Dateityp: STL, OBJ, 3MF, STEP oder ZIP, max. 10 MB) oder schreib uns per WhatsApp oder E-Mail.';
+    msg.textContent = 'Das Senden hat nicht geklappt. Bitte prüfe deine Angaben (Dateityp und Größe: max. 5 Dateien, 10 MB pro Datei, 15 MB gesamt) oder schreib uns per WhatsApp oder E-Mail.';
   }
   form.appendChild(msg);
 }
