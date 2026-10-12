@@ -9,7 +9,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = strip_tags(trim($_POST["name"]));
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     $message = strip_tags(trim($_POST["message"]));
-    
+
+    // Projektart aus dem Formular (nur bekannte Werte, sonst "Nicht angegeben")
+    $project_types = [
+        'ersatzteil'   => 'Ersatzteil',
+        'bauteil'      => 'Individuelles Bauteil',
+        'kleinserie'   => 'Kleinserie / mehrere Stück',
+        'datei'        => 'Vorhandene 3D-Datei drucken',
+        'konstruktion' => 'Konstruktion / Prototyp',
+        'sonstiges'    => 'Sonstiges',
+    ];
+    $project_type = $project_types[$_POST["projekttyp"] ?? ''] ?? 'Nicht angegeben';
+
     // Validierung
     if (empty($name) || !filter_var($email, FILTER_VALIDATE_EMAIL) || empty($message)) {
         header("Location: index.html?status=error#cta-w");
@@ -35,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $body = "--{$mime_boundary}" . $eol . 
             "Content-Type: text/plain; charset=\"UTF-8\"" . $eol .
             "Content-Transfer-Encoding: 7bit" . $eol . $eol . 
-            "Name: $name" . $eol . "E-Mail: $email" . $eol . $eol . "Nachricht:" . $eol . $message . $eol . $eol;
+            "Name: $name" . $eol . "E-Mail: $email" . $eol . "Projektart: $project_type" . $eol . $eol . "Nachricht:" . $eol . $message . $eol . $eol;
 
     // File Handling
     if (isset($_FILES['file']) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {

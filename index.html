@@ -3,12 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D-Druck Morsbach | Individuell & lokal im Oberbergischen Kreis</title>
-<meta name="description" content="Dein Experte für 3D-Druck im Oberbergischen Kreis. Prototypen, Ersatzteile und CAD-Konstruktion in Morsbach. Schnell, präzise und persönlich. Jetzt anfragen!">
-<meta name="keywords" content="3D Druck, Morsbach, Oberberg, Prototypenbau, Ersatzteile, CAD Konstruktion, FDM Druck">
-<meta property="og:title" content="3D Oberberg | 3D-Druck Services">
-<meta property="og:description" content="Individuelle 3D-Drucklösungen für Prototypen und Ersatzteile direkt aus Morsbach.">
-<meta property="og:image" content="3D%20Oberberg_Logo_kl.png">
+<title>3D Oberberg | 3D-Druck, Ersatzteile &amp; Kleinserien aus Morsbach</title>
+<meta name="description" content="Individuelle 3D-Druckteile aus Morsbach: Ersatzteile, Funktionsteile, Montagehilfen, Prototypen und Kleinserien. Jetzt Projekt anfragen.">
+<link rel="canonical" href="https://3doberberg.de/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="3D Oberberg">
+<meta property="og:url" content="https://3doberberg.de/">
+<meta property="og:title" content="3D Oberberg | 3D-Druck, Ersatzteile &amp; Kleinserien aus Morsbach">
+<meta property="og:description" content="Individuelle 3D-Druckteile aus Morsbach: Ersatzteile, Funktionsteile, Montagehilfen, Prototypen und Kleinserien.">
+<meta property="og:image" content="https://3doberberg.de/3D%20Oberberg_Logo_kl.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="3D%20Oberberg_Logo_kl.png">
@@ -112,7 +116,7 @@ nav{
 .hero-badge::before{content:'📍';font-size:0.85rem}
 h1.warm{
   font-family:'Fraunces',sans-serif;font-weight:900;
-  font-size:clamp(3rem,5vw,4.2rem);
+  font-size:clamp(2.4rem,4.4vw,3.5rem);
   line-height:1.08;letter-spacing:-0.02em;
   margin-bottom:20px;
 }
@@ -137,43 +141,6 @@ h1.warm em{font-style:italic;color:var(--orange)}
 }
 .btn-warm-ghost:hover{border-color:var(--orange);background:var(--orange-soft)}
 
-.trust-warm{display:flex;gap:24px;flex-wrap:wrap}
-.tw{display:flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--ink2)}
-.tw-dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
-
-/* HERO CARD STACK */
-.hero-cards{position:relative;height:400px}
-.hcard{
-  position:absolute;background:var(--surface);
-  border-radius:var(--r);
-  border:1px solid var(--border);
-  box-shadow:0 8px 32px rgba(30,27,20,0.08);
-  padding:28px;
-  transition:transform .4s ease;
-}
-.hcard-main{
-  width:280px;top:0;left:30%;
-  animation:hcardFloat 5s ease-in-out infinite;
-}
-@keyframes hcardFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(-1deg)}}
-.hcard-b{
-  width:220px;bottom:0;left:0;
-  animation:hcardFloat2 6s 1s ease-in-out infinite;
-}
-@keyframes hcardFloat2{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
-.hcard-c{
-  width:200px;top:40px;right:0;
-  animation:hcardFloat3 7s 2s ease-in-out infinite;
-}
-@keyframes hcardFloat3{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(-2deg)}}
-
-.hcard-icon{font-size:1.5rem;margin-bottom:12px;display:block}
-.hcard-title{font-family:'Fraunces',sans-serif;font-size:1rem;font-weight:700;margin-bottom:6px}
-.hcard-sub{font-size:0.8rem;color:var(--ink2);line-height:1.5}
-.hcard-price{
-  margin-top:12px;font-family:'Fraunces',sans-serif;
-  font-size:1.4rem;font-weight:700;color:var(--orange);
-}
 
 /* SOCIAL PROOF */
 .social-strip{
@@ -415,328 +382,143 @@ footer{padding:48px 5% 32px;border-top:1px solid var(--border)}
 h1.warm{animation:fadeSlideUp .6s .15s ease both}
 .hero-p{animation:fadeSlideUp .6s .3s ease both}
 .hero-actions-warm{animation:fadeSlideUp .6s .45s ease both}
-.trust-warm{animation:fadeSlideUp .6s .6s ease both}
-.hero-cards{animation:fadeSlideUp .8s .4s ease both}
 
+
+/* ===== CONVERSION-STARTSEITE ===== */
+:root{--purple-d:#7C3AED;--teal-d:#0E7490}
+.sec-eyebrow{color:var(--purple-d)}
+.hero-badge{color:var(--teal-d)}
+.btn-warm-main{background:var(--purple-d)}
+.btn-cta-white{color:#0F2534}
+.nav-btn{white-space:nowrap}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--purple-d);outline-offset:3px}
+section[id]{scroll-margin-top:90px}
+.sec-inner{max-width:1200px;margin:0 auto}
+.sec-sub-w{max-width:720px}
+.sec-alt{background:var(--bg2)}
+.btn-row{margin-top:40px;display:flex;justify-content:center}
+.btn-sm{padding:10px 22px;font-size:0.88rem}
+
+/* Hero */
+.hero-p{max-width:520px;margin-bottom:16px;animation:fadeSlideUp .6s .3s ease both}
+.hero-p + .hero-p{margin-bottom:32px;animation-delay:.38s}
+.hero-media{
+  display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;
+  height:440px;animation:fadeSlideUp .8s .4s ease both;
+}
+.hero-media figure{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);box-shadow:0 8px 32px rgba(30,27,20,0.08);background:var(--bg2)}
+.hero-media figure:first-child{grid-row:1 / 3}
+.hero-media img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Anwendungsfälle */
+.usecase-w{padding:80px 5%}
+.usecase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.uc-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);
+  overflow:hidden;display:flex;flex-direction:column;
+}
+.uc-card img{width:100%;height:190px;object-fit:cover;display:block;background:var(--bg2)}
+.uc-body{padding:24px;display:flex;flex-direction:column;flex:1}
+.uc-card h3{font-family:'Fraunces',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.uc-card p{font-size:0.875rem;color:var(--ink2);line-height:1.7;margin-bottom:20px}
+.uc-card .btn-warm-ghost{margin-top:auto;align-self:flex-start}
+
+/* Leistungen: 5 Karten, 3 + 2 */
+.services-w-grid{grid-template-columns:repeat(6,1fr)}
+.services-w-grid .sw-card{grid-column:span 2;padding:32px}
+.services-w-grid .sw-card:nth-child(n+4){grid-column:span 3}
+.sw-card p{font-weight:400}
+
+/* Ablauf */
+.steps-w{grid-template-columns:repeat(4,1fr);gap:20px}
+.step-w{padding:28px}
+.process-cta{margin-top:40px;display:flex;justify-content:center}
+
+/* Geschäftskunden */
+.biz-w{padding:80px 5%}
+.biz-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center}
+.biz-grid p{font-size:1rem;color:var(--ink2);line-height:1.75;margin-bottom:16px}
+.biz-list{list-style:none;margin:20px 0 24px;display:flex;flex-direction:column;gap:8px}
+.biz-list li{display:flex;gap:10px;font-size:0.95rem;font-weight:500}
+.biz-list li::before{content:'→';color:var(--purple-d)}
+.biz-media{border-radius:var(--rl);overflow:hidden;border:1px solid var(--border);box-shadow:0 8px 32px rgba(30,27,20,0.08)}
+.biz-media img{width:100%;display:block}
+
+/* Referenzen */
+.portfolio-w{background:var(--bg)}
+.portfolio-info h3{font-family:'Fraunces',sans-serif;font-size:1.05rem;margin-bottom:4px}
+.portfolio-grid{grid-template-columns:repeat(3,1fr)}
+
+/* Vertrauen */
+.trust-w{padding:80px 5%}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.trust-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:28px}
+.trust-card .sw-icon-w{margin-bottom:16px}
+.trust-card h3{font-family:'Fraunces',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.trust-card p{font-size:0.875rem;color:var(--ink2);line-height:1.7}
+
+/* Abschluss / Formular */
+.cta-w{background:linear-gradient(135deg,#0E7490 0%,#0F2534 100%)}
+.cta-w-inner p{color:rgba(255,255,255,0.85)}
+.cta-w-inner p.cta-note{font-size:0.95rem;font-weight:600;color:#fff;margin:-24px 0 0}
+.cta-w-inner h2 em{color:#C4B5FD}
+.cta-form select{
+  width:100%;padding:14px 20px;border-radius:12px;
+  border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);
+  color:#fff;font-family:inherit;font-size:0.95rem;
+}
+.cta-form select option{color:var(--ink);background:#fff}
+.cta-form input::placeholder,.cta-form textarea::placeholder{color:rgba(255,255,255,0.6)}
+.file-upload small{color:rgba(255,255,255,0.65) !important}
+#file-name{color:#C4B5FD}
+.cta-alt{color:rgba(255,255,255,0.75)}
+.mat-w .sec-sub-w{max-width:720px}
+
+@media(max-width:1100px){
+  .usecase-grid,.trust-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-w{grid-template-columns:repeat(2,1fr)}
+  .services-w-grid{grid-template-columns:repeat(2,1fr)}
+  .services-w-grid .sw-card,.services-w-grid .sw-card:nth-child(n+4){grid-column:auto}
+  .services-w-grid .sw-card:last-child{grid-column:1 / -1}
+}
 @media(max-width:900px){
-  .hero-top{grid-template-columns:1fr}
-  .hero-cards{display:none}
-  .services-w-grid,.mat-grid-w,.steps-w,.footer-grid-w{grid-template-columns:1fr}
+  .hero{padding:100px 5% 56px}
+  .hero-top{grid-template-columns:minmax(0,1fr);gap:32px;margin-bottom:0}
+  .hero-media{height:320px}
+  .mat-grid-w,.footer-grid-w,.biz-grid{grid-template-columns:1fr}
+  .biz-grid{gap:32px}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
   .nav-links{gap:12px}
   .nav-links a{font-size:0.75rem}
   nav{width:calc(100% - 32px)}
 }
-
-.hero-video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
+@media(max-width:640px){
+  nav{padding:0 16px}
+  .nav-links a:not(:first-child){display:none}
+  .nav-btn{padding:8px 16px;font-size:0.8rem}
+  .hero-badge{font-size:0.7rem;margin-bottom:16px}
+  h1.warm{font-size:2.1rem;margin-bottom:14px}
+  .hero-p{font-size:0.95rem;line-height:1.65;margin-bottom:12px}
+  .hero-p + .hero-p{margin-bottom:22px}
+  .hero-actions-warm{margin-bottom:28px}
+  .hero-media{height:260px;gap:10px}
+  .usecase-grid,.trust-grid,.steps-w,.services-w-grid,.portfolio-grid{grid-template-columns:1fr}
+  .services-w-grid .sw-card:last-child{grid-column:auto}
+  .usecase-w,.services-w,.biz-w,.trust-w,.portfolio-w,.process-w,.mat-w{padding-top:56px;padding-bottom:56px}
+  .sw-card{padding:24px !important}
+  .cta-w{padding:64px 5%}
+  .wa{bottom:16px;right:16px}
 }
-
-.video-overlay{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(to top, rgba(5,8,22,0.78), rgba(5,8,22,0.08)),
-    radial-gradient(circle at center, transparent 20%, rgba(5,8,22,0.3));
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .sw-card{opacity:1;transform:none}
+  html{scroll-behavior:auto}
 }
-
-.future-printer{
-  position:relative;
-  width:100%;
-  max-width:560px;
-  height:560px;
-  border-radius:40px;
-  overflow:hidden;
-  background:#050816;
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:
-    0 0 80px rgba(34,211,238,0.15),
-    0 30px 80px rgba(0,0,0,0.45);
-}
-
-.floating-ui{
-  position:absolute;
-  z-index:10;
-  padding:14px 18px;
-  border-radius:18px;
-  background:rgba(0,0,0,0.45);
-  border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(18px);
-}
-
-.floating-ui small{
-  display:block;
-  color:rgba(255,255,255,0.5);
-  margin-bottom:4px;
-  letter-spacing:.08em;
-}
-
-.floating-ui strong{
-  color:#67e8f9;
-  font-size:.95rem;
-}
-
-.ui-top{
-  top:20px;
-  left:20px;
-}
-
-.ui-bottom{
-  bottom:20px;
-  right:20px;
-}
-
-@media(max-width:900px){
-  .future-printer{
-    max-width:100%;
-    height:400px;
-  }
-}
-
-/* REALISTIC 3D PRINTER */
-.future-printer{
-  position:relative;
-  width:100%;
-  max-width:560px;
-  height:560px;
-  margin:auto;
-  border-radius:40px;
-  overflow:hidden;
-  background:radial-gradient(circle at top,#132238,#050816 70%);
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 0 90px rgba(34,211,238,0.12);
-}
-.future-printer::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size:36px 36px;
-}
-
-.printer-frame{
-  position:absolute;
-  inset:60px;
-  border:6px solid #1e293b;
-  border-top-width:10px;
-  border-radius:24px;
-  box-shadow:
-    inset 0 0 0 2px rgba(34,211,238,0.15),
-    0 0 25px rgba(34,211,238,0.08);
-}
-
-/* rails */
-.printer-frame::before,
-.printer-frame::after{
-  content:'';
-  position:absolute;
-  top:0;
-  bottom:0;
-  width:8px;
-  background:linear-gradient(to bottom,#334155,#0f172a);
-}
-.printer-frame::before{left:70px;}
-.printer-frame::after{right:70px;}
-
-/* top axis */
-.printer-axis{
-  position:absolute;
-  top:80px;
-  left:90px;
-  right:90px;
-  height:8px;
-  border-radius:20px;
-  background:linear-gradient(to right,#475569,#0f172a);
-}
-
-/* moving printhead */
-.print-head{
-  position:absolute;
-  top:62px;
-  left:120px;
-  animation:printerMoveX 4s ease-in-out infinite;
-}
-
-.print-head-box{
-  width:90px;
-  height:60px;
-  border-radius:18px;
-  background:linear-gradient(145deg,#38bdf8,#2563eb);
-  box-shadow:
-    0 0 35px rgba(56,189,248,0.45),
-    inset 0 -8px 12px rgba(0,0,0,0.25);
-  position:relative;
-}
-
-.print-head-box::before{
-  content:'';
-  position:absolute;
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  background:#0f172a;
-  top:12px;
-  left:12px;
-}
-
-.nozzle{
-  position:absolute;
-  width:10px;
-  height:32px;
-  background:linear-gradient(to bottom,#d1d5db,#64748b);
-  left:50%;
-  transform:translateX(-50%);
-  bottom:-24px;
-  border-radius:0 0 8px 8px;
-}
-
-.print-beam{
-  position:absolute;
-  width:90px;
-  height:120px;
-  background:linear-gradient(to bottom,rgba(34,211,238,0.55),transparent);
-  filter:blur(10px);
-  left:50%;
-  transform:translateX(-50%);
-  top:55px;
-  animation:beamPulse 1.5s ease-in-out infinite;
-}
-
-/* object */
-.print-object{
-  position:absolute;
-  bottom:78px;
-  left:50%;
-  transform:translateX(-50%);
-  width:120px;
-  border-radius:28px 28px 12px 12px;
-  background:linear-gradient(to top,#22d3ee,#a5f3fc);
-  animation:printGrow 4s ease-in-out infinite;
-  box-shadow:0 0 40px rgba(34,211,238,0.4);
-}
-
-/* bed */
-.print-bed{
-  position:absolute;
-  bottom:45px;
-  left:70px;
-  right:70px;
-  height:18px;
-  border-radius:20px;
-  background:linear-gradient(to right,#0f172a,#334155,#0f172a);
-  box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.08),
-    0 0 20px rgba(34,211,238,0.15);
-}
-
-.print-bed::before{
-  content:'';
-  position:absolute;
-  inset:4px;
-  border-radius:20px;
-  background:linear-gradient(to right,#22d3ee,#2563eb);
-  opacity:.35;
-}
-
-.floating-ui{
-  position:absolute;
-  padding:14px 18px;
-  border-radius:18px;
-  background:rgba(2,6,23,0.72);
-  border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(12px);
-  z-index:20;
-}
-
-.floating-ui small{
-  color:rgba(255,255,255,0.45);
-  display:block;
-  margin-bottom:5px;
-  letter-spacing:.08em;
-}
-
-.floating-ui strong{
-  color:#67e8f9;
-  font-size:.95rem;
-}
-
-.ui-top{top:22px;left:22px;}
-.ui-bottom{bottom:22px;right:22px;}
-
-@keyframes printerMoveX{
-  0%,100%{transform:translateX(0)}
-  25%{transform:translateX(140px)}
-  50%{transform:translateX(220px)}
-  75%{transform:translateX(70px)}
-}
-
-@keyframes printGrow{
-  0%{height:20px}
-  50%{height:190px}
-  100%{height:20px}
-}
-
-@keyframes beamPulse{
-  0%,100%{opacity:.45}
-  50%{opacity:1}
-}
-
-@media(max-width:900px){
-  .future-printer{
-    height:400px;
-    max-width:100%;
-  }
-
-  .printer-frame{
-    inset:30px;
-  }
-
-  .printer-axis{
-    left:55px;
-    right:55px;
-    top:60px;
-  }
-
-  .print-head{
-    top:45px;
-    left:70px;
-  }
-
-  .print-head-box{
-    width:70px;
-    height:46px;
-  }
-
-  .print-object{
-    width:85px;
-    bottom:60px;
-  }
-
-  .print-bed{
-    left:40px;
-    right:40px;
-    bottom:30px;
-  }
-
-  @keyframes printerMoveX{
-    0%,100%{transform:translateX(0)}
-    25%{transform:translateX(70px)}
-    50%{transform:translateX(120px)}
-    75%{transform:translateX(40px)}
-  }
-}
-
-
 </style>
 </head>
 <body>
 
-<nav>
+<nav aria-label="Hauptnavigation">
   <a href="#" class="nav-logo">
     <img src="3D%20Oberberg_Logo_kl.png" alt="3D Oberberg Logo" style="height:40px;width:auto">
   </a>
@@ -745,93 +527,254 @@ h1.warm{animation:fadeSlideUp .6s .15s ease both}
     <a href="#process-w">Ablauf</a>
     <a href="#cta-w">Kontakt</a>
   </div>
-  <a href="#cta-w" class="nav-btn">Anfragen →</a>
+  <a href="#cta-w" class="nav-btn">Projekt anfragen</a>
 </nav>
 
-<!-- HERO -->
+<main>
+<!-- A: HERO -->
 <section class="hero">
   <div class="hero-blob1"></div>
   <div class="hero-blob2"></div>
   <div class="hero-inner">
     <div class="hero-top">
       <div>
-        <div class="hero-badge">Morsbach · Oberbergischer Kreis</div>
-        <h1 class="warm">Dein 3D-Druck.<br>Lokal. Persönlich.<br><em>Fertig.</em></h1>
-        <p class="hero-p">Individuelle 3D-Drucklösungen direkt aus Morsbach. Vom Ersatzteil bis zum Prototyp – ich unterstütze dich persönlich und antworte garantiert innerhalb von 24 Stunden.</p>
+        <div class="hero-badge">3D-Druck aus Morsbach · Oberbergischer Kreis</div>
+        <h1 class="warm">Dein Kunststoffteil. Deine Idee. <em>Deine Lösung.</em></h1>
+        <p class="hero-p">Wir fertigen individuelle Kunststoffteile im 3D-Druck – von Ersatzteilen und funktionalen Bauteilen bis zu Prototypen und Kleinserien.</p>
+        <p class="hero-p">Du hast eine fertige 3D-Datei? Perfekt. Du hast nur ein Foto, eine Skizze oder ein kaputtes Teil? Auch dann finden wir gemeinsam heraus, was möglich ist.</p>
         <div class="hero-actions-warm">
           <a href="#cta-w" class="btn-warm-main">Projekt anfragen →</a>
-          <a href="https://wa.me/491717015924" class="btn-warm-ghost">💬 WhatsApp</a>
-        </div>
-        <div class="trust-warm">
-          <div class="tw"><span class="tw-dot"></span> Kostenlos & unverbindlich</div>
-          <div class="tw"><span class="tw-dot"></span> Antwort in 24h</div>
-          <div class="tw"><span class="tw-dot"></span> Faire Preise ab 1,50 €</div>
+          <a href="#services-w" class="btn-warm-ghost">Unsere Leistungen</a>
         </div>
       </div>
-      
-
-<div class="future-printer">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="video_2026-01-26_04-28-39.mp4" type="video/mp4">
-  </video>
-
-  <div class="video-overlay"></div>
-
-  <div class="floating-ui ui-top">
-    <small>PRINT STATUS</small>
-    <strong>LIVE PRINTING</strong>
-  </div>
-
-  <div class="floating-ui ui-bottom">
-    <small>MATERIAL</small>
-    <strong>PA6-CF</strong>
-  </div>
-</div>
-</div>
+      <div class="hero-media">
+        <figure><img src="PXL_20251229_095257954.MP_-576x1024.jpg" alt="Weißes 3D-gedrucktes Gehäuse mit eingeprägtem 3D-Oberberg-Logo auf einem Schreibtisch"></figure>
+        <figure><img src="prototyp-768x575.webp" alt="Weißer Halter mit mehreren Aussparungen, eingehängt an einer schwarzen Lochwand"></figure>
+        <figure><img src="funktionsteil-768x575.webp" alt="Kleines schwarzes Kunststoff-Funktionsteil mit Rippen auf einer Holzfläche"></figure>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services-w" id="services-w">
+<!-- B: ANWENDUNGSFÄLLE -->
+<section class="usecase-w" id="usecases">
+  <div class="sec-inner">
+    <h2 class="warm-h2">Was möchtest du <em>herstellen lassen?</em></h2>
+    <p class="sec-sub-w">Nicht jedes Projekt beginnt mit einer fertigen 3D-Datei. Manchmal ist ein Teil kaputt, manchmal fehlt eine passende Halterung und manchmal werden einfach mehrere identische Teile benötigt.</p>
+    <div class="usecase-grid">
+      <article class="uc-card">
+        <img src="funktionsteil-768x575.webp" alt="Kleines schwarzes Kunststoffteil mit Rippen auf einer Holzfläche" loading="lazy">
+        <div class="uc-body">
+          <h3>Ein Teil ist kaputt</h3>
+          <p>Ein Kunststoffteil ist gebrochen oder nicht mehr erhältlich? Wir prüfen, ob sich eine Nachfertigung anhand eines Musters, Fotos oder vorhandener Maße umsetzen lässt.</p>
+          <a href="#cta-w" class="btn-warm-ghost btn-sm" data-projekt="ersatzteil">Ersatzteil anfragen</a>
+        </div>
+      </article>
+      <article class="uc-card">
+        <img src="PXL_20251027_143704354.MP_-576x1024.jpg" alt="Grüne 3D-gedruckte Schlüsselkappe mit Schriftzug an einem Schlüsselbund" loading="lazy">
+        <div class="uc-body">
+          <h3>Ich brauche ein Bauteil</h3>
+          <p>Du benötigst eine spezielle Halterung, einen Adapter, einen Abstandhalter oder eine andere praktische Lösung? Wir prüfen die Umsetzung nach deinen Anforderungen.</p>
+          <a href="#cta-w" class="btn-warm-ghost btn-sm" data-projekt="bauteil">Bauteil anfragen</a>
+        </div>
+      </article>
+      <article class="uc-card">
+        <img src="giveaway-576x1024.jpg" alt="Mehrere identische türkisfarbene Anhänger auf dem Druckbett eines 3D-Druckers" loading="lazy">
+        <div class="uc-body">
+          <h3>Ich brauche mehrere Stück</h3>
+          <p>Du benötigst mehrere identische Teile für deinen Betrieb, einen Verein oder eine Veranstaltung? Wir erstellen ein individuelles Angebot.</p>
+          <a href="#cta-w" class="btn-warm-ghost btn-sm" data-projekt="kleinserie">Kleinserie anfragen</a>
+        </div>
+      </article>
+      <article class="uc-card">
+        <img src="PXL_20251229_095257954.MP_-576x1024.jpg" alt="Weißes 3D-gedrucktes Gehäuse mit eingeprägtem Logo" loading="lazy">
+        <div class="uc-body">
+          <h3>Ich habe eine 3D-Datei</h3>
+          <p>Du besitzt bereits eine STL-, 3MF- oder geeignete CAD-Datei? Wir prüfen die Druckbarkeit und erstellen ein Angebot.</p>
+          <a href="#cta-w" class="btn-warm-ghost btn-sm" data-projekt="datei">Datei drucken lassen</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- C: LEISTUNGEN -->
+<section class="services-w sec-alt" id="services-w">
   <div class="services-w-inner">
-    <p class="sec-eyebrow">Leistungen</p>
-    <h2 class="warm-h2">Präzision in jeder<br><em>Dimension.</em></h2>
-    <p class="sec-sub-w">Vom ersten Entwurf bis zum fertigen Bauteil – maßgeschneiderte Lösungen für private und gewerbliche Projekte.</p>
-    
+    <h2 class="warm-h2">Was wir für dich <em>fertigen</em></h2>
+    <p class="sec-sub-w">Ob einzelnes Ersatzteil, individuelles Funktionsteil oder Kleinserie: Wir prüfen dein Vorhaben und finden heraus, wie es sich im 3D-Druck umsetzen lässt.</p>
     <div class="services-w-grid">
       <div class="sw-card">
-        <div class="sw-icon-w">🛠️</div>
+        <div class="sw-icon-w" aria-hidden="true">♻️</div>
         <div>
-          <h3>Prototypenbau</h3>
-          <p>Schnelle Iteration deiner Ideen. Funktionalität und Design prüfen, bevor es in die Serienfertigung geht.</p>
-          <span class="sw-tag">Rapid Prototyping</span>
+          <h3>Ersatzteile</h3>
+          <p>Ein Kunststoffteil ist gebrochen oder nicht mehr lieferbar? Wir prüfen, ob sich das Teil nach einem Muster, Foto oder vorhandenen Maßen nachfertigen lässt.</p>
         </div>
       </div>
       <div class="sw-card">
-        <div class="sw-icon-w">📐</div>
+        <div class="sw-icon-w" aria-hidden="true">🛠️</div>
         <div>
-          <h3>CAD-Konstruktion</h3>
-          <p>Keine 3D-Datei? Ich erstelle professionelle Modelle nach deinen Skizzen oder physischen Vorlagen.</p>
-          <span class="sw-tag">Konstruktion</span>
+          <h3>Individuelle Funktionsteile</h3>
+          <p>Du benötigst eine spezielle Halterung, einen Adapter, einen Abstandhalter oder eine andere praktische Lösung? Wir fertigen Bauteile nach deinen Anforderungen.</p>
         </div>
       </div>
       <div class="sw-card">
-        <div class="sw-icon-w">♻️</div>
+        <div class="sw-icon-w" aria-hidden="true">📦</div>
         <div>
-          <h3>Ersatzteil-Service</h3>
-          <p>Nicht mehr lieferbare Kunststoffteile einfach nachdrucken und Geräte nachhaltig reparieren.</p>
-          <span class="sw-tag">Nachhaltigkeit</span>
+          <h3>Kleinserien</h3>
+          <p>Du brauchst mehrere identische Teile für deinen Betrieb, einen Verein oder eine Veranstaltung? Wir prüfen Stückzahl, Material und Fertigungsaufwand und erstellen ein individuelles Angebot.</p>
         </div>
       </div>
       <div class="sw-card">
-        <div class="sw-icon-w">🎁</div>
+        <div class="sw-icon-w" aria-hidden="true">📐</div>
         <div>
-          <h3>Serien & Giveaways</h3>
-          <p>Individualisierte Werbeartikel oder Kleinserien für dein Business in höchster Qualität.</p>
-          <span class="sw-tag">Kleinserien</span>
+          <h3>Konstruktion und Prototypen</h3>
+          <p>Du hast eine Idee, aber noch keine fertige 3D-Datei? Je nach Projekt unterstützen wir dich bei der Konstruktion und erstellen bei Bedarf einen ersten Prototyp.</p>
         </div>
+      </div>
+      <div class="sw-card">
+        <div class="sw-icon-w" aria-hidden="true">🖨️</div>
+        <div>
+          <h3>Vorhandene 3D-Dateien</h3>
+          <p>Du besitzt bereits eine STL-, 3MF- oder geeignete CAD-Datei? Wir prüfen die Druckbarkeit und erstellen ein Angebot für die gewünschte Fertigung.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- D: ABLAUF -->
+<section class="process-w" id="process-w">
+  <div class="process-w-inner">
+    <h2 class="warm-h2">Einfach anfragen. <em>Gemeinsam umsetzen.</em></h2>
+    <ol class="steps-w" style="list-style:none">
+      <li class="step-w">
+        <div class="step-w-num" aria-hidden="true">01</div>
+        <h3>Projekt beschreiben</h3>
+        <p>Ein Foto, eine Skizze oder eine vorhandene 3D-Datei hilft uns, dein Vorhaben einzuschätzen.</p>
+      </li>
+      <li class="step-w">
+        <div class="step-w-num" aria-hidden="true">02</div>
+        <h3>Machbarkeit prüfen</h3>
+        <p>Wir klären die Anforderungen, die benötigten Materialien, die Stückzahl und gegebenenfalls den Konstruktionsaufwand.</p>
+      </li>
+      <li class="step-w">
+        <div class="step-w-num" aria-hidden="true">03</div>
+        <h3>Angebot erhalten</h3>
+        <p>Du erhältst ein individuelles Angebot. Die Fertigung beginnt erst nach deiner Freigabe.</p>
+      </li>
+      <li class="step-w">
+        <div class="step-w-num" aria-hidden="true">04</div>
+        <h3>Bauteil erhalten</h3>
+        <p>Nach der Fertigung stimmen wir Abholung oder Versand mit dir ab.</p>
+      </li>
+    </ol>
+    <div class="process-cta"><a href="#cta-w" class="btn-warm-main">Jetzt Projekt anfragen →</a></div>
+  </div>
+</section>
+
+<!-- E: GESCHÄFTSKUNDEN -->
+<section class="biz-w sec-alt" id="geschaeftskunden">
+  <div class="sec-inner biz-grid">
+    <div>
+      <h2 class="warm-h2">Individuelle Kunststoffteile für <em>Handwerk und Gewerbe</em></h2>
+      <p>Nicht jedes Bauteil gibt es von der Stange. Und nicht für jede Sonderlösung lohnt sich eine aufwendige klassische Fertigung.</p>
+      <p>3D Oberberg unterstützt Handwerksbetriebe und kleinere Unternehmen mit individuell gefertigten Kunststoffteilen – vom einzelnen Hilfsmittel bis zur Kleinserie.</p>
+      <p style="margin-bottom:0"><strong>Mögliche Anwendungen:</strong></p>
+      <ul class="biz-list">
+        <li>Halterungen, Adapter und Abstandhalter</li>
+        <li>Montage- und Positionierhilfen</li>
+        <li>individuelle Abdeckungen und Gehäuseteile</li>
+        <li>Prototypen und Musterteile</li>
+        <li>wiederkehrend benötigte Kleinserien</li>
+      </ul>
+      <p>Du weißt noch nicht, ob 3D-Druck für deinen Anwendungsfall geeignet ist? Beschreibe uns dein Vorhaben. Wir prüfen die Möglichkeiten, bevor du einen Auftrag erteilst.</p>
+      <a href="#cta-w" class="btn-warm-main" data-projekt="kleinserie">Projekt für meinen Betrieb anfragen →</a>
+    </div>
+    <div class="biz-media">
+      <img src="prototyp-768x575.webp" alt="Weißer Halter mit mehreren Aussparungen an einer schwarzen Lochwand, wie sie in Werkstätten verwendet wird" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- F: REFERENZEN -->
+<section class="portfolio-w" id="portfolio">
+  <div class="services-w-inner">
+    <h2 class="warm-h2">Aus Ideen werden <em>fertige Bauteile</em></h2>
+    <p class="sec-sub-w" style="margin-bottom:0">Jedes Projekt beginnt mit einer konkreten Idee oder einem Bedarf. Hier zeigen wir ausgewählte Arbeiten aus dem 3D-Druck und der individuellen Fertigung.</p>
+    <p class="sec-sub-w" style="margin:12px 0 0">Ob personalisierte Kleinserie, funktionales Bauteil oder eigens entwickeltes Modell – entscheidend ist, dass das Ergebnis zum jeweiligen Einsatzzweck passt.</p>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="funktionsteil-768x575.webp" alt="Kleines schwarzes Kunststoff-Funktionsteil mit Rippen auf einer Holzfläche" class="portfolio-img" loading="lazy">
+        <div class="portfolio-info">
+          <h3>Funktionsteil</h3>
+          <p>Kleines Kunststoffteil aus dem 3D-Druck.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="prototyp-768x575.webp" alt="Weißer Halter mit mehreren Aussparungen an einer Lochwand" class="portfolio-img" loading="lazy">
+        <div class="portfolio-info">
+          <h3>Halter für die Lochwand</h3>
+          <p>Praktische Werkstatt- und Alltagslösung.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="giveaway-576x1024.jpg" alt="Mehrere identische türkisfarbene Anhänger auf dem Druckbett eines 3D-Druckers" class="portfolio-img" loading="lazy">
+        <div class="portfolio-info">
+          <h3>Kleinserie</h3>
+          <p>Mehrere identische Anhänger in einem Druckdurchgang.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="PXL_20251229_095257954.MP_-576x1024.jpg" alt="Weißes 3D-gedrucktes Gehäuse mit eingeprägtem Logo" class="portfolio-img" loading="lazy">
+        <div class="portfolio-info">
+          <h3>Gehäuse mit Logo</h3>
+          <p>Individualisiertes Bauteil mit eingeprägtem Logo.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="PXL_20251027_143704354.MP_-576x1024.jpg" alt="Grüne Schlüsselkappe mit Schriftzug an einem Schlüsselbund" class="portfolio-img" loading="lazy">
+        <div class="portfolio-info">
+          <h3>Personalisierte Schlüsselkappe</h3>
+          <p>Kleiner Alltagshelfer mit individuellem Schriftzug.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="baer_schluesselanhaenger-768x575.webp" alt="3D-gedruckter Bär als Schlüsselanhänger" class="portfolio-img" loading="lazy">
+        <div class="portfolio-info">
+          <h3>Deko-Modell</h3>
+          <p>Schlüsselanhänger in Bärenform.</p>
+        </div>
+      </div>
+    </div>
+    <div class="btn-row"><a href="#cta-w" class="btn-warm-main">Eigenes Projekt anfragen →</a></div>
+  </div>
+</section>
+
+<!-- G: VERTRAUENSSIGNALE -->
+<section class="trust-w sec-alt" id="vorteile">
+  <div class="sec-inner">
+    <h2 class="warm-h2">Persönlich. Unkompliziert. <em>Individuell.</em></h2>
+    <div class="trust-grid" style="margin-top:40px">
+      <div class="trust-card">
+        <div class="sw-icon-w" aria-hidden="true">📍</div>
+        <h3>Direkt aus Morsbach</h3>
+        <p>3D Oberberg ist dein Ansprechpartner für individuelle 3D-Druckprojekte im Oberbergischen Kreis und darüber hinaus.</p>
+      </div>
+      <div class="trust-card">
+        <div class="sw-icon-w" aria-hidden="true">💬</div>
+        <h3>Dein Projekt, dein Ansprechpartner</h3>
+        <p>Wir besprechen die Anforderungen direkt miteinander und klären, welche Umsetzung sinnvoll ist.</p>
+      </div>
+      <div class="trust-card">
+        <div class="sw-icon-w" aria-hidden="true">📷</div>
+        <h3>Keine fertige Datei erforderlich</h3>
+        <p>Ein Foto, eine Skizze oder ein vorhandenes Teil kann für eine erste Einschätzung ausreichen.</p>
+      </div>
+      <div class="trust-card">
+        <div class="sw-icon-w" aria-hidden="true">🤝</div>
+        <h3>Transparente Abstimmung</h3>
+        <p>Du erhältst ein individuelles Angebot, bevor wir mit der vereinbarten Fertigung beginnen.</p>
       </div>
     </div>
   </div>
@@ -842,7 +785,7 @@ h1.warm{animation:fadeSlideUp .6s .15s ease both}
   <div class="mat-w-inner">
     <p class="sec-eyebrow">Materialien</p>
     <h2 class="warm-h2" style="color:#fff">Das <em>richtige Material</em><br>für dein Projekt.</h2>
-    <p class="sec-sub-w">Ich berate dich kostenlos – welches Material am besten passt.</p>
+    <p class="sec-sub-w">Wir beraten dich, welches Material zu deinem Projekt passt.</p>
     <div class="mat-grid-w">
       <div class="mw-card mw-pla">
         <div class="mw-name">PLA</div>
@@ -859,7 +802,7 @@ h1.warm{animation:fadeSlideUp .6s .15s ease both}
         <div class="mw-tagline">Robust · Feuchtigkeitsbeständig</div>
         <ul class="mw-features">
           <li>Funktionsteile & Ersatzteile</li>
-          <li>Außeneinsatz geeignet</li>
+          <li>Je nach Anforderung auch im Außenbereich</li>
           <li>Technische Bauteile</li>
           <li>Langlebige Objekte</li>
         </ul>
@@ -870,128 +813,59 @@ h1.warm{animation:fadeSlideUp .6s .15s ease both}
         <ul class="mw-features">
           <li>Wärmebelastete Teile</li>
           <li>Technische Gehäuse</li>
-          <li>Industrielle Anwendungen</li>
-          <li>Langlebig & robust</li>
+          <li>Abdeckungen & Halterungen</li>
+          <li>Robuste Bauteile</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PORTFOLIO -->
-<section class="portfolio-w" id="portfolio">
-  <div class="services-w-inner">
-    <p class="sec-eyebrow">Portfolio</p>
-    <h2 class="warm-h2">Echte Ergebnisse aus<br>dem <em>3D-Drucker.</em></h2>
-    <div class="portfolio-grid">
-      <div class="portfolio-item">
-        <img src="PXL_20251229_095257954.MP_-576x1024.jpg" alt="Personalisiertes Gehäuse mit Logo" class="portfolio-img">
-        <div class="portfolio-info">
-          <h4>Branding & Gehäuse</h4>
-          <p>Individualisierte Bauteile mit hochwertiger Logo-Prägung.</p>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="funktionsteil-768x575.webp" alt="Technisches Funktionsteil" class="portfolio-img">
-        <div class="portfolio-info">
-          <h4>Funktionsteile</h4>
-          <p>Präzise technische Komponenten für mechanische Anwendungen.</p>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="baer_schluesselanhaenger-768x575.webp" alt="3D-gedruckter Bär Schlüsselanhänger" class="portfolio-img">
-        <div class="portfolio-info">
-          <h4>Deko & Geschenke</h4>
-          <p>Filigrane Figuren und personalisierte Accessoires.</p>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="giveaway-576x1024.jpg" alt="Werbeartikel Serienfertigung" class="portfolio-img">
-        <div class="portfolio-info">
-          <h4>Serienfertigung</h4>
-          <p>Giveaways und Werbeartikel in konsistenter Qualität.</p>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="prototyp-768x575.webp" alt="Design Prototyping" class="portfolio-img">
-        <div class="portfolio-info">
-          <h4>Prototyping</h4>
-          <p>Schnelle Visualisierung und Prüfung von Design-Konzepten.</p>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="PXL_20251027_143704354.MP_-576x1024.jpg" alt="Personalisierter Schlüssel-Aufsatz" class="portfolio-img">
-        <div class="portfolio-info">
-          <h4>Alltagshelfer</h4>
-          <p>Maßgeschneiderte Lösungen für kleine Probleme des Alltags.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- H: BEWERTUNGEN – bewusst ausgelassen, bis der echte Google-Bewertungslink vorliegt -->
 
-<!-- PROCESS -->
-<section class="process-w" id="process-w">
-  <div class="process-w-inner">
-    <p class="sec-eyebrow">So läuft es ab</p>
-    <h2 class="warm-h2">In 3 Schritten zum<br><em>fertigen Druck.</em></h2>
-    <div class="steps-w">
-      <div class="step-w">
-        <div class="step-w-num">01</div>
-        <div class="step-w-icon">📬</div>
-        <h3>Anfrage stellen</h3>
-        <p>Datei (STL, OBJ, 3MF) hochladen oder Idee per WhatsApp, E-Mail oder Formular beschreiben. Noch keine Datei? Kein Problem!</p>
-        <p class="step-w-note">Kostenlos & unkompliziert</p>
-      </div>
-      <div class="step-w">
-        <div class="step-w-num">02</div>
-        <div class="step-w-icon">💬</div>
-        <h3>Angebot erhalten</h3>
-        <p>Ich prüfe dein Projekt persönlich und melde mich innerhalb von 24h mit einem kostenlosen, unverbindlichen Angebot.</p>
-        <p class="step-w-note">Unverbindlich · 24h Reaktionszeit</p>
-      </div>
-      <div class="step-w">
-        <div class="step-w-num">03</div>
-        <div class="step-w-icon">📦</div>
-        <h3>Druck & Lieferung</h3>
-        <p>Nach deiner Freigabe starte ich den Druck. Abholung in Morsbach oder Versand deutschlandweit – wie es dir am besten passt.</p>
-        <p class="step-w-note">Abholung · Versand DE-weit</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
+<!-- I: ABSCHLUSS + ANFRAGEFORMULAR -->
 <section class="cta-w" id="cta-w">
   <div class="cta-w-inner">
-    <h2>Bereit für<br>dein <em>Projekt?</em></h2>
-    <p>Kostenlos & unverbindlich anfragen – ich melde mich persönlich innerhalb von 24 Stunden bei dir.</p>
-    
+    <h2>Was möchtest du <em>möglich machen?</em></h2>
+    <p>Du hast eine Idee, benötigst ein Ersatzteil oder möchtest mehrere identische Bauteile fertigen lassen?</p>
+    <p>Erzähl uns kurz, worum es geht. Wir prüfen die Möglichkeiten und melden uns mit einer Einschätzung zum weiteren Vorgehen.</p>
+    <p class="cta-note">Noch keine 3D-Datei? Kein Problem. Beschreibe einfach, was du brauchst.</p>
+
     <form action="contact.php" method="POST" enctype="multipart/form-data" class="cta-form">
       <!-- Honeypot Spamschutz: Für Menschen unsichtbar -->
-      <input type="text" name="_hp_field" style="display:none !important" tabindex="-1" autocomplete="off">
+      <input type="text" name="_hp_field" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <div class="form-row">
-        <input type="text" name="name" placeholder="Dein Name" required>
-        <input type="email" name="email" placeholder="E-Mail Adresse" required>
+        <input type="text" name="name" placeholder="Dein Name" aria-label="Dein Name" autocomplete="name" required>
+        <input type="email" name="email" placeholder="E-Mail Adresse" aria-label="E-Mail Adresse" autocomplete="email" required>
       </div>
-      <textarea name="message" placeholder="Beschreibe kurz dein Projekt (Materialwunsch, Menge, Verwendungszweck...)" required></textarea>
-      
+      <select name="projekttyp" id="projekttyp" aria-label="Worum geht es?">
+        <option value="">Worum geht es? (optional)</option>
+        <option value="ersatzteil">Ersatzteil</option>
+        <option value="bauteil">Individuelles Bauteil</option>
+        <option value="kleinserie">Kleinserie / mehrere Stück</option>
+        <option value="datei">Vorhandene 3D-Datei drucken</option>
+        <option value="konstruktion">Konstruktion / Prototyp</option>
+        <option value="sonstiges">Sonstiges</option>
+      </select>
+      <textarea name="message" placeholder="Beschreibe kurz dein Projekt (Verwendungszweck, Menge, Materialwunsch ...)" aria-label="Projektbeschreibung" required></textarea>
+
       <label class="file-upload">
-        <input type="file" id="file-input" name="file" accept=".stl,.obj,.3mf">
-        <span>📁 Datei auswählen (STL, OBJ, 3MF)</span>
-        <small style="color:rgba(255,255,255,0.4)">Max. 10MB empfohlen</small>
+        <input type="file" id="file-input" name="file" accept=".stl,.obj,.3mf,.step,.zip">
+        <span>📁 Optional: 3D-Datei auswählen (STL, 3MF, OBJ, STEP, ZIP)</span>
+        <small>Max. 10 MB · Fotos und Skizzen kannst du uns nach deiner Anfrage per E-Mail oder WhatsApp schicken</small>
         <div id="file-name"></div>
       </label>
 
-      <button type="submit" class="btn-cta-white">Anfrage senden →</button>
+      <button type="submit" class="btn-cta-white">Projekt unverbindlich anfragen →</button>
     </form>
-    
+
     <div class="cta-alt">
-      Oder direkt per <a href="https://wa.me/491717015924">WhatsApp kontaktieren</a>
+      Oder direkt per <a href="https://wa.me/491717015924">WhatsApp</a> oder <a href="mailto:info@3doberberg.de">E-Mail</a> melden
     </div>
   </div>
 </section>
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -1001,7 +875,7 @@ h1.warm{animation:fadeSlideUp .6s .15s ease both}
         <div class="fw-brand">
           <img src="3D%20Oberberg_Logo_kl.png" alt="3D Oberberg Logo" style="height:32px;width:auto">
         </div>
-        <p class="fw-desc">Individueller 3D-Druck im Oberbergischen Kreis. Lokal, schnell und persönlich.</p>
+        <p class="fw-desc">Individuelle 3D-Druckteile aus Morsbach – für den Oberbergischen Kreis und darüber hinaus.</p>
         <p class="fw-addr">📍 Bitze 2 · 51597 Morsbach</p>
       </div>
       <div>
@@ -1010,7 +884,7 @@ h1.warm{animation:fadeSlideUp .6s .15s ease both}
           <li><a href="index.html">Startseite</a></li>
           <li><a href="leistungen.html">Leistungen</a></li>
           <li><a href="#mat-w">Materialien</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#portfolio">Referenzen</a></li>
           <li><a href="#cta-w">Kontakt</a></li>
         </ul>
       </div>
@@ -1033,7 +907,7 @@ h1.warm{animation:fadeSlideUp .6s .15s ease both}
   </div>
 </footer>
 
-<a href="https://wa.me/491717015924" class="wa">💬</a>
+<a href="https://wa.me/491717015924" class="wa" aria-label="Per WhatsApp schreiben">💬</a>
 
 <script>
 // SCROLL REVEALS
@@ -1059,29 +933,46 @@ window.addEventListener('scroll', ()=>{
     : '0 4px 24px rgba(30,27,20,0.06)';
 });
 
-// FILE UPLOAD FILENAME DISPLAY
+// PROJEKTART VORAUSWÄHLEN (CTA-Karten mit data-projekt oder ?projekt=...)
+const projektSelect = document.getElementById('projekttyp');
+function selectProjekt(value){
+  if(projektSelect && [...projektSelect.options].some(o => o.value === value)) projektSelect.value = value;
+}
+document.querySelectorAll('[data-projekt]').forEach(a => {
+  a.addEventListener('click', () => selectProjekt(a.dataset.projekt));
+});
+
+// FILE UPLOAD FILENAME DISPLAY + GRÖSSENPRÜFUNG
 const fileInput = document.getElementById('file-input');
 const fileNameDisplay = document.getElementById('file-name');
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
 if(fileInput) {
   fileInput.addEventListener('change', (e) => {
-    const name = e.target.files[0]?.name || '';
-    fileNameDisplay.textContent = name ? 'Ausgewählt: ' + name : '';
+    const file = e.target.files[0];
+    if(file && file.size > MAX_FILE_SIZE){
+      fileNameDisplay.textContent = 'Die Datei ist größer als 10 MB und kann so nicht gesendet werden.';
+      fileInput.value = '';
+      return;
+    }
+    fileNameDisplay.textContent = file ? 'Ausgewählt: ' + file.name : '';
   });
 }
 
-// URL Status Message
+// URL PARAMETER: ?projekt=... und ?status=...
 const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('projekt')) selectProjekt(urlParams.get('projekt'));
 if (urlParams.has('status')) {
   const status = urlParams.get('status');
   const form = document.querySelector('.cta-form');
   const msg = document.createElement('p');
+  msg.setAttribute('role', 'status');
   msg.style.cssText = 'margin-top:20px; font-weight:600; text-align:center;';
   if (status === 'success') {
-    msg.style.color = '#22D3EE';
-    msg.textContent = 'Vielen Dank! Deine Nachricht wurde gesendet.';
+    msg.style.color = '#A5F3FC';
+    msg.textContent = 'Vielen Dank! Deine Nachricht wurde gesendet. Wir melden uns bei dir.';
   } else {
-    msg.style.color = '#ff4b2b';
-    msg.textContent = 'Fehler beim Senden. Bitte versuche es erneut oder nutze WhatsApp.';
+    msg.style.color = '#FCA5A5';
+    msg.textContent = 'Das Senden hat nicht geklappt. Bitte prüfe deine Angaben (Dateityp: STL, OBJ, 3MF, STEP oder ZIP, max. 10 MB) oder schreib uns per WhatsApp oder E-Mail.';
   }
   form.appendChild(msg);
 }
