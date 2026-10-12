@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Impressum | 3D Oberberg</title>
 <meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="icon" type="image/png" href="3D%20Oberberg_Logo_kl.png">
 <style>
+  /* wie zuvor mit Google Fonts: Fraunces ohne automatische optische Größe (opsz 14) */
+  h1,h2,h3,.nav-logo{font-variation-settings:'opsz' 14}
   :root{ --bg:#FBF8F2; --ink:#1E1B14; --ink2:#6B6455; --orange:#8B5CF6; --border:rgba(30,27,20,0.09); }
   body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;margin:0;padding:0}
   nav{padding:20px 5%;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:#fff}
@@ -23,16 +24,16 @@
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-logo">
+  <a href="/" class="nav-logo">
     <img src="3D%20Oberberg_Logo_kl.png" alt="3D Oberberg Logo" style="height:32px;width:auto">
   </a>
-  <a href="index.html#cta-w" style="color:var(--ink);text-decoration:none;font-weight:600;font-size:0.85rem">← Zurück</a>
+  <a href="/" style="color:var(--ink);text-decoration:none;font-weight:600;font-size:0.85rem">← Zurück</a>
 </nav>
 
 <div class="content">
   <h1>Impressum</h1>
   
-  <h2>Angaben gemäß § 5 TMG</h2>
+  <h2>Angaben gemäß § 5 DDG</h2>
   <p>
     Urs Arets<br>
     3D Oberberg<br>
@@ -46,24 +47,13 @@
     E-Mail: info@3doberberg.de
   </p>
 
-  <h2>Umsatzsteuer-ID</h2>
-  <p>
-    Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
-    <em>[Deine USt-Id hier eintragen oder weglassen, falls Kleinunternehmer]</em>
-  </p>
-
+  <h2>Umsatzsteuer</h2>
   <p><em>Hinweis: Als Kleinunternehmer im Sinne von § 19 Abs. 1 UStG wird keine Umsatzsteuer berechnet.</em></p>
 
   <h2>Redaktionell verantwortlich</h2>
   <p>Urs Arets (Anschrift wie oben)</p>
 
-  <h2>EU-Streitschlichtung</h2>
-  <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" style="color:var(--orange)">https://ec.europa.eu/consumers/odr/</a>.<br>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
-
-  <h2>Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
-  <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
-
-  <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+  <a href="/" class="back-link">← Zurück zur Startseite</a>
 </div>
 
 <footer>

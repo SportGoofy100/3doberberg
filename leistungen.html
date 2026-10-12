@@ -6,10 +6,11 @@
 <title>Leistungen & Services | 3D Oberberg – 3D-Druck Morsbach</title>
 <meta name="description" content="Von CAD-Konstruktion bis FDM-Druck: Entdecke meine 3D-Druck Dienstleistungen für Prototypen, Ersatzteile und Serienfertigung in Morsbach.">
 <link rel="canonical" href="https://3doberberg.de/leistungen.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="icon" type="image/png" href="3D%20Oberberg_Logo_kl.png">
 <style>
+  /* wie zuvor mit Google Fonts: Fraunces ohne automatische optische Größe (opsz 14) */
+  h1,h2,h3,.nav-logo{font-variation-settings:'opsz' 14}
   :root{ --bg:#FBF8F2; --ink:#1E1B14; --ink2:#6B6455; --orange:#8B5CF6; --border:rgba(30,27,20,0.09); }
   body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;margin:0;padding:0}
   nav{padding:20px 5%;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:#fff}
@@ -30,10 +31,10 @@
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-logo">
+  <a href="/" class="nav-logo">
     <img src="3D%20Oberberg_Logo_kl.png" alt="3D Oberberg Logo" style="height:32px;width:auto">
   </a>
-  <a href="index.html" style="color:var(--ink);text-decoration:none;font-weight:600;font-size:0.85rem">← Zurück</a>
+  <a href="/" style="color:var(--ink);text-decoration:none;font-weight:600;font-size:0.85rem">← Zurück</a>
 </nav>
 
 <div class="content">
@@ -60,6 +61,7 @@
       <span class="service-icon">♻️</span>
       <h2>Ersatzteil-Service</h2>
       <p>Nachhaltigkeit durch Reparatur. Ich drucke nicht mehr lieferbare Kunststoff-Ersatzteile für Haushaltsgeräte, Werkzeuge oder Fahrzeuge einfach nach.</p>
+      <p style="margin-top:12px"><a href="ersatzteile.html" style="color:var(--orange);font-weight:600;text-decoration:none">Mehr zu Ersatzteilen →</a></p>
     </div>
     <div class="service-card">
       <span class="service-icon">🎁</span>
@@ -73,7 +75,7 @@
     </div>
   </div>
 
-  <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+  <a href="/" class="back-link">← Zurück zur Startseite</a>
 </div>
 
 <footer>

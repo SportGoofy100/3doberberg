@@ -13,8 +13,9 @@
 <meta property="og:title" content="3D Oberberg | 3D-Druck, Ersatzteile &amp; Kleinserien aus Morsbach">
 <meta property="og:description" content="Individuelle 3D-Druckteile aus Morsbach: Ersatzteile, Funktionsteile, Montagehilfen, Prototypen und Kleinserien.">
 <meta property="og:image" content="https://3doberberg.de/3D%20Oberberg_Logo_kl.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/fraunces-roman.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="icon" type="image/png" href="3D%20Oberberg_Logo_kl.png">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -477,6 +478,8 @@ section[id]{scroll-margin-top:90px}
 .file-upload small{color:rgba(255,255,255,0.65) !important}
 #file-name{color:#C4B5FD}
 .cta-alt{color:rgba(255,255,255,0.75)}
+.cta-w-inner p.form-note{font-size:0.82rem;line-height:1.6;color:rgba(255,255,255,0.85);margin:0;text-align:left}
+.form-note a{color:#fff;font-weight:600;text-decoration:underline}
 .mat-w .sec-sub-w{max-width:720px}
 
 @media(max-width:1100px){
@@ -499,8 +502,9 @@ section[id]{scroll-margin-top:90px}
 }
 @media(max-width:640px){
   nav{padding:0 16px}
-  .nav-links a:not(:first-child){display:none}
-  .nav-btn{padding:8px 16px;font-size:0.8rem}
+  .nav-links a:not(:nth-child(2)){display:none}
+  .nav-logo img{height:32px !important}
+  .nav-btn{padding:8px 14px;font-size:0.78rem}
   .hero-badge{font-size:0.7rem;margin-bottom:16px}
   h1.warm{font-size:2.1rem;margin-bottom:14px}
   .hero-p{font-size:0.95rem;line-height:1.65;margin-bottom:12px}
@@ -529,6 +533,7 @@ section[id]{scroll-margin-top:90px}
   </a>
   <div class="nav-links">
     <a href="leistungen.html">Leistungen</a>
+    <a href="ersatzteile.html">Ersatzteile</a>
     <a href="#process-w">Ablauf</a>
     <a href="#cta-w">Kontakt</a>
   </div>
@@ -614,6 +619,7 @@ section[id]{scroll-margin-top:90px}
         <div>
           <h3>Ersatzteile</h3>
           <p>Ein Kunststoffteil ist gebrochen oder nicht mehr lieferbar? Wir prüfen, ob sich das Teil nach einem Muster, Foto oder vorhandenen Maßen nachfertigen lässt.</p>
+          <p style="margin-top:10px"><a href="ersatzteile.html" style="color:var(--purple-d);font-weight:600;text-decoration:none">Mehr zu Ersatzteilen →</a></p>
         </div>
       </div>
       <div class="sw-card">
@@ -871,6 +877,7 @@ section[id]{scroll-margin-top:90px}
       </label>
 
       <button type="submit" class="btn-cta-white">Projekt unverbindlich anfragen →</button>
+      <p class="form-note">Wir verwenden deine Angaben und Anhänge nur, um deine Anfrage zu bearbeiten. Bitte lade keine sensiblen Daten und keine unnötigen Fotos von Personen hoch. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
     </form>
 
     <div class="cta-alt">
@@ -894,8 +901,9 @@ section[id]{scroll-margin-top:90px}
       <div>
         <div class="fw-head">Navigation</div>
         <ul class="fw-links">
-          <li><a href="index.html">Startseite</a></li>
+          <li><a href="/">Startseite</a></li>
           <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="ersatzteile.html">Ersatzteile</a></li>
           <li><a href="#mat-w">Materialien</a></li>
           <li><a href="#portfolio">Referenzen</a></li>
           <li><a href="#cta-w">Kontakt</a></li>

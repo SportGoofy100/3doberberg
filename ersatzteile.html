@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ersatzteile & funktionale Kunststoffteile aus dem 3D-Druck | 3D Oberberg</title>
+<meta name="description" content="Kunststoffteil gebrochen oder nicht mehr lieferbar? 3D Oberberg aus Morsbach prüft, ob sich Ersatzteile und funktionale Bauteile im 3D-Druck fertigen lassen. Jetzt anfragen.">
+<link rel="canonical" href="https://3doberberg.de/ersatzteile.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="3D Oberberg">
+<meta property="og:url" content="https://3doberberg.de/ersatzteile.html">
+<meta property="og:title" content="Ersatzteile & funktionale Kunststoffteile aus dem 3D-Druck | 3D Oberberg">
+<meta property="og:description" content="Wir prüfen, ob sich dein Kunststoffteil im 3D-Druck nachfertigen lässt – mit Foto, Maßen, Skizze, Musterteil oder 3D-Datei.">
+<meta property="og:image" content="https://3doberberg.de/3D%20Oberberg_Logo_kl.png">
+<link rel="preload" href="fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/fraunces-roman.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="icon" type="image/png" href="3D%20Oberberg_Logo_kl.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FBF8F2;--bg2:#F3EFE6;--surface:#FFFFFF;
+  --ink:#1E1B14;--ink2:#6B6455;--ink3:#8A8372;
+  --orange:#8B5CF6;--orange-soft:rgba(139,92,246,0.12);
+  --purple-d:#7C3AED;--teal-d:#0E7490;
+  --border:rgba(30,27,20,0.09);--r:20px;--rl:32px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+a:focus-visible,button:focus-visible{outline:2px solid var(--purple-d);outline-offset:3px}
+section[id]{scroll-margin-top:90px}
+
+/* NAV */
+nav{
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);
+  z-index:200;width:calc(100% - 40px);max-width:1100px;
+  padding:0 28px;height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);
+  border-radius:100px;border:1px solid var(--border);
+  box-shadow:0 4px 24px rgba(30,27,20,0.06);
+}
+.nav-logo{display:flex;align-items:center}
+.nav-links{display:flex;gap:24px}
+.nav-links a{font-size:0.85rem;color:var(--ink2);text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a[aria-current]{color:var(--ink)}
+.nav-links a[aria-current]{font-weight:600}
+.nav-btn{
+  padding:9px 22px;background:var(--ink);color:#fff;white-space:nowrap;
+  border-radius:100px;font-size:0.85rem;font-weight:600;
+  text-decoration:none;transition:background .2s,transform .2s;
+}
+.nav-btn:hover{background:var(--purple-d);transform:translateY(-1px)}
+
+/* BUTTONS */
+.btn-main{
+  padding:14px 32px;background:var(--purple-d);color:#fff;
+  border-radius:100px;font-weight:600;font-size:0.95rem;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  box-shadow:0 6px 24px rgba(139,92,246,0.28);
+  transition:transform .25s,box-shadow .25s;
+}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(139,92,246,0.38)}
+.btn-ghost{
+  padding:14px 28px;border:1.5px solid var(--border);color:var(--ink);
+  border-radius:100px;font-weight:500;font-size:0.95rem;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:border-color .2s,background .2s;
+}
+.btn-ghost:hover{border-color:var(--orange);background:var(--orange-soft)}
+
+/* TYPO */
+.sec-inner{max-width:1100px;margin:0 auto}
+section{padding:80px 5%}
+.sec-alt{background:var(--bg2)}
+.eyebrow{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--purple-d);margin-bottom:12px}
+h1,h2,h3{font-family:'Fraunces',sans-serif}
+h1{font-weight:900;font-size:clamp(2.1rem,4.4vw,3.2rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:20px}
+h1 em,h2 em{font-style:italic;color:var(--orange)}
+h2{font-weight:900;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.12;letter-spacing:-0.02em;margin-bottom:16px}
+.lead{font-size:1.05rem;color:var(--ink2);line-height:1.8;max-width:680px;margin-bottom:16px}
+.sec-sub{font-size:1rem;color:var(--ink2);line-height:1.75;max-width:720px;margin-bottom:40px}
+
+/* HERO */
+.hero{padding:130px 5% 72px;position:relative;overflow:hidden}
+.hero::before{
+  content:'';position:absolute;width:480px;height:480px;top:-120px;right:-120px;
+  border-radius:60% 40% 30% 70%/60% 30% 70% 40%;
+  background:linear-gradient(135deg,rgba(139,92,246,0.12),rgba(139,92,246,0.03));
+  pointer-events:none;
+}
+.hero .sec-inner{position:relative}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 36px}
+.hero-chips{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+.hero-chips li{
+  font-size:0.85rem;font-weight:500;color:var(--ink);
+  background:var(--surface);border:1px solid var(--border);
+  padding:7px 16px;border-radius:100px;
+}
+.hero-chips-label{font-size:0.85rem;font-weight:600;color:var(--ink2);margin-bottom:10px}
+
+/* KARTEN */
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start}
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);
+  overflow:hidden;display:flex;flex-direction:column;
+}
+.card img{width:100%;height:220px;object-fit:cover;display:block;background:var(--bg2)}
+.card-body{padding:28px}
+.card h3{font-size:1.2rem;font-weight:700;margin-bottom:10px}
+.card p{font-size:0.95rem;color:var(--ink2);line-height:1.7}
+.card-icon{
+  width:48px;height:48px;border-radius:14px;background:var(--orange-soft);
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px;
+}
+
+/* OHNE DATEI */
+.nofile-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+.nofile-grid p{font-size:1rem;color:var(--ink2);line-height:1.8;margin-bottom:16px}
+.note{
+  background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--purple-d);
+  border-radius:var(--r);padding:24px 28px;
+}
+.note h3{font-size:1.05rem;margin-bottom:8px}
+.note p{font-size:0.92rem;margin-bottom:0}
+
+/* ABLAUF */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:24px}
+.step-num{font-family:'Fraunces',sans-serif;font-size:2.4rem;font-weight:900;color:#D9D2C3;line-height:1;margin-bottom:12px}
+.step h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+.step p{font-size:0.875rem;color:var(--ink2);line-height:1.65}
+
+/* GRENZEN */
+.limits>*{max-width:760px}
+.limits p{font-size:1rem;color:var(--ink2);line-height:1.8;margin-bottom:16px}
+.limits ul{list-style:none;margin:8px 0 20px;display:flex;flex-direction:column;gap:10px}
+.limits li{display:flex;gap:10px;font-size:0.97rem;color:var(--ink);line-height:1.6}
+.limits li::before{content:'→';color:var(--purple-d);flex-shrink:0}
+
+/* ABSCHLUSS */
+.cta{background:linear-gradient(135deg,#0E7490 0%,#0F2534 100%);text-align:center;padding:96px 5%}
+.cta .sec-inner{max-width:640px}
+.cta h2{color:#fff}
+.cta p{color:rgba(255,255,255,0.88);font-size:1.05rem;line-height:1.75;margin-bottom:32px}
+.btn-white{
+  padding:14px 32px;background:#fff;color:#0F2534;
+  border-radius:100px;font-weight:600;font-size:0.95rem;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.15);transition:transform .2s,box-shadow .2s;
+}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.2)}
+.cta p.cta-alt{margin:24px 0 0;font-size:0.9rem;color:rgba(255,255,255,0.8)}
+.cta-alt a{color:#fff;font-weight:600}
+
+/* FOOTER */
+footer{padding:48px 5% 32px;border-top:1px solid var(--border)}
+.footer-w{max-width:1100px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:40px}
+.fw-desc{font-size:0.875rem;color:var(--ink2);line-height:1.7;max-width:260px;margin-top:10px}
+.fw-addr{font-size:0.8rem;color:var(--ink3);margin-top:10px}
+.fw-head{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+.fw-links{list-style:none}
+.fw-links li{margin-bottom:9px}
+.fw-links a{font-size:0.875rem;color:var(--ink2);text-decoration:none;transition:color .2s}
+.fw-links a:hover{color:var(--purple-d)}
+.footer-bottom{
+  border-top:1px solid var(--border);padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  font-size:0.8rem;color:var(--ink3);
+}
+.footer-bottom a{color:var(--ink2);text-decoration:none}
+
+@media(max-width:1000px){
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .nofile-grid{grid-template-columns:1fr;gap:28px}
+}
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  nav{width:calc(100% - 32px)}
+}
+@media(max-width:640px){
+  nav{padding:0 16px}
+  .nav-links a:not(:first-child){display:none}
+  .nav-logo img{height:32px !important}
+  .nav-btn{padding:8px 14px;font-size:0.78rem}
+  .hero{padding:100px 5% 48px}
+  section{padding-top:56px;padding-bottom:56px}
+  .card-grid,.steps{grid-template-columns:1fr}
+  .card img{height:200px}
+  .cta{padding:64px 5%}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Hauptnavigation">
+  <a href="/" class="nav-logo" aria-label="3D Oberberg – zur Startseite">
+    <img src="3D%20Oberberg_Logo_kl.png" alt="3D Oberberg Logo" style="height:40px;width:auto">
+  </a>
+  <div class="nav-links">
+    <a href="/">Startseite</a>
+    <a href="leistungen.html">Leistungen</a>
+    <a href="ersatzteile.html" aria-current="page">Ersatzteile</a>
+    <a href="#ablauf">Ablauf</a>
+  </div>
+  <a href="/?projekt=ersatzteil#cta-w" class="nav-btn">Ersatzteil anfragen</a>
+</nav>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="sec-inner">
+    <p class="eyebrow">3D-Druck aus Morsbach · Oberbergischer Kreis</p>
+    <h1>Ersatzteile und funktionale Kunststoffteile im <em>3D-Druck</em></h1>
+    <p class="lead">Ein Kunststoffteil ist gebrochen, fehlt oder wird nicht mehr angeboten? Wir prüfen, ob wir es mit 3D-Druck nachfertigen oder eine passende individuelle Lösung entwickeln können.</p>
+    <p class="lead">Bei 3D Oberberg aus Morsbach kannst du sowohl mit einer vorhandenen 3D-Datei als auch mit Fotos, Maßen, einer Skizze oder einem Musterteil anfragen.</p>
+    <div class="hero-actions">
+      <a href="/?projekt=ersatzteil#cta-w" class="btn-main">Ersatzteil anfragen →</a>
+      <a href="#teile" class="btn-ghost">Welche Teile kommen infrage?</a>
+    </div>
+    <p class="hero-chips-label">Das hilft uns bei der Einschätzung:</p>
+    <ul class="hero-chips">
+      <li>Fotos</li>
+      <li>Maße</li>
+      <li>Skizze</li>
+      <li>Musterteil</li>
+      <li>3D-Datei</li>
+    </ul>
+  </div>
+</section>
+
+<!-- WELCHE TEILE -->
+<section class="sec-alt" id="teile">
+  <div class="sec-inner">
+    <h2>Welche Teile kommen <em>infrage?</em></h2>
+    <p class="sec-sub">Ob ein Teil sich für den 3D-Druck eignet, hängt von Form, Belastung und Einsatz ab. Diese Fälle erreichen uns am häufigsten.</p>
+    <div class="card-grid">
+      <article class="card">
+        <div class="card-body">
+          <div class="card-icon" aria-hidden="true">♻️</div>
+          <h3>Defekte Kunststoffteile</h3>
+          <p>Zum Beispiel einfache Clips, Abdeckungen, Knöpfe oder Halter, sofern Geometrie und Belastung für den 3D-Druck geeignet sind.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="prototyp-768x575.webp" alt="Weißer Halter mit mehreren Aussparungen, eingehängt an einer schwarzen Lochwand" loading="lazy">
+        <div class="card-body">
+          <h3>Halterungen und Adapter</h3>
+          <p>Individuelle Halter, Abstandshalter und Verbindungselemente für konkrete Einbausituationen.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="funktionsteil-768x575.webp" alt="Kleines schwarzes Kunststoff-Funktionsteil mit Rippen auf einer Holzfläche" loading="lazy">
+        <div class="card-body">
+          <h3>Funktionale Hilfsmittel</h3>
+          <p>Kleine Organisations-, Montage- oder Werkstatthilfen, die eine bestimmte Aufgabe erleichtern.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="giveaway-576x1024.jpg" alt="Mehrere identische türkisfarbene Anhänger auf dem Druckbett eines 3D-Druckers" loading="lazy">
+        <div class="card-body">
+          <h3>Kleine Stückzahlen</h3>
+          <p>Mehrere gleichartige Teile, wenn sich eine individuelle Fertigung ohne klassische Werkzeuge anbietet.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- KEINE 3D-DATEI -->
+<section id="ohne-datei">
+  <div class="sec-inner nofile-grid">
+    <div>
+      <h2>Keine 3D-Datei <em>vorhanden?</em></h2>
+      <p>Das ist kein Hindernis für eine erste Anfrage. Beschreibe uns, was das Teil können soll, und sende uns möglichst Fotos, Maße oder ein vorhandenes Muster. Wir prüfen, ob eine Nachkonstruktion mit dem verfügbaren Aufwand möglich ist.</p>
+      <a href="/?projekt=ersatzteil#cta-w" class="btn-main">Ersatzteil anfragen →</a>
+    </div>
+    <aside class="note">
+      <h3>Offen gesagt</h3>
+      <p>Nicht jedes Teil lässt sich nachfertigen. Und wenn ein Teil erst nachkonstruiert oder angepasst werden muss, kann dafür zusätzlicher Aufwand entstehen. Das besprechen wir mit dir, bevor etwas gefertigt wird.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ABLAUF -->
+<section class="sec-alt" id="ablauf">
+  <div class="sec-inner">
+    <h2>So läuft eine <em>Anfrage</em> ab</h2>
+    <ol class="steps">
+      <li class="step">
+        <div class="step-num" aria-hidden="true">01</div>
+        <h3>Ausgangssituation beschreiben</h3>
+        <p>Was ist defekt oder wird benötigt? Welche Funktion soll das Teil erfüllen?</p>
+      </li>
+      <li class="step">
+        <div class="step-num" aria-hidden="true">02</div>
+        <h3>Vorlage bereitstellen</h3>
+        <p>Fotos, Maße, Skizze, Musterteil oder vorhandene 3D-Datei helfen bei der Einschätzung.</p>
+      </li>
+      <li class="step">
+        <div class="step-num" aria-hidden="true">03</div>
+        <h3>Machbarkeit und Aufwand prüfen</h3>
+        <p>Material, Geometrie, Einsatzbedingungen und gegebenenfalls Konstruktionsaufwand werden berücksichtigt.</p>
+      </li>
+      <li class="step">
+        <div class="step-num" aria-hidden="true">04</div>
+        <h3>Angebot abstimmen</h3>
+        <p>Die Fertigung erfolgt nach Klärung des Auftrags und der vereinbarten Kosten.</p>
+      </li>
+      <li class="step">
+        <div class="step-num" aria-hidden="true">05</div>
+        <h3>Fertigung</h3>
+        <p>Nach Freigabe wird das vereinbarte Teil gefertigt.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- GRENZEN -->
+<section id="grenzen">
+  <div class="sec-inner limits">
+    <h2>Wichtige <em>Grenzen</em></h2>
+    <p>3D-gedruckte Kunststoffteile sind nicht für jeden Einsatz geeignet. Ob ein Teil passt, hängt vom Einzelfall ab:</p>
+    <ul>
+      <li>Welches Material infrage kommt, hängt von Temperatur, Belastung und Einsatzbereich ab, zum Beispiel drinnen oder draußen, mit Wärme oder Feuchtigkeit.</li>
+      <li>Aussagen zu Festigkeit, Passgenauigkeit, Lebensdauer oder Lieferzeit lassen sich nicht pauschal treffen. Sie hängen vom konkreten Teil ab und werden im Einzelfall besprochen.</li>
+      <li>Sicherheitskritische, medizinische oder anderweitig besonders regulierte Bauteile bieten wir nicht pauschal an. Solche Anfragen müssen im Einzelfall geprüft werden, und nicht jedes Teil kann nachgefertigt werden.</li>
+    </ul>
+    <p>Wenn du unsicher bist, ob dein Teil geeignet ist: Beschreibe uns den Einsatz. Wir sagen dir ehrlich, was wir einschätzen können.</p>
+  </div>
+</section>
+
+<!-- ABSCHLUSS -->
+<section class="cta" id="anfrage">
+  <div class="sec-inner">
+    <h2>Du brauchst ein bestimmtes <em style="color:#C4B5FD">Kunststoffteil?</em></h2>
+    <p>Schick uns die vorhandenen Informationen. Wir prüfen, ob und wie wir dein Vorhaben umsetzen können.</p>
+    <a href="/?projekt=ersatzteil#cta-w" class="btn-white">Projekt anfragen →</a>
+    <p class="cta-alt">Du kannst im Formular auch Fotos oder Dateien anhängen. Zurück zur <a href="/">Startseite</a>.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-w">
+    <div class="footer-grid">
+      <div>
+        <img src="3D%20Oberberg_Logo_kl.png" alt="3D Oberberg Logo" style="height:32px;width:auto">
+        <p class="fw-desc">Individuelle 3D-Druckteile aus Morsbach – für den Oberbergischen Kreis und darüber hinaus.</p>
+        <p class="fw-addr">📍 Bitze 2 · 51597 Morsbach</p>
+      </div>
+      <div>
+        <div class="fw-head">Navigation</div>
+        <ul class="fw-links">
+          <li><a href="/">Startseite</a></li>
+          <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="ersatzteile.html">Ersatzteile</a></li>
+          <li><a href="/?projekt=ersatzteil#cta-w">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fw-head">Rechtliches</div>
+        <ul class="fw-links">
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="agb.html">AGB</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 3D Oberberg · Urs Arets</span>
+      <div style="display:flex;gap:20px">
+        <a href="https://wa.me/491717015924">WhatsApp</a>
+        <a href="mailto:info@3doberberg.de">E-Mail</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

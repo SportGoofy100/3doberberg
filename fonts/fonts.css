@@ -1,0 +1,13 @@
+/* Lokal gehostete Schriften (SIL Open Font License 1.1, siehe OFL-*.txt und README.txt) */
+@font-face{
+  font-family:'Fraunces';font-style:normal;font-weight:400 900;font-display:swap;
+  src:url(fraunces-roman.woff2) format('woff2');
+}
+@font-face{
+  font-family:'Fraunces';font-style:italic;font-weight:400 700;font-display:swap;
+  src:url(fraunces-italic.woff2) format('woff2');
+}
+@font-face{
+  font-family:'Plus Jakarta Sans';font-style:normal;font-weight:300 600;font-display:swap;
+  src:url(plus-jakarta-sans.woff2) format('woff2');
+}
