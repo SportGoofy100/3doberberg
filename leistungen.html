@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leistungen & Services | 3D Oberberg – 3D-Druck Morsbach</title>
-<meta name="description" content="Von CAD-Konstruktion bis FDM-Druck: Entdecke meine 3D-Druck Dienstleistungen für Prototypen, Ersatzteile und Serienfertigung in Morsbach.">
+<title>Leistungen | 3D Oberberg – 3D-Druck aus Morsbach</title>
+<meta name="description" content="3D-Druck nach deinen Vorgaben, Konstruktion nach Bedarf, Prototypen und Kleinserien aus Morsbach. Jetzt Projekt anfragen.">
 <link rel="canonical" href="https://3doberberg.de/leistungen.html">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="icon" type="image/png" href="3D%20Oberberg_Logo_kl.png">
 <style>
   /* wie zuvor mit Google Fonts: Fraunces ohne automatische optische Größe (opsz 14) */
   h1,h2,h3,.nav-logo{font-variation-settings:'opsz' 14}
-  :root{ --bg:#FBF8F2; --ink:#1E1B14; --ink2:#6B6455; --orange:#8B5CF6; --border:rgba(30,27,20,0.09); }
+  :root{ --bg:#FBF8F2; --ink:#1E1B14; --ink2:#6B6455; --orange:#8B5CF6; --purple-d:#7C3AED; --border:rgba(30,27,20,0.09); }
   body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;margin:0;padding:0}
   nav{padding:20px 5%;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:#fff}
   .nav-logo{font-family:'Fraunces',sans-serif;font-weight:900;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:10px}
@@ -24,61 +24,87 @@
   .service-icon{font-size:2rem;margin-bottom:20px;display:block}
   .service-card h2{font-family:'Fraunces',sans-serif;font-size:1.4rem;margin-bottom:16px}
   .service-card p{color:var(--ink2);font-size:0.95rem;line-height:1.7}
-  .back-link{display:inline-block;margin-top:40px;color:var(--orange);text-decoration:none;font-weight:600}
+  .back-link{display:inline-block;margin-top:40px;color:var(--purple-d);text-decoration:none;font-weight:600}
+  .lead{margin-bottom:28px}
+  .btn-main{padding:14px 32px;background:var(--purple-d);color:#fff;border-radius:100px;font-weight:600;font-size:0.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 24px rgba(139,92,246,0.28);transition:transform .25s,box-shadow .25s}
+  .btn-main:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(139,92,246,0.38)}
+  .services-top{margin-bottom:60px}
+  .service-card .more{display:inline-block;margin-top:12px;color:var(--purple-d);font-weight:600;font-size:0.9rem;text-decoration:none}
+  .service-card .more:hover{text-decoration:underline}
+  .services-cta{margin-top:56px;text-align:center}
+  .services-cta h2{font-family:'Fraunces',sans-serif;font-size:1.6rem;margin-bottom:12px}
+  .services-cta p{color:var(--ink2);max-width:560px;margin:0 auto 24px}
+  a:focus-visible{outline:2px solid var(--purple-d);outline-offset:3px}
+  .foot-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px}
+  .foot-links a{color:var(--ink2);text-decoration:none}
+  .foot-links a:hover{text-decoration:underline}
+  @media(prefers-reduced-motion:reduce){ .service-card,.btn-main{transition:none} .service-card:hover{transform:none} }
   footer{padding:40px 5%;border-top:1px solid var(--border);margin-top:80px;font-size:0.8rem;color:var(--ink2);text-align:center}
   @media(max-width:600px){ h1{font-size:2rem} .lead{font-size:1rem} }
 </style>
 </head>
 <body>
-<nav>
+<nav aria-label="Hauptnavigation">
   <a href="/" class="nav-logo">
     <img src="3D%20Oberberg_Logo_kl.png" alt="3D Oberberg Logo" style="height:32px;width:auto">
   </a>
   <a href="/" style="color:var(--ink);text-decoration:none;font-weight:600;font-size:0.85rem">← Zurück</a>
 </nav>
 
-<div class="content">
-  <h1>Meine Leistungen</h1>
-  <p class="lead">Vom ersten Entwurf bis zum fertigen Bauteil – ich unterstütze dich mit moderner 3D-Druck-Technologie und persönlicher Beratung bei der Umsetzung deiner Projekte.</p>
+<main class="content">
+  <h1>Unsere Leistungen</h1>
+  <p class="lead">Vom Druck nach deinen Vorgaben über die Konstruktion bis zu Prototypen und Kleinserien: Wir prüfen dein Vorhaben und finden mit dir heraus, wie es sich im 3D-Druck umsetzen lässt.</p>
+  <div class="services-top"><a href="/#cta-w" class="btn-main">Projekt anfragen →</a></div>
 
   <div class="services-grid">
     <div class="service-card">
-      <span class="service-icon">🖨️</span>
-      <h2>3D-Druck (FDM)</h2>
-      <p>Präzise Fertigung deiner Bauteile in verschiedenen Materialien wie PLA, PETG oder spezialisierten Carbon-Filamenten. Ideal für Funktionsteile, Gehäuse und Prototypen.</p>
+      <span class="service-icon" aria-hidden="true">🖨️</span>
+      <h2>3D-Druck nach deinen Vorgaben</h2>
+      <p>Wir fertigen Kunststoffteile im 3D-Druck nach deiner 3D-Datei, einem Muster, Fotos oder Maßen. Material und Ausführung stimmen wir persönlich mit dir auf den Einsatz ab.</p>
     </div>
     <div class="service-card">
-      <span class="service-icon">🛠️</span>
-      <h2>Prototypenbau</h2>
-      <p>Schnelle Iterationen deiner Design-Ideen. Prüfe Form, Passgenauigkeit und Funktion deiner Konzepte in kürzester Zeit und zu geringen Kosten.</p>
+      <span class="service-icon" aria-hidden="true">📐</span>
+      <h2>Konstruktion nach Bedarf</h2>
+      <p>Du hast eine Skizze, ein Foto oder ein Musterteil statt einer 3D-Datei? Je nach Projekt unterstützen wir dich bei der Konstruktion. Den Aufwand klären wir mit dir, bevor etwas gefertigt wird.</p>
     </div>
     <div class="service-card">
-      <span class="service-icon">📐</span>
-      <h2>CAD-Konstruktion</h2>
-      <p>Du hast eine Idee, aber keine Datei? Ich erstelle professionelle 3D-Modelle nach deinen Skizzen, Maßen oder physischen Vorlagen (Reverse Engineering).</p>
+      <span class="service-icon" aria-hidden="true">🛠️</span>
+      <h2>Prototypen</h2>
+      <p>Ein erster Prototyp hilft, Passform und Funktion zu testen, bevor du mehr Teile brauchst. Je nach Vorhaben erstellen wir ihn auf Basis deiner Datei oder unserer Konstruktion.</p>
     </div>
     <div class="service-card">
-      <span class="service-icon">♻️</span>
-      <h2>Ersatzteil-Service</h2>
-      <p>Nachhaltigkeit durch Reparatur. Ich drucke nicht mehr lieferbare Kunststoff-Ersatzteile für Haushaltsgeräte, Werkzeuge oder Fahrzeuge einfach nach.</p>
-      <p style="margin-top:12px"><a href="ersatzteile.html" style="color:var(--orange);font-weight:600;text-decoration:none">Mehr zu Ersatzteilen →</a></p>
+      <span class="service-icon" aria-hidden="true">📦</span>
+      <h2>Kleinserien</h2>
+      <p>Mehrere gleiche Teile für deinen Betrieb, einen Verein oder ein privates Projekt: Wir prüfen Stückzahl, Material und Aufwand und erstellen ein individuelles Angebot.</p>
     </div>
     <div class="service-card">
-      <span class="service-icon">🎁</span>
-      <h2>Serien & Giveaways</h2>
-      <p>Produktion von Kleinserien, individualisierten Werbeartikeln oder personalisierten Geschenken in gleichbleibend hoher Qualität und ansprechendem Design.</p>
+      <span class="service-icon" aria-hidden="true">♻️</span>
+      <h2>Ersatzteile</h2>
+      <p>Ein Kunststoffteil ist gebrochen, fehlt oder wird nicht mehr geliefert? Mit Muster, Foto oder Maßen prüfen wir, ob wir es nachfertigen können.</p>
+      <a href="ersatzteile.html" class="more">Mehr zu Ersatzteilen →</a>
     </div>
     <div class="service-card">
-      <span class="service-icon">🤝</span>
-      <h2>Beratung</h2>
-      <p>Welches Material? Welche Druckeinstellungen? Ich berate dich umfassend zu den Möglichkeiten des 3D-Drucks für deine spezifische Anwendung.</p>
+      <span class="service-icon" aria-hidden="true">🤝</span>
+      <h2>Beratung zu Material und Machbarkeit</h2>
+      <p>Welches Material zu Einsatz, Belastung und Temperatur passt, besprechen wir mit dir. Ob sich dein Vorhaben im 3D-Druck umsetzen lässt, hängt vom Einzelfall ab, und wir sagen dir offen, was wir einschätzen können.</p>
     </div>
   </div>
 
+  <div class="services-cta">
+    <h2>Bereit für dein Projekt?</h2>
+    <p>Beschreibe uns kurz, worum es geht. Fotos, Skizzen oder eine 3D-Datei kannst du anhängen, nötig ist das nicht.</p>
+    <a href="/#cta-w" class="btn-main">Projekt anfragen →</a>
+  </div>
+
   <a href="/" class="back-link">← Zurück zur Startseite</a>
-</div>
+</main>
 
 <footer>
+  <div class="foot-links">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="agb.html">AGB</a>
+  </div>
   © 2026 3D Oberberg · Urs Arets
 </footer>
 </body>

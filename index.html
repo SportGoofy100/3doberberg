@@ -17,6 +17,7 @@
 <link rel="preload" href="fonts/fraunces-roman.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="icon" type="image/png" href="3D%20Oberberg_Logo_kl.png">
+<noscript><style>.sw-card{opacity:1;transform:none}</style></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -25,7 +26,7 @@
   --surface:#FFFFFF;
   --ink:#1E1B14;
   --ink2:#6B6455;
-  --ink3:#AFA89A;
+  --ink3:#736C5E;
   --orange:#8B5CF6;
   --orange-soft:rgba(139,92,246,0.12);
   --green:#22D3EE;
@@ -336,7 +337,9 @@ h2.warm-h2 em{font-style:italic;color:var(--orange)}
   transition:border-color .2s, background .2s;display:block;
 }
 .file-upload:hover{border-color:var(--orange);background:rgba(255,255,255,0.08)}
-.file-upload input{display:none}
+.file-upload{position:relative}
+.file-upload input{position:absolute;opacity:0;width:1px;height:1px;overflow:hidden}
+.file-upload:focus-within{border-color:var(--orange);outline:2px solid #C4B5FD;outline-offset:3px}
 .file-upload span{display:block;font-size:0.9rem;color:rgba(255,255,255,0.8);margin-bottom:4px}
 #file-name{font-size:0.75rem;color:var(--orange);font-weight:600;margin-top:8px}
 .cta-form .btn-cta-white{width:100%;justify-content:center;border:none;cursor:pointer;font-family:inherit}
@@ -422,13 +425,26 @@ section[id]{scroll-margin-top:90px}
 .uc-body{padding:24px;display:flex;flex-direction:column;flex:1}
 .uc-card h3{font-family:'Fraunces',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:8px}
 .uc-card p{font-size:0.875rem;color:var(--ink2);line-height:1.7;margin-bottom:20px}
-.uc-card .btn-warm-ghost{margin-top:auto;align-self:flex-start}
+.uc-media{position:relative}
+.uc-tag{
+  position:absolute;top:12px;left:12px;
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.95);color:var(--ink);
+  font-size:0.78rem;font-weight:600;
+  padding:5px 12px;border-radius:100px;
+  box-shadow:0 2px 10px rgba(30,27,20,0.12);
+}
+.uc-card .btn-warm-main{margin-top:auto;align-self:flex-start}
+.uc-more{font-weight:600;color:var(--purple-d);text-decoration:none;white-space:nowrap}
+.uc-more:hover{text-decoration:underline}
 
 /* Leistungen: 5 Karten, 3 + 2 */
 .services-w-grid{grid-template-columns:repeat(6,1fr)}
 .services-w-grid .sw-card{grid-column:span 2;padding:32px}
 .services-w-grid .sw-card:nth-child(n+4){grid-column:span 3}
 .sw-card p{font-weight:400}
+.services-cta{margin-top:40px;text-align:center}
+.services-cta p{font-size:1rem;color:var(--ink2);margin-bottom:20px}
 
 /* Ablauf */
 .steps-w{grid-template-columns:repeat(4,1fr);gap:20px}
@@ -466,6 +482,7 @@ section[id]{scroll-margin-top:90px}
 /* Abschluss / Formular */
 .cta-w{background:linear-gradient(135deg,#0E7490 0%,#0F2534 100%)}
 .cta-w-inner p{color:rgba(255,255,255,0.85)}
+.cta-w-inner h2 + p{margin-bottom:16px}
 .cta-w-inner p.cta-note{font-size:0.95rem;font-weight:600;color:#fff;margin:-24px 0 0}
 .cta-w-inner h2 em{color:#C4B5FD}
 .cta-form select{
@@ -474,9 +491,11 @@ section[id]{scroll-margin-top:90px}
   color:#fff;font-family:inherit;font-size:0.95rem;
 }
 .cta-form select option{color:var(--ink);background:#fff}
-.cta-form input::placeholder,.cta-form textarea::placeholder{color:rgba(255,255,255,0.6)}
+.cta-form input::placeholder,.cta-form textarea::placeholder{color:rgba(255,255,255,0.78)}
 .file-upload small{color:rgba(255,255,255,0.65) !important}
 #file-name{color:#C4B5FD}
+#file-name.is-error{color:#FCA5A5}
+.cta-w-inner p.form-req{margin:0 0 -4px}
 .cta-alt{color:rgba(255,255,255,0.75)}
 .cta-w-inner p.form-note{font-size:0.82rem;line-height:1.6;color:rgba(255,255,255,0.85);margin:0;text-align:left}
 .form-note a{color:#fff;font-weight:600;text-decoration:underline}
@@ -566,42 +585,54 @@ section[id]{scroll-margin-top:90px}
   </div>
 </section>
 
-<!-- B: ANWENDUNGSFÄLLE -->
+<!-- B: EINSTIEGE -->
 <section class="usecase-w" id="usecases">
   <div class="sec-inner">
-    <h2 class="warm-h2">Was möchtest du <em>herstellen lassen?</em></h2>
-    <p class="sec-sub-w">Nicht jedes Projekt beginnt mit einer fertigen 3D-Datei. Manchmal ist ein Teil kaputt, manchmal fehlt eine passende Halterung und manchmal werden einfach mehrere identische Teile benötigt.</p>
+    <h2 class="warm-h2">Was <em>brauchst</em> du?</h2>
+    <p class="sec-sub-w">Such dir den Einstieg, der am besten zu deinem Anliegen passt. Eine fertige 3D-Datei brauchst du für die Anfrage nicht.</p>
     <div class="usecase-grid">
       <article class="uc-card">
-        <img src="funktionsteil-768x575.webp" alt="Kleines schwarzes Kunststoffteil mit Rippen auf einer Holzfläche" loading="lazy">
+        <div class="uc-media">
+          <img src="funktionsteil-768x575.webp" alt="Kleines schwarzes Kunststoffteil mit Rippen auf einer Holzfläche" loading="lazy">
+          <span class="uc-tag"><span aria-hidden="true">♻️</span> Ersatzteil</span>
+        </div>
         <div class="uc-body">
-          <h3>Ein Teil ist kaputt</h3>
-          <p>Ein Kunststoffteil ist gebrochen oder nicht mehr erhältlich? Wir prüfen, ob sich eine Nachfertigung anhand eines Musters, Fotos oder vorhandener Maße umsetzen lässt.</p>
-          <a href="#cta-w" class="btn-warm-ghost btn-sm" data-projekt="ersatzteil">Ersatzteil anfragen</a>
+          <h3>Ein Teil ist defekt oder fehlt</h3>
+          <p>Ein Kunststoffteil ist gebrochen, fehlt oder wird nicht mehr geliefert? Mit Muster, Foto oder Maßen prüfen wir, ob wir es nachfertigen können. <a href="ersatzteile.html" class="uc-more">Mehr zu Ersatzteilen →</a></p>
+          <a href="#cta-w" class="btn-warm-main btn-sm" data-projekt="ersatzteil">Ersatzteil anfragen</a>
         </div>
       </article>
       <article class="uc-card">
-        <img src="PXL_20251027_143704354.MP_-576x1024.jpg" alt="Grüne 3D-gedruckte Schlüsselkappe mit Schriftzug an einem Schlüsselbund" loading="lazy">
+        <div class="uc-media">
+          <img src="prototyp-768x575.webp" alt="Weißer Halter mit mehreren Aussparungen, eingehängt an einer schwarzen Lochwand" loading="lazy">
+          <span class="uc-tag"><span aria-hidden="true">💡</span> Eigene Idee</span>
+        </div>
         <div class="uc-body">
-          <h3>Ich brauche ein Bauteil</h3>
-          <p>Du benötigst eine spezielle Halterung, einen Adapter, einen Abstandhalter oder eine andere praktische Lösung? Wir prüfen die Umsetzung nach deinen Anforderungen.</p>
-          <a href="#cta-w" class="btn-warm-ghost btn-sm" data-projekt="bauteil">Bauteil anfragen</a>
+          <h3>Du hast eine Idee, aber noch keine Datei</h3>
+          <p>Eine Halterung, ein Adapter oder eine andere Lösung für dein Problem? Je nach Projekt unterstützen wir bei der Konstruktion und erstellen bei Bedarf einen ersten Prototyp.</p>
+          <a href="#cta-w" class="btn-warm-main btn-sm" data-projekt="konstruktion">Idee anfragen</a>
         </div>
       </article>
       <article class="uc-card">
-        <img src="giveaway-576x1024.jpg" alt="Mehrere identische türkisfarbene Anhänger auf dem Druckbett eines 3D-Druckers" loading="lazy">
+        <div class="uc-media">
+          <img src="giveaway-576x1024.jpg" alt="Mehrere identische türkisfarbene Anhänger auf dem Druckbett eines 3D-Druckers" loading="lazy">
+          <span class="uc-tag"><span aria-hidden="true">📦</span> Kleinserie</span>
+        </div>
         <div class="uc-body">
-          <h3>Ich brauche mehrere Stück</h3>
-          <p>Du benötigst mehrere identische Teile für deinen Betrieb, einen Verein oder eine Veranstaltung? Wir erstellen ein individuelles Angebot.</p>
-          <a href="#cta-w" class="btn-warm-ghost btn-sm" data-projekt="kleinserie">Kleinserie anfragen</a>
+          <h3>Du brauchst mehrere gleiche Teile</h3>
+          <p>Für deinen Betrieb, einen Verein oder ein privates Projekt? Wir prüfen Stückzahl, Material und Aufwand und erstellen ein individuelles Angebot.</p>
+          <a href="#cta-w" class="btn-warm-main btn-sm" data-projekt="kleinserie">Kleinserie anfragen</a>
         </div>
       </article>
       <article class="uc-card">
-        <img src="PXL_20251229_095257954.MP_-576x1024.jpg" alt="Weißes 3D-gedrucktes Gehäuse mit eingeprägtem Logo" loading="lazy">
+        <div class="uc-media">
+          <img src="PXL_20251229_095257954.MP_-576x1024.jpg" alt="Weißes 3D-gedrucktes Gehäuse mit eingeprägtem Logo" loading="lazy">
+          <span class="uc-tag"><span aria-hidden="true">🖨️</span> Vorhandene 3D-Datei</span>
+        </div>
         <div class="uc-body">
-          <h3>Ich habe eine 3D-Datei</h3>
-          <p>Du besitzt bereits eine STL-, 3MF- oder geeignete CAD-Datei? Wir prüfen die Druckbarkeit und erstellen ein Angebot.</p>
-          <a href="#cta-w" class="btn-warm-ghost btn-sm" data-projekt="datei">Datei drucken lassen</a>
+          <h3>Du hast schon eine 3D-Datei</h3>
+          <p>Du besitzt eine STL-, 3MF- oder geeignete CAD-Datei? Wir prüfen die Druckbarkeit und erstellen ein Angebot für den Druck.</p>
+          <a href="#cta-w" class="btn-warm-main btn-sm" data-projekt="datei">Datei drucken lassen</a>
         </div>
       </article>
     </div>
@@ -612,44 +643,33 @@ section[id]{scroll-margin-top:90px}
 <section class="services-w sec-alt" id="services-w">
   <div class="services-w-inner">
     <h2 class="warm-h2">Was wir für dich <em>fertigen</em></h2>
-    <p class="sec-sub-w">Ob einzelnes Ersatzteil, individuelles Funktionsteil oder Kleinserie: Wir prüfen dein Vorhaben und finden heraus, wie es sich im 3D-Druck umsetzen lässt.</p>
+    <p class="sec-sub-w">Die Einstiege oben zeigen, womit du anfragen kannst. Hier siehst du, was wir für dich übernehmen: vom Druck nach deinen Vorgaben bis zur Konstruktion.</p>
     <div class="services-w-grid">
       <div class="sw-card">
-        <div class="sw-icon-w" aria-hidden="true">♻️</div>
+        <div class="sw-icon-w" aria-hidden="true">🖨️</div>
         <div>
-          <h3>Ersatzteile</h3>
-          <p>Ein Kunststoffteil ist gebrochen oder nicht mehr lieferbar? Wir prüfen, ob sich das Teil nach einem Muster, Foto oder vorhandenen Maßen nachfertigen lässt.</p>
-          <p style="margin-top:10px"><a href="ersatzteile.html" style="color:var(--purple-d);font-weight:600;text-decoration:none">Mehr zu Ersatzteilen →</a></p>
-        </div>
-      </div>
-      <div class="sw-card">
-        <div class="sw-icon-w" aria-hidden="true">🛠️</div>
-        <div>
-          <h3>Individuelle Funktionsteile</h3>
-          <p>Du benötigst eine spezielle Halterung, einen Adapter, einen Abstandhalter oder eine andere praktische Lösung? Wir fertigen Bauteile nach deinen Anforderungen.</p>
-        </div>
-      </div>
-      <div class="sw-card">
-        <div class="sw-icon-w" aria-hidden="true">📦</div>
-        <div>
-          <h3>Kleinserien</h3>
-          <p>Du brauchst mehrere identische Teile für deinen Betrieb, einen Verein oder eine Veranstaltung? Wir prüfen Stückzahl, Material und Fertigungsaufwand und erstellen ein individuelles Angebot.</p>
+          <h3>3D-Druck nach deinen Vorgaben</h3>
+          <p>Wir fertigen Kunststoffteile im 3D-Druck nach deiner 3D-Datei, einem Muster, Fotos oder Maßen. Material und Ausführung stimmen wir persönlich mit dir auf den Einsatz ab.</p>
         </div>
       </div>
       <div class="sw-card">
         <div class="sw-icon-w" aria-hidden="true">📐</div>
         <div>
-          <h3>Konstruktion und Prototypen</h3>
-          <p>Du hast eine Idee, aber noch keine fertige 3D-Datei? Je nach Projekt unterstützen wir dich bei der Konstruktion und erstellen bei Bedarf einen ersten Prototyp.</p>
+          <h3>Konstruktion nach Bedarf</h3>
+          <p>Du hast eine Skizze, ein Foto oder ein Musterteil statt einer 3D-Datei? Je nach Projekt unterstützen wir dich bei der Konstruktion. Den Aufwand klären wir mit dir, bevor etwas gefertigt wird.</p>
         </div>
       </div>
       <div class="sw-card">
-        <div class="sw-icon-w" aria-hidden="true">🖨️</div>
+        <div class="sw-icon-w" aria-hidden="true">🛠️</div>
         <div>
-          <h3>Vorhandene 3D-Dateien</h3>
-          <p>Du besitzt bereits eine STL-, 3MF- oder geeignete CAD-Datei? Wir prüfen die Druckbarkeit und erstellen ein Angebot für die gewünschte Fertigung.</p>
+          <h3>Prototypen und Kleinserien</h3>
+          <p>Erst ein Prototyp zum Testen von Passform und Funktion, dann bei Bedarf mehrere gleiche Teile. Das Angebot richtet sich nach Stückzahl, Material und Aufwand.</p>
         </div>
       </div>
+    </div>
+    <div class="services-cta">
+      <p>Du bist unsicher, was für dein Vorhaben passt? Beschreibe uns kurz dein Anliegen, wir prüfen die Möglichkeiten.</p>
+      <a href="#cta-w" class="btn-warm-main">Projekt anfragen →</a>
     </div>
   </div>
 </section>
@@ -658,26 +678,27 @@ section[id]{scroll-margin-top:90px}
 <section class="process-w" id="process-w">
   <div class="process-w-inner">
     <h2 class="warm-h2">Einfach anfragen. <em>Gemeinsam umsetzen.</em></h2>
+    <p class="sec-sub-w" style="margin-bottom:0">So läuft es ab, nachdem du deine Anfrage gesendet hast. Du entscheidest erst nach dem Angebot, ob wir fertigen.</p>
     <ol class="steps-w" style="list-style:none">
       <li class="step-w">
         <div class="step-w-num" aria-hidden="true">01</div>
-        <h3>Projekt beschreiben</h3>
-        <p>Ein Foto, eine Skizze oder eine vorhandene 3D-Datei hilft uns, dein Vorhaben einzuschätzen.</p>
+        <h3>Anfrage senden</h3>
+        <p>Beschreibe dein Vorhaben im Formular. Fotos, Skizzen, Maße oder eine 3D-Datei kannst du anhängen, nötig ist das nicht.</p>
       </li>
       <li class="step-w">
         <div class="step-w-num" aria-hidden="true">02</div>
-        <h3>Machbarkeit prüfen</h3>
-        <p>Wir klären die Anforderungen, die benötigten Materialien, die Stückzahl und gegebenenfalls den Konstruktionsaufwand.</p>
+        <h3>Prüfung und Rückfragen</h3>
+        <p>Wir sehen uns dein Vorhaben an und melden uns bei dir. Offene Fragen zu Anforderungen, Material, Stückzahl und gegebenenfalls Konstruktionsaufwand klären wir gemeinsam.</p>
       </li>
       <li class="step-w">
         <div class="step-w-num" aria-hidden="true">03</div>
-        <h3>Angebot erhalten</h3>
-        <p>Du erhältst ein individuelles Angebot. Die Fertigung beginnt erst nach deiner Freigabe.</p>
+        <h3>Angebot abstimmen</h3>
+        <p>Wir stimmen Leistungsumfang und Preis mit dir ab. Gefertigt wird erst nach deiner Freigabe.</p>
       </li>
       <li class="step-w">
         <div class="step-w-num" aria-hidden="true">04</div>
-        <h3>Bauteil erhalten</h3>
-        <p>Nach der Fertigung stimmen wir Abholung oder Versand mit dir ab.</p>
+        <h3>Fertigung und Übergabe</h3>
+        <p>Nach deiner Freigabe fertigen wir das vereinbarte Teil. Abholung in Morsbach und Versand sind möglich, die Details stimmen wir mit dir ab.</p>
       </li>
     </ol>
     <div class="process-cta"><a href="#cta-w" class="btn-warm-main">Jetzt Projekt anfragen →</a></div>
@@ -700,7 +721,7 @@ section[id]{scroll-margin-top:90px}
         <li>wiederkehrend benötigte Kleinserien</li>
       </ul>
       <p>Du weißt noch nicht, ob 3D-Druck für deinen Anwendungsfall geeignet ist? Beschreibe uns dein Vorhaben. Wir prüfen die Möglichkeiten, bevor du einen Auftrag erteilst.</p>
-      <a href="#cta-w" class="btn-warm-main" data-projekt="kleinserie">Projekt für meinen Betrieb anfragen →</a>
+      <a href="#cta-w" class="btn-warm-main">Projekt für meinen Betrieb anfragen →</a>
     </div>
     <div class="biz-media">
       <img src="prototyp-768x575.webp" alt="Weißer Halter mit mehreren Aussparungen an einer schwarzen Lochwand, wie sie in Werkstätten verwendet wird" loading="lazy">
@@ -713,20 +734,20 @@ section[id]{scroll-margin-top:90px}
   <div class="services-w-inner">
     <h2 class="warm-h2">Aus Ideen werden <em>fertige Bauteile</em></h2>
     <p class="sec-sub-w" style="margin-bottom:0">Jedes Projekt beginnt mit einer konkreten Idee oder einem Bedarf. Hier zeigen wir ausgewählte Arbeiten aus dem 3D-Druck und der individuellen Fertigung.</p>
-    <p class="sec-sub-w" style="margin:12px 0 0">Ob personalisierte Kleinserie, funktionales Bauteil oder eigens entwickeltes Modell – entscheidend ist, dass das Ergebnis zum jeweiligen Einsatzzweck passt.</p>
+    <p class="sec-sub-w" style="margin:12px 0 0">Ob personalisierte Kleinserie, funktionales Bauteil oder eigens entwickeltes Modell – entscheidend ist, dass das Ergebnis zum jeweiligen Einsatzzweck passt. Ob sich dein Vorhaben umsetzen lässt, hängt von Form, Material und Einsatz ab und wird im Einzelfall geprüft.</p>
     <div class="portfolio-grid">
       <div class="portfolio-item">
         <img src="funktionsteil-768x575.webp" alt="Kleines schwarzes Kunststoff-Funktionsteil mit Rippen auf einer Holzfläche" class="portfolio-img" loading="lazy">
         <div class="portfolio-info">
           <h3>Funktionsteil</h3>
-          <p>Kleines Kunststoffteil aus dem 3D-Druck.</p>
+          <p>Kleines schwarzes Kunststoffteil mit Rippen.</p>
         </div>
       </div>
       <div class="portfolio-item">
         <img src="prototyp-768x575.webp" alt="Weißer Halter mit mehreren Aussparungen an einer Lochwand" class="portfolio-img" loading="lazy">
         <div class="portfolio-info">
           <h3>Halter für die Lochwand</h3>
-          <p>Praktische Werkstatt- und Alltagslösung.</p>
+          <p>Halter mit mehreren Aussparungen, an einer Lochwand eingehängt.</p>
         </div>
       </div>
       <div class="portfolio-item">
@@ -747,7 +768,7 @@ section[id]{scroll-margin-top:90px}
         <img src="PXL_20251027_143704354.MP_-576x1024.jpg" alt="Grüne Schlüsselkappe mit Schriftzug an einem Schlüsselbund" class="portfolio-img" loading="lazy">
         <div class="portfolio-info">
           <h3>Personalisierte Schlüsselkappe</h3>
-          <p>Kleiner Alltagshelfer mit individuellem Schriftzug.</p>
+          <p>Schlüsselkappe mit individuellem Schriftzug.</p>
         </div>
       </div>
       <div class="portfolio-item">
@@ -775,17 +796,17 @@ section[id]{scroll-margin-top:90px}
       <div class="trust-card">
         <div class="sw-icon-w" aria-hidden="true">💬</div>
         <h3>Dein Projekt, dein Ansprechpartner</h3>
-        <p>Wir besprechen die Anforderungen direkt miteinander und klären, welche Umsetzung sinnvoll ist.</p>
+        <p>Wir besprechen die Anforderungen direkt miteinander, betrachten jedes Vorhaben einzeln und klären, welche Umsetzung sinnvoll ist.</p>
       </div>
       <div class="trust-card">
-        <div class="sw-icon-w" aria-hidden="true">📷</div>
-        <h3>Keine fertige Datei erforderlich</h3>
-        <p>Ein Foto, eine Skizze oder ein vorhandenes Teil kann für eine erste Einschätzung ausreichen.</p>
+        <div class="sw-icon-w" aria-hidden="true">💡</div>
+        <h3>Auch eine erste Idee reicht</h3>
+        <p>Du musst nichts perfekt vorbereiten. Mit einer Idee, einem Foto oder einem Musterteil kannst du anfragen, den Rest klären wir im Gespräch.</p>
       </div>
       <div class="trust-card">
         <div class="sw-icon-w" aria-hidden="true">🤝</div>
-        <h3>Transparente Abstimmung</h3>
-        <p>Du erhältst ein individuelles Angebot, bevor wir mit der vereinbarten Fertigung beginnen.</p>
+        <h3>Ehrliche Einschätzung</h3>
+        <p>Nicht jedes Vorhaben lässt sich im 3D-Druck umsetzen. Wir prüfen es und sagen dir offen, was wir einschätzen können.</p>
       </div>
     </div>
   </div>
@@ -796,11 +817,11 @@ section[id]{scroll-margin-top:90px}
   <div class="mat-w-inner">
     <p class="sec-eyebrow">Materialien</p>
     <h2 class="warm-h2" style="color:#fff">Das <em>richtige Material</em><br>für dein Projekt.</h2>
-    <p class="sec-sub-w">Wir beraten dich, welches Material zu deinem Projekt passt.</p>
+    <p class="sec-sub-w">Welches Material geeignet ist, hängt von Einsatz, Belastung und Temperatur ab. Wir beraten dich dazu.</p>
     <div class="mat-grid-w">
       <div class="mw-card mw-pla">
         <div class="mw-name">PLA</div>
-        <div class="mw-tagline">Biologisch abbaubar · Viele Farben</div>
+        <div class="mw-tagline">Für Prototypen, Muster und Deko</div>
         <ul class="mw-features">
           <li>Werbeartikel & Giveaways</li>
           <li>Dekoartikel & Geschenke</li>
@@ -810,22 +831,22 @@ section[id]{scroll-margin-top:90px}
       </div>
       <div class="mw-card mw-petg">
         <div class="mw-name">PETG</div>
-        <div class="mw-tagline">Robust · Feuchtigkeitsbeständig</div>
+        <div class="mw-tagline">Für Funktions- und Ersatzteile</div>
         <ul class="mw-features">
           <li>Funktionsteile & Ersatzteile</li>
           <li>Je nach Anforderung auch im Außenbereich</li>
           <li>Technische Bauteile</li>
-          <li>Langlebige Objekte</li>
+          <li>Halterungen & Adapter</li>
         </ul>
       </div>
       <div class="mw-card mw-abs">
         <div class="mw-name">ABS</div>
-        <div class="mw-tagline">Hitzebeständig · Schlagfest</div>
+        <div class="mw-tagline">Für Gehäuse und Halterungen</div>
         <ul class="mw-features">
-          <li>Wärmebelastete Teile</li>
+          <li>Teile mit Temperaturbelastung, je nach Anforderung</li>
           <li>Technische Gehäuse</li>
           <li>Abdeckungen & Halterungen</li>
-          <li>Robuste Bauteile</li>
+          <li>Funktionsteile</li>
         </ul>
       </div>
     </div>
@@ -854,9 +875,11 @@ section[id]{scroll-margin-top:90px}
       <!-- Honeypot Spamschutz: Für Menschen unsichtbar -->
       <input type="text" name="_hp_field" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true">
 
+      <p class="form-note form-req">* Pflichtfelder. Alles andere ist optional.</p>
+
       <div class="form-row">
-        <input type="text" name="name" placeholder="Dein Name" aria-label="Dein Name" autocomplete="name" required>
-        <input type="email" name="email" placeholder="E-Mail Adresse" aria-label="E-Mail Adresse" autocomplete="email" required>
+        <input type="text" name="name" placeholder="Dein Name *" aria-label="Dein Name (Pflichtfeld)" autocomplete="name" required>
+        <input type="email" name="email" placeholder="E-Mail-Adresse *" aria-label="E-Mail-Adresse (Pflichtfeld)" autocomplete="email" required>
       </div>
       <select name="projekttyp" id="projekttyp" aria-label="Worum geht es?">
         <option value="">Worum geht es? (optional)</option>
@@ -867,13 +890,13 @@ section[id]{scroll-margin-top:90px}
         <option value="konstruktion">Konstruktion / Prototyp</option>
         <option value="sonstiges">Sonstiges</option>
       </select>
-      <textarea name="message" placeholder="Beschreibe kurz dein Projekt (Verwendungszweck, Menge, Materialwunsch ...)" aria-label="Projektbeschreibung" required></textarea>
+      <textarea name="message" maxlength="10000" placeholder="Beschreibe kurz dein Projekt (Verwendungszweck, Menge, Materialwunsch ...) *" aria-label="Projektbeschreibung (Pflichtfeld)" required></textarea>
 
       <label class="file-upload">
         <input type="file" id="file-input" name="files[]" multiple accept=".stl,.obj,.3mf,.step,.stp,.zip,.jpg,.jpeg,.png,.webp,.heic,.pdf">
         <span>📁 Optional: Fotos, Skizzen oder 3D-Dateien anhängen</span>
-        <small>Bis zu 5 Dateien · JPG, PNG, WEBP, HEIC, PDF, STL, 3MF, OBJ, STEP, ZIP · max. 10 MB pro Datei, insgesamt max. 15 MB</small>
-        <div id="file-name"></div>
+        <small>Bis zu 5 Dateien · JPG, PNG, WEBP, HEIC, PDF, STL, 3MF, OBJ, STEP/STP, ZIP · max. 10 MB pro Datei, insgesamt max. 15 MB</small>
+        <div id="file-name" aria-live="polite"></div>
       </label>
 
       <button type="submit" class="btn-cta-white">Projekt unverbindlich anfragen →</button>
@@ -905,7 +928,7 @@ section[id]{scroll-margin-top:90px}
           <li><a href="leistungen.html">Leistungen</a></li>
           <li><a href="ersatzteile.html">Ersatzteile</a></li>
           <li><a href="#mat-w">Materialien</a></li>
-          <li><a href="#portfolio">Referenzen</a></li>
+          <li><a href="#portfolio">Beispiele</a></li>
           <li><a href="#cta-w">Kontakt</a></li>
         </ul>
       </div>
@@ -969,20 +992,38 @@ const fileNameDisplay = document.getElementById('file-name');
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const MAX_TOTAL_SIZE = 15 * 1024 * 1024;
 const MAX_FILES = 5;
+const ALLOWED_EXT = ['stl','obj','3mf','step','stp','zip','jpg','jpeg','png','webp','heic','pdf'];
 if(fileInput) {
   fileInput.addEventListener('change', () => {
     const files = [...fileInput.files];
     const total = files.reduce((sum, f) => sum + f.size, 0);
     let error = '';
+    const badType = files.find(f => !ALLOWED_EXT.includes(f.name.split('.').pop().toLowerCase()));
     if(files.length > MAX_FILES) error = 'Bitte wähle höchstens 5 Dateien aus.';
+    else if(badType) error = 'Dieser Dateityp ist nicht erlaubt: ' + badType.name + '.';
     else if(files.some(f => f.size > MAX_FILE_SIZE)) error = 'Eine Datei ist größer als 10 MB.';
     else if(total > MAX_TOTAL_SIZE) error = 'Die Dateien sind zusammen größer als 15 MB.';
+    fileNameDisplay.classList.toggle('is-error', !!error);
     if(error){
       fileNameDisplay.textContent = error + ' Bitte wähle andere Dateien aus.';
       fileInput.value = '';
       return;
     }
     fileNameDisplay.textContent = files.length ? 'Ausgewählt: ' + files.map(f => f.name).join(', ') : '';
+  });
+}
+
+// DOPPELTES ABSENDEN VERHINDERN (Uploads können dauern)
+const contactForm = document.querySelector('.cta-form');
+const submitBtn = contactForm && contactForm.querySelector('button[type="submit"]');
+if(contactForm && submitBtn){
+  const submitLabel = submitBtn.textContent;
+  contactForm.addEventListener('submit', () => {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet …';
+  });
+  window.addEventListener('pageshow', e => {
+    if(e.persisted){ submitBtn.disabled = false; submitBtn.textContent = submitLabel; }
   });
 }
 
@@ -993,17 +1034,17 @@ if (urlParams.has('status')) {
   const status = urlParams.get('status');
   const form = document.querySelector('.cta-form');
   const msg = document.createElement('p');
-  msg.setAttribute('role', 'status');
-  msg.style.cssText = 'margin-top:20px; font-weight:600; text-align:center;';
+  msg.setAttribute('role', status === 'success' ? 'status' : 'alert');
+  msg.style.cssText = 'margin-top:24px; font-weight:600; text-align:center;';
   const messages = {
     success: 'Vielen Dank! Deine Nachricht wurde gesendet. Wir melden uns bei dir.',
-    size: 'Die Dateien sind zu groß (max. 10 MB pro Datei, 15 MB insgesamt). Bitte verkleinere sie oder schick sie uns per E-Mail oder WhatsApp.',
-    file: 'Mit einer Datei stimmt etwas nicht. Erlaubt sind bis zu 5 Dateien (JPG, PNG, WEBP, HEIC, PDF, STL, 3MF, OBJ, STEP, ZIP). Bitte prüfe deine Auswahl.',
-    error: 'Das Senden hat nicht geklappt. Bitte prüfe Name, E-Mail und Beschreibung oder schreib uns per WhatsApp oder E-Mail.'
+    size: 'Die Dateien sind zu groß (max. 10 MB pro Datei, 15 MB insgesamt). Bitte fülle das Formular noch einmal aus und wähle kleinere Dateien, oder schick sie uns per E-Mail oder WhatsApp.',
+    file: 'Mit einer Datei stimmt etwas nicht. Erlaubt sind bis zu 5 Dateien (JPG, PNG, WEBP, HEIC, PDF, STL, 3MF, OBJ, STEP/STP, ZIP). Bitte fülle das Formular noch einmal aus und prüfe deine Auswahl.',
+    error: 'Das Senden hat nicht geklappt. Bitte fülle das Formular noch einmal aus und prüfe Name, E-Mail und Beschreibung, oder schreib uns per WhatsApp oder E-Mail.'
   };
   msg.style.color = status === 'success' ? '#A5F3FC' : '#FCA5A5';
   msg.textContent = messages[status] || messages.error;
-  form.appendChild(msg);
+  form.insertAdjacentElement('beforebegin', msg);
 }
 </script>
 </body>
