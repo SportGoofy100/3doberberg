@@ -5,6 +5,9 @@ DirectoryIndex index.html index.php
     RewriteEngine On
     RewriteBase /
 
+    # Deployment-Statusdateien (.ftp-deploy-sync-state.json u. a.) nicht ausliefern (403)
+    RewriteRule (^|/)\.ftp- - [F,L]
+
     # www.3doberberg.de -> https://3doberberg.de/ (dauerhaft, auch bei http)
     RewriteCond %{HTTP_HOST} ^www\.3doberberg\.de$ [NC]
     RewriteRule ^(.*)$ https://3doberberg.de/$1 [R=301,L]
