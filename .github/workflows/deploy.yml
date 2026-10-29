@@ -83,7 +83,7 @@ jobs:
             fi
             echo "bye"
           } > deploy.lftp
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "ftp://$FTP_SERVER" -f deploy.lftp
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "ftp://$FTP_SERVER" < deploy.lftp
 
       - name: Deploy-Marker setzen
         run: |
