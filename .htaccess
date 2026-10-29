@@ -18,6 +18,11 @@ DirectoryIndex index.html index.php
     RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
     RewriteRule ^(.*)$ https://3doberberg.de/$1 [R=301,L]
 
+    # Entfernter Shop und Admin-Bereich: 410 Gone, damit Google die URLs schneller verwirft
+    RewriteRule ^(shop|shop-erfolg|admin)\.html$ - [G,L]
+    RewriteRule ^(checkout\.php|products\.json)$ - [G,L]
+    RewriteRule ^(admin|config)(/|$) - [G,L]
+
     # /index.html -> / (eine einzige URL fuer die Startseite; Query-String, z. B. ?status=, bleibt erhalten)
     RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
     RewriteRule ^index\.html$ / [R=301,L,QSA]
