@@ -79,7 +79,7 @@ jobs:
                 done < changed.txt
               fi
             else
-              echo "mirror -R --ignore-time --parallel=2 --verbose --exclude-glob .git/ --exclude-glob .github/ --exclude-glob .gitignore --exclude-glob config.php --exclude-glob admin/config.php --exclude-glob image/cache/ ./ $BASE/"
+              echo "mirror -R --ignore-time --parallel=2 --verbose --exclude-glob .git/ --exclude-glob .github/ --exclude-glob .gitignore --exclude-glob config.php --exclude-glob admin/config.php --exclude-glob image/cache/ --exclude-glob deploy.lftp --exclude-glob changed.txt ./ $BASE/"
             fi
             echo "bye"
           } > deploy.lftp
