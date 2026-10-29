@@ -317,3 +317,16 @@ footer .footer-bottom a:hover{color:var(--ink2)}
 
 /* ---------- Anpassungen für Konto/Checkout-Überschriften ---------- */
 #content > h1,#content > h2{margin-top:4px}
+
+/* ---------- Produkt-Art: gedruckt vs. digital (SVG) ---------- */
+.product-thumb .image{position:relative}
+.product-badge{
+  display:inline-block;padding:4px 12px;border-radius:100px;font-size:0.75rem;font-weight:600;line-height:1.5;
+}
+.product-badge.physical{background:var(--orange-soft);color:var(--orange-d)}
+.product-badge.digital{background:var(--green-soft);color:var(--teal-d)}
+.product-thumb .image .product-badge{position:absolute;top:12px;left:12px;z-index:2;backdrop-filter:blur(8px);background-color:rgba(255,255,255,0.9)}
+.digital-note{
+  margin:12px 0 0;padding:12px 16px;font-size:0.85rem;color:#0B4F63;line-height:1.6;
+  background:var(--green-soft);border:1px solid rgba(34,211,238,0.35);border-radius:var(--r);
+}

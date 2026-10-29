@@ -262,6 +262,10 @@ class Product extends \Opencart\System\Engine\Controller {
 			$data['manufacturers'] = $this->url->link('product/manufacturer.info', 'language=' . $this->config->get('config_language') . '&manufacturer_id=' . $product_info['manufacturer_id']);
 			$data['model'] = $product_info['model'];
 
+			$this->load->model('catalog/product');
+
+			$data['digital'] = $this->model_catalog_product->isDigital((int)$product_id);
+
 			$data['product_codes'] = [];
 
 			$results = $this->model_catalog_product->getCodes($product_id);

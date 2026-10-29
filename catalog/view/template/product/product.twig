@@ -38,7 +38,10 @@
             {% if reward %}
               <li>{{ text_reward }} {{ reward }}</li>
             {% endif %}
+            <li><span class="product-badge {{ digital ? 'digital' : 'physical' }}">{{ digital ? 'Digitaler Download' : 'Gedruckt in Morsbach' }}</span></li>
+            {% if not digital %}
             <li>{{ text_stock }} {{ stock }}</li>
+            {% endif %}
           </ul>
           {% if review_status %}
             <div class="rating">
@@ -225,6 +228,9 @@
                   <input type="text" name="quantity" value="{{ minimum }}" size="2" id="input-quantity" class="form-control"/>
                   <button type="submit" id="button-cart" class="btn btn-primary btn-lg btn-block">{{ button_cart }}</button>
                 </div>
+                {% if digital %}
+                  <p class="digital-note"><i class="fa-solid fa-download"></i> Digitales Produkt: Die Datei steht nach Zahlungseingang in deinem Kundenkonto zum Download bereit. Es erfolgt kein Versand.</p>
+                {% endif %}
                 <input type="hidden" name="product_id" value="{{ product_id }}" id="input-product-id"/>
                 <div id="error-quantity" class="form-text"></div>
               </div>

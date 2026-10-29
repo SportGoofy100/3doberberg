@@ -38,6 +38,10 @@ class Thumb extends \Opencart\System\Engine\Controller {
 
 		$data['review_status'] = (int)$this->config->get('config_review_status');
 
+		$this->load->model('catalog/product');
+
+		$data['digital'] = !empty($data['product_id']) && $this->model_catalog_product->isDigital((int)$data['product_id']);
+
 		return $this->load->view('product/thumb', $data);
 	}
 }

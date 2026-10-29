@@ -892,4 +892,19 @@ class Product extends \Opencart\System\Engine\Model {
 	public function addReport(int $product_id, string $ip, string $country = ''): void {
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "product_report` SET `product_id` = '" . (int)$product_id . "', `store_id` = '" . (int)$this->config->get('config_store_id') . "', `ip` = '" . $this->db->escape($ip) . "', `country` = '" . $this->db->escape($country) . "', `date_added` = NOW()");
 	}
+
+	/**
+	 * Is Digital
+	 *
+	 * Ein Produkt gilt als digital, wenn ihm mindestens ein Download zugeordnet ist.
+	 *
+	 * @param int $product_id primary key of the product record
+	 *
+	 * @return bool
+	 */
+	public function isDigital(int $product_id): bool {
+		$query = $this->db->query("SELECT `product_id` FROM `" . DB_PREFIX . "product_to_download` WHERE `product_id` = '" . (int)$product_id . "' LIMIT 1");
+
+		return (bool)$query->num_rows;
+	}
 }
