@@ -1,0 +1,33 @@
+<?php
+// Text
+$_['text_subject']               = '%s - Abo %s';
+$_['text_greeting']              = 'Vielen Dank für dein Interesse an den Produkten von %s. Deine Abo-Anfrage ist bei uns eingegangen und wird bearbeitet, sobald die Zahlung bestätigt wurde.';
+$_['text_link']                  = 'Um dein Abo anzusehen, klicke auf den folgenden Link:';
+$_['text_promotion']             = 'Erfolg: Zu diesem Abo wurde eine Aktion hinzugefügt!';
+$_['text_subscription_duration'] = '%s alle %d %s(s) für %d Zahlung(en)';
+$_['text_subscription_cancel']   = '%s alle %d %s(s) bis zur Kündigung';
+$_['text_subscription_detail']   = 'Abo-Details';
+$_['text_instruction']           = 'Hinweise';
+$_['text_orders_id']             = 'Bestellnummer:';
+$_['text_date_added']            = 'Datum:';
+$_['text_order_status']          = 'Bestellstatus:';
+$_['text_payment_method']        = 'Zahlungsart:';
+$_['text_payment_address']       = 'Rechnungsadresse';
+$_['text_email']                 = 'E-Mail:';
+$_['text_telephone']             = 'Telefon:';
+$_['text_ip']                    = 'IP-Adresse:';
+$_['text_products']              = 'Artikel';
+$_['text_product']               = 'Artikel';
+$_['text_model']                 = 'Modell';
+$_['text_quantity']              = 'Menge';
+$_['text_price']                 = 'Preis';
+$_['text_order_total']           = 'Bestellsumme';
+$_['text_total']                 = 'Gesamt';
+$_['text_comment']               = 'Anmerkungen zu deinem Abo:';
+$_['text_description']           = 'Beschreibung';
+$_['text_day']                   = 'Tag';
+$_['text_week']                  = 'Woche';
+$_['text_semi_month']            = 'halber Monat';
+$_['text_month']                 = 'Monat';
+$_['text_year']                  = 'Jahr';
+$_['text_footer']                = 'Bei Fragen antworte einfach auf diese E-Mail.';

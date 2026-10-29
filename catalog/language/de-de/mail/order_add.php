@@ -1,0 +1,36 @@
+<?php
+// Text
+$_['text_subject']               = '%s - Bestellung %s';
+$_['text_greeting']              = 'Vielen Dank für dein Interesse an den Produkten von %s. Deine Bestellung ist bei uns eingegangen und wird bearbeitet, sobald die Zahlung bestätigt wurde.';
+$_['text_link']                  = 'Um deine Bestellung anzusehen, klicke auf den folgenden Link:';
+$_['text_order_detail']          = 'Bestelldetails';
+$_['text_instruction']           = 'Hinweise';
+$_['text_order_id']              = 'Bestellnummer:';
+$_['text_date_added']            = 'Datum:';
+$_['text_order_status']          = 'Bestellstatus:';
+$_['text_payment_method']        = 'Zahlungsart:';
+$_['text_shipping_method']       = 'Versandart:';
+$_['text_email']                 = 'E-Mail:';
+$_['text_telephone']             = 'Telefon:';
+$_['text_ip']                    = 'IP-Adresse:';
+$_['text_payment_address']       = 'Rechnungsadresse';
+$_['text_shipping_address']      = 'Lieferadresse';
+$_['text_products']              = 'Artikel';
+$_['text_product']               = 'Artikel';
+$_['text_model']                 = 'Modell';
+$_['text_quantity']              = 'Menge';
+$_['text_price']                 = 'Preis';
+$_['text_order_total']           = 'Bestellsumme';
+$_['text_total']                 = 'Gesamt';
+$_['text_subscription']          = 'Abo';
+$_['text_subscription_trial']    = '%s alle %d %s(s) für %d Zahlung(en), danach ';
+$_['text_subscription_duration'] = '%s alle %d %s(s) für %d Zahlung(en)';
+$_['text_subscription_cancel']   = '%s alle %d %s(s) bis zur Kündigung';
+$_['text_day']                   = 'Tag';
+$_['text_week']                  = 'Woche';
+$_['text_semi_month']            = 'halber Monat';
+$_['text_month']                 = 'Monat';
+$_['text_year']                  = 'Jahr';
+$_['text_download']              = 'Sobald deine Zahlung bestätigt wurde, kannst du über den folgenden Link auf deine Download-Artikel zugreifen:';
+$_['text_comment']               = 'Deine Anmerkungen zur Bestellung:';
+$_['text_footer']                = 'Bei Fragen antworte einfach auf diese E-Mail.';
