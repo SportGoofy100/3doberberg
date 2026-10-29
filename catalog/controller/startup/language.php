@@ -29,6 +29,11 @@ class Language extends \Opencart\System\Engine\Controller {
 			$language_info = self::$languages[$this->config->get('config_language_catalog')];
 		}
 
+		// Fallback: Standardsprache nicht gesetzt oder deaktiviert -> erste aktive Sprache
+		if (!$language_info && self::$languages) {
+			$language_info = reset(self::$languages);
+		}
+
 		// If GET has language var
 		if (isset($this->request->get['language']) && isset(self::$languages[$this->request->get['language']])) {
 			$language_info = self::$languages[$this->request->get['language']];

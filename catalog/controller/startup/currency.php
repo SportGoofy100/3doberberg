@@ -23,12 +23,23 @@ class Currency extends \Opencart\System\Engine\Controller {
 			$code = $this->session->data['currency'];
 		}
 
-		if (isset($this->request->cookie['currency']) && !array_key_exists($code, $currencies)) {
+		if (isset($this->request->cookie['currency']) && (!array_key_exists($code, $currencies) || !$currencies[$code]['status'])) {
 			$code = $this->request->cookie['currency'];
 		}
 
-		if (!array_key_exists($code, $currencies)) {
+		if (!array_key_exists($code, $currencies) || !$currencies[$code]['status']) {
 			$code = $this->config->get('config_currency');
+		}
+
+		// Fallback: Standardwährung nicht gesetzt oder deaktiviert -> erste aktive Währung
+		if (!array_key_exists($code, $currencies) || !$currencies[$code]['status']) {
+			foreach ($currencies as $currency_code => $currency_info) {
+				if ($currency_info['status']) {
+					$code = $currency_code;
+
+					break;
+				}
+			}
 		}
 
 		if (!isset($this->session->data['currency']) || $this->session->data['currency'] != $code) {
