@@ -1,6 +1,39 @@
 {{ header }}
 <div id="common-home" class="container">
-  <div class="row">{{ column_left }}
+  <section class="shop-hero">
+    <div class="hero-blob1"></div>
+    <div class="hero-blob2"></div>
+    <div class="hero-inner">
+      <span class="hero-badge">Aus Morsbach im Oberbergischen</span>
+      <h1 class="hero-title">3D-Drucke &amp; <em>SVG-Dateien</em> direkt vom Macher</h1>
+      <p class="hero-p">Fertig gedruckte Produkte aus meiner Werkstatt – oder digitale SVG-Dateien zum sofortigen Download. Abholung im Oberbergischen oder Versand deutschlandweit.</p>
+      <div class="hero-actions">
+        <a href="#produkte" class="btn btn-primary btn-lg">Zum Sortiment</a>
+        <a href="https://3doberberg.de/#cta-w" class="btn btn-light btn-lg">Individuelles Projekt anfragen</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="kind-grid">
+    <div class="kind-card">
+      <div class="kind-icon physical">🧱</div>
+      <div>
+        <h3>Fertig gedruckt</h3>
+        <p>Produkte, die ich für dich drucke und verschicke – oder die du in Morsbach abholst. Hergestellt in Oberberg.</p>
+        <span class="product-badge physical">Gedruckt · Versand</span>
+      </div>
+    </div>
+    <div class="kind-card">
+      <div class="kind-icon digital">⬇️</div>
+      <div>
+        <h3>SVG-Dateien</h3>
+        <p>Digitale Vorlagen zum Download. Nach Zahlungseingang findest du die Datei in deinem Kundenkonto – ohne Versand.</p>
+        <span class="product-badge digital">SVG · Download</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="row" id="produkte">{{ column_left }}
     <div id="content" class="col">{{ content_top }}{{ content_bottom }}</div>
     {{ column_right }}</div>
 </div>
