@@ -1,54 +1,91 @@
 name: Deploy to shop.3doberberg.de via FTP
 
+# Überträgt nur Dateien, die sich seit dem letzten erfolgreichen Deploy geändert haben
+# (Marker: Tag "shop-deployed"). Ohne Tag oder mit "full" wird alles per Größenvergleich abgeglichen.
 on:
   push:
     branches:
       - shop
   workflow_dispatch:
+    inputs:
+      full:
+        description: "Alle Dateien abgleichen (statt nur Änderungen)"
+        type: boolean
+        default: false
+
+# Nie zwei Deploys gleichzeitig
+concurrency:
+  group: deploy-shop
+  cancel-in-progress: false
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
     name: Dateien per FTPS hochladen
     runs-on: ubuntu-latest
     steps:
-      - name: Repository auschecken (volle Historie für Änderungsdatum)
+      - name: Repository auschecken
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Änderungsdatum der Dateien auf letzten Commit setzen
+      - name: Zu übertragende Dateien bestimmen
+        id: plan
+        env:
+          FULL: ${{ github.event.inputs.full }}
         run: |
-          # lftp überträgt nur Dateien, die neuer sind als die auf dem Server
-          git ls-files -z | xargs -0 -n1 -P8 sh -c 'touch -d "@$(git log -1 --format=%ct -- "$0")" "$0"'
+          # config.php (DB-Zugangsdaten) bleibt immer nur auf dem Server
+          EXCLUDE_RE='^(\.github/|\.gitignore$|config\.php$|admin/config\.php$|image/cache/)'
+          git fetch --tags -q || true
+          if [ "$FULL" != "true" ] && git rev-parse -q --verify refs/tags/shop-deployed >/dev/null; then
+            echo "mode=diff" >> "$GITHUB_OUTPUT"
+            git -c core.quotepath=false diff --name-only --diff-filter=ACMR shop-deployed HEAD | grep -Ev "$EXCLUDE_RE" > changed.txt || true
+            echo "Geänderte Dateien seit letztem Deploy: $(wc -l < changed.txt)"
+            cat changed.txt
+          else
+            echo "mode=full" >> "$GITHUB_OUTPUT"
+            echo "Kein Deploy-Marker oder 'full' gewählt: kompletter Abgleich"
+          fi
 
       - name: lftp installieren
         run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
 
-      - name: Per FTPS hochladen (nur neue/geänderte Dateien)
+      - name: Per FTPS hochladen
         env:
           # Das Zertifikat des Servers gilt nur für a2e0a.netcup.net (gleiche IP wie hosting148663.a2e0a.netcup.net)
           FTP_SERVER: a2e0a.netcup.net
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          MODE: ${{ steps.plan.outputs.mode }}
         run: |
-          # config.php (DB-Zugangsdaten) bleibt immer nur auf dem Server
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "ftp://$FTP_SERVER" <<'LFTP'
-          set ftp:ssl-force true
-          set ftp:ssl-protect-data true
-          set net:max-retries 20
-          set net:reconnect-interval-base 5
-          set net:timeout 30
-          # 1) Dateien mit abweichender Größe (z. B. abgebrochene Uploads) neu übertragen
-          mirror -R --ignore-time --parallel=2 --verbose \
-            --exclude-glob .git/ --exclude-glob .github/ --exclude-glob .gitignore \
-            --exclude-glob config.php --exclude-glob admin/config.php \
-            --exclude-glob image/cache/ \
-            ./ /shop.3doberberg.de/httpdocs/
-          # 2) Geänderte Dateien (gleiche Größe, neuerer Stand) übertragen
-          mirror -R --only-newer --parallel=2 --verbose \
-            --exclude-glob .git/ --exclude-glob .github/ --exclude-glob .gitignore \
-            --exclude-glob config.php --exclude-glob admin/config.php \
-            --exclude-glob image/cache/ \
-            ./ /shop.3doberberg.de/httpdocs/
-          bye
-          LFTP
+          BASE=/shop.3doberberg.de/httpdocs
+          esc() { printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g'; }
+          {
+            echo "set cmd:fail-exit yes"
+            echo "set ftp:ssl-force true"
+            echo "set ftp:ssl-protect-data true"
+            echo "set net:max-retries 20"
+            echo "set net:reconnect-interval-base 5"
+            echo "set net:timeout 30"
+            if [ "$MODE" = "diff" ]; then
+              if [ -s changed.txt ]; then
+                while IFS= read -r f; do dirname "$f"; done < changed.txt | sort -u | while IFS= read -r d; do
+                  echo "mkdir -p \"$BASE/$(esc "$d")\""
+                done
+                while IFS= read -r f; do
+                  echo "put -O \"$BASE/$(esc "$(dirname "$f")")\" \"$(esc "$f")\""
+                done < changed.txt
+              fi
+            else
+              echo "mirror -R --ignore-time --parallel=2 --verbose --exclude-glob .git/ --exclude-glob .github/ --exclude-glob .gitignore --exclude-glob config.php --exclude-glob admin/config.php --exclude-glob image/cache/ ./ $BASE/"
+            fi
+            echo "bye"
+          } > deploy.lftp
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "ftp://$FTP_SERVER" -f deploy.lftp
+
+      - name: Deploy-Marker setzen
+        run: |
+          git tag -f shop-deployed HEAD
+          git push -f origin refs/tags/shop-deployed
