@@ -1,0 +1,34 @@
+name: Deploy to shop.3doberberg.de via FTP
+
+on:
+  push:
+    branches:
+      - shop
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Dateien per FTP hochladen
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Per FTP hochladen
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          log-level: verbose
+          local-dir: ./
+          server-dir: /shop.3doberberg.de/httpdocs/
+          # config.php (DB-Zugangsdaten) bleibt immer nur auf dem Server
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            config.php
+            admin/config.php
+            image/cache/**
