@@ -8,30 +8,39 @@ on:
 
 jobs:
   deploy:
-    name: Dateien per FTP hochladen
+    name: Dateien per FTPS hochladen
     runs-on: ubuntu-latest
     steps:
-      - name: Repository auschecken
+      - name: Repository auschecken (volle Historie für Änderungsdatum)
         uses: actions/checkout@v4
-
-      - name: Per FTP hochladen
-        env:
-          # Workaround: TLS-1.3-Fehler "decode error" auf dem FTPS-Datenkanal
-          NODE_OPTIONS: --tls-max-v1.2
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          log-level: verbose
-          local-dir: ./
-          server-dir: /shop.3doberberg.de/httpdocs/
+          fetch-depth: 0
+
+      - name: Änderungsdatum der Dateien auf letzten Commit setzen
+        run: |
+          # lftp überträgt nur Dateien, die neuer sind als die auf dem Server
+          git ls-files -z | xargs -0 -n1 -P8 sh -c 'touch -d "@$(git log -1 --format=%ct -- "$0")" "$0"'
+
+      - name: lftp installieren
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - name: Per FTPS hochladen (nur neue/geänderte Dateien)
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
           # config.php (DB-Zugangsdaten) bleibt immer nur auf dem Server
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github/**
-            config.php
-            admin/config.php
-            image/cache/**
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" <<'LFTP'
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set net:max-retries 20
+          set net:reconnect-interval-base 5
+          set net:timeout 30
+          mirror -R --only-newer --parallel=2 --verbose \
+            --exclude-glob .git/ --exclude-glob .github/ --exclude-glob .gitignore \
+            --exclude-glob config.php --exclude-glob admin/config.php \
+            --exclude-glob image/cache/ \
+            ./ /shop.3doberberg.de/httpdocs/
+          bye
+          LFTP
