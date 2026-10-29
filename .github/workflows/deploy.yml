@@ -26,12 +26,13 @@ jobs:
 
       - name: Per FTPS hochladen (nur neue/geänderte Dateien)
         env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          # Das Zertifikat des Servers gilt nur für a2e0a.netcup.net (gleiche IP wie hosting148663.a2e0a.netcup.net)
+          FTP_SERVER: a2e0a.netcup.net
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
           # config.php (DB-Zugangsdaten) bleibt immer nur auf dem Server
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" <<'LFTP'
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "ftp://$FTP_SERVER" <<'LFTP'
           set ftp:ssl-force true
           set ftp:ssl-protect-data true
           set net:max-retries 20
