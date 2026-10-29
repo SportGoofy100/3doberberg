@@ -38,6 +38,13 @@ jobs:
           set net:max-retries 20
           set net:reconnect-interval-base 5
           set net:timeout 30
+          # 1) Dateien mit abweichender Größe (z. B. abgebrochene Uploads) neu übertragen
+          mirror -R --ignore-time --parallel=2 --verbose \
+            --exclude-glob .git/ --exclude-glob .github/ --exclude-glob .gitignore \
+            --exclude-glob config.php --exclude-glob admin/config.php \
+            --exclude-glob image/cache/ \
+            ./ /shop.3doberberg.de/httpdocs/
+          # 2) Geänderte Dateien (gleiche Größe, neuerer Stand) übertragen
           mirror -R --only-newer --parallel=2 --verbose \
             --exclude-glob .git/ --exclude-glob .github/ --exclude-glob .gitignore \
             --exclude-glob config.php --exclude-glob admin/config.php \
