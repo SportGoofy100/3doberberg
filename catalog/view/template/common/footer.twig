@@ -1,0 +1,62 @@
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="image/catalog/3doberberg-logo.png" alt="3D Oberberg Logo" style="height:32px;width:auto">
+        <p class="fw-desc">Individuelle 3D-Druckteile aus Morsbach – für den Oberbergischen Kreis und darüber hinaus.</p>
+        <p class="fw-addr">📍 Bitze 2 · 51597 Morsbach</p>
+      </div>
+      <div>
+        <h5>Webseite</h5>
+        <ul>
+          <li><a href="https://3doberberg.de/">Startseite</a></li>
+          <li><a href="https://3doberberg.de/leistungen.html">Leistungen</a></li>
+          <li><a href="https://3doberberg.de/ersatzteile.html">Ersatzteile</a></li>
+          <li><a href="https://3doberberg.de/#cta-w">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>{{ text_service }}</h5>
+        <ul>
+          <li><a href="{{ contact }}">{{ text_contact }}</a></li>
+          <li><a href="{{ return }}">{{ text_return }}</a></li>
+          <li><a href="{{ special }}">{{ text_special }}</a></li>
+          <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>{{ text_account }}</h5>
+        <ul>
+          <li><a href="{{ account }}">{{ text_account }}</a></li>
+          <li><a href="{{ order }}">{{ text_order }}</a></li>
+          <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
+          {% for information in informations %}
+            <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 3D Oberberg · Urs Arets</span>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="https://3doberberg.de/impressum.html">Impressum</a>
+        <a href="https://3doberberg.de/datenschutz.html">Datenschutz</a>
+        <a href="https://3doberberg.de/agb.html">AGB</a>
+        <a href="https://wa.me/491717015924">WhatsApp</a>
+        <a href="mailto:info@3doberberg.de">E-Mail</a>
+      </div>
+    </div>
+    <!--
+OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
+Please donate via PayPal to donate@opencart.com
+//-->
+  </div>
+</footer>
+<a href="https://wa.me/491717015924" class="wa" aria-label="Per WhatsApp schreiben">💬</a>
+</div>
+{{ cookie }}
+<script src="{{ bootstrap }}" type="text/javascript"></script>
+{% for script in scripts %}
+  <script src="{{ script.href }}" type="text/javascript"></script>
+{% endfor %}
+</body></html>

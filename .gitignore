@@ -1,0 +1,7 @@
+# Enthält Datenbank-Zugangsdaten -- niemals committen!
+config.php
+admin/config.php
+
+# Laufzeit-Daten
+image/cache/
+*.log
