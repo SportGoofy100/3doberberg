@@ -1,0 +1,223 @@
+{{ header }}
+<div id="product-frame" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+      <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="row">{{ column_left }}
+    <div id="content" class="col">{{ content_top }}
+      <h1>{{ heading_title }}</h1>
+      <p class="frame-intro">{{ text_intro }}</p>
+
+      {% if not available %}
+        <div class="alert alert-info">{{ text_unavailable }}</div>
+      {% else %}
+        <form id="frame-form" action="{{ add }}" method="post" data-calculate="{{ calculate }}" data-print-bed="{{ print_bed }}" data-segments="{{ text_segments }}" novalidate>
+          <div class="frame-grid">
+            <div class="frame-inputs">
+              <fieldset class="frame-card">
+                <legend>{{ text_variant }}</legend>
+                <label class="frame-choice">
+                  <input type="radio" name="variante" value="print" checked>
+                  <span><strong>{{ text_variant_print }}</strong><small>{{ text_variant_print_d }}</small></span>
+                </label>
+                <label class="frame-choice">
+                  <input type="radio" name="variante" value="stl">
+                  <span><strong>{{ text_variant_stl }}</strong><small>{{ text_variant_stl_d }}</small></span>
+                </label>
+              </fieldset>
+
+              <fieldset class="frame-card">
+                <legend>{{ text_dimensions }}</legend>
+                <div class="frame-fields">
+                  <div>
+                    <label for="input-laenge">{{ entry_laenge }}</label>
+                    <div class="input-group"><input type="text" inputmode="decimal" name="laenge" id="input-laenge" value="650" class="form-control" autocomplete="off"><span class="input-group-text">mm</span></div>
+                    <div class="invalid-feedback" id="error-laenge"></div>
+                  </div>
+                  <div>
+                    <label for="input-breite">{{ entry_breite }}</label>
+                    <div class="input-group"><input type="text" inputmode="decimal" name="breite" id="input-breite" value="450" class="form-control" autocomplete="off"><span class="input-group-text">mm</span></div>
+                    <div class="invalid-feedback" id="error-breite"></div>
+                  </div>
+                  <div>
+                    <label for="input-tiefe">{{ entry_tiefe }}</label>
+                    <div class="input-group"><input type="text" inputmode="decimal" name="tiefe" id="input-tiefe" value="20" class="form-control" autocomplete="off"><span class="input-group-text">mm</span></div>
+                    <div class="invalid-feedback" id="error-tiefe"></div>
+                  </div>
+                  <div>
+                    <label for="input-fuge">{{ entry_fuge }}</label>
+                    <div class="input-group"><input type="text" inputmode="decimal" name="fuge" id="input-fuge" value="10" class="form-control" autocomplete="off"><span class="input-group-text">mm</span></div>
+                    <div class="form-text">{{ help_fuge }}</div>
+                    <div class="invalid-feedback" id="error-fuge"></div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="frame-card" id="frame-printer" hidden>
+                <legend>{{ text_printer }}</legend>
+                <div class="frame-fields">
+                  <div>
+                    <label for="input-druckbett">{{ entry_druckbett }}</label>
+                    <div class="input-group"><input type="text" inputmode="decimal" name="druckbett" id="input-druckbett" value="{{ print_bed }}" class="form-control" autocomplete="off"><span class="input-group-text">mm</span></div>
+                    <div class="form-text">{{ help_druckbett }}</div>
+                    <div class="invalid-feedback" id="error-druckbett"></div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <aside class="frame-result frame-card">
+              <h2>{{ text_result }}</h2>
+              <svg id="frame-svg" viewBox="0 0 320 320" role="img" aria-label="{{ text_result }}" hidden></svg>
+              <p id="frame-waiting" class="text-muted">{{ text_waiting }}</p>
+              <dl id="frame-numbers" hidden>
+                <dt>{{ text_outer }}</dt><dd id="r-outer"></dd>
+                <dt>{{ text_parts }}</dt><dd id="r-parts"></dd>
+                <dt>{{ text_corners }}</dt><dd id="r-corners"></dd>
+                <dt>{{ text_long_side }}</dt><dd id="r-long"></dd>
+                <dt>{{ text_short_side }}</dt><dd id="r-short"></dd>
+                <dt>{{ text_weight }}</dt><dd id="r-weight"></dd>
+              </dl>
+              <div class="frame-price" id="frame-price-box" hidden>
+                <span>{{ text_price }}</span>
+                <strong id="r-price"></strong>
+              </div>
+              <p class="form-text" id="frame-note"></p>
+              <div class="invalid-feedback d-block" id="error-warning"></div>
+              <button type="submit" id="frame-add" class="btn btn-primary btn-lg w-100" disabled>{{ button_add }}</button>
+            </aside>
+          </div>
+        </form>
+
+        <script>
+        (function () {
+          var form = document.getElementById('frame-form');
+          var fields = ['laenge', 'breite', 'tiefe', 'fuge', 'druckbett'];
+          var timer = null;
+          var valid = false;
+          var notes = {print: {{ text_note_print|json_encode|raw }}, stl: {{ text_note_stl|json_encode|raw }}};
+          var segmentsText = form.dataset.segments;
+
+          function variant() { return form.querySelector('input[name=variante]:checked').value; }
+          function nf(n) { return Number(n).toLocaleString('de-DE', {maximumFractionDigits: 1}); }
+          function seg(n, l) { return n ? segmentsText.replace('%d', n).replace('%s', nf(l)) : '–'; }
+          function $(id) { return document.getElementById(id); }
+
+          function clearErrors() {
+            fields.concat(['warning']).forEach(function (f) {
+              var e = $('error-' + f);
+              if (e) { e.textContent = ''; }
+              var i = form.elements[f];
+              if (i) { i.classList.remove('is-invalid'); }
+            });
+          }
+
+          function setValid(state) {
+            valid = state;
+            $('frame-add').disabled = !state;
+          }
+
+          function draw(r) {
+            // Schema: Rahmen von vorne, Segmente abwechselnd eingefärbt
+            var svg = $('frame-svg'), size = 300, pad = 10;
+            var scale = size / Math.max(r.outer_x, r.outer_z);
+            var w = r.outer_x * scale, h = r.outer_z * scale, t = 48 * scale, c = r.corner * scale;
+            var ox = pad + (size - w) / 2, oy = pad + (size - h) / 2;
+            var out = '', colors = ['#8B5CF6', '#A78BFA'];
+            function rect(x, y, rw, rh, fill) { out += '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + rw.toFixed(1) + '" height="' + rh.toFixed(1) + '" fill="' + fill + '" stroke="#fff" stroke-width="1.2"/>'; }
+            var k, y0 = oy + c, x0 = ox + c;
+            for (k = 0; k < r.n_long; k++) {
+              var lh = (h - 2 * c) / r.n_long;
+              rect(ox, y0 + k * lh, t, lh, colors[k % 2]);
+              rect(ox + w - t, y0 + k * lh, t, lh, colors[k % 2]);
+            }
+            for (k = 0; k < r.n_short; k++) {
+              var sw = (w - 2 * c) / r.n_short;
+              rect(x0 + k * sw, oy, sw, t, '#22D3EE');
+              rect(x0 + k * sw, oy + h - t, sw, t, '#22D3EE');
+            }
+            [[ox, oy], [ox + w - c, oy], [ox, oy + h - c], [ox + w - c, oy + h - c]].forEach(function (p) { rect(p[0], p[1], c, c, '#1E1B14'); });
+            svg.innerHTML = out;
+            svg.hidden = false;
+          }
+
+          function render(data) {
+            clearErrors();
+            if (data.error) {
+              setValid(false);
+              Object.keys(data.error).forEach(function (f) {
+                var e = $('error-' + f), i = form.elements[f];
+                if (e) { e.textContent = data.error[f]; e.style.display = 'block'; }
+                if (i) { i.classList.add('is-invalid'); }
+              });
+              ['frame-numbers', 'frame-price-box', 'frame-svg'].forEach(function (id) { $(id).hidden = true; });
+              $('frame-waiting').hidden = false;
+              return;
+            }
+            var r = data.result;
+            $('r-outer').textContent = nf(r.outer_x) + ' × ' + nf(r.outer_z) + ' mm';
+            $('r-parts').textContent = r.parts;
+            $('r-corners').textContent = '4 × ' + nf(r.corner) + ' mm';
+            $('r-long').textContent = seg(2 * r.n_long, r.l_long);
+            $('r-short').textContent = seg(2 * r.n_short, r.l_short);
+            $('r-weight').textContent = '≈ ' + r.grams + ' g';
+            $('r-price').textContent = data.price_text;
+            $('frame-note').textContent = notes[variant()];
+            $('frame-numbers').hidden = false;
+            $('frame-price-box').hidden = false;
+            $('frame-waiting').hidden = true;
+            draw(r);
+            setValid(true);
+          }
+
+          function calculate() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', form.dataset.calculate);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function () { try { render(JSON.parse(xhr.responseText)); } catch (e) { setValid(false); } };
+            xhr.send(new URLSearchParams(new FormData(form)).toString());
+          }
+
+          function schedule() {
+            setValid(false);
+            clearTimeout(timer);
+            timer = setTimeout(calculate, 250);
+          }
+
+          function togglePrinter() { $('frame-printer').hidden = variant() !== 'stl'; }
+
+          form.addEventListener('input', schedule);
+          form.addEventListener('change', function () { togglePrinter(); schedule(); });
+
+          form.addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            if (!valid) { return; }
+            var btn = $('frame-add');
+            btn.disabled = true;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', form.action);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function () {
+              var json = {};
+              try { json = JSON.parse(xhr.responseText); } catch (e) { }
+              if (json.redirect && json.success) {
+                window.location = json.redirect;
+              } else {
+                render({error: json.error || {warning: '!'}});
+                btn.disabled = false;
+              }
+            };
+            xhr.send(new URLSearchParams(new FormData(form)).toString());
+          });
+
+          togglePrinter();
+          calculate();
+        })();
+        </script>
+      {% endif %}
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}

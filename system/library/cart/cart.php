@@ -298,6 +298,11 @@ class Cart {
 					foreach ($override as $key => $value) {
 						$this->data[$cart['cart_id']][$key] = $value;
 					}
+
+					// 3D Oberberg: überschriebener Preis (Rahmen-Konfigurator) muss auch die Zeilensumme bestimmen
+					if (is_object($override) && isset($override->price)) {
+						$this->data[$cart['cart_id']]['total'] = $this->data[$cart['cart_id']]['price'] * $this->data[$cart['cart_id']]['quantity'];
+					}
 				} else {
 					$this->remove($cart['cart_id']);
 				}
