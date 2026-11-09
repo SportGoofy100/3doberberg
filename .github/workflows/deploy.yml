@@ -37,7 +37,7 @@ jobs:
           FULL: ${{ github.event.inputs.full }}
         run: |
           # config.php (DB-Zugangsdaten) bleibt immer nur auf dem Server
-          EXCLUDE_RE='^(\.github/|\.gitignore$|config\.php$|admin/config\.php$|image/cache/)'
+          EXCLUDE_RE='^(\.github/|tools/|\.gitignore$|config\.php$|admin/config\.php$|image/cache/)'
           git fetch --tags -q || true
           if [ "$FULL" != "true" ] && git rev-parse -q --verify refs/tags/shop-deployed >/dev/null; then
             echo "mode=diff" >> "$GITHUB_OUTPUT"
